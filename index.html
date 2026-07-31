@@ -2845,7 +2845,6 @@ body.embed .foot {
 </div>
 <div class="how-read" style="border-left-color:#d4a043;background:#fff8e6;border-color:#f0d997;"><strong>Important data note:</strong> Counts were collected <strong>monthly through September 2025</strong>, when the Ascencia outreach and engagement contract ended. Beginning in <strong>2026 the City moved to quarterly counts</strong>, currently conducted by Healthcare in Action. Because the cadence and provider changed, 2026 quarterly counts are not directly comparable to earlier monthly counts. Use the year selector to switch between the two. See the <strong>About &amp; Methods</strong> tab for details.</div>
 <div class="how-read"><strong>How to read this section:</strong> These are observations during field counts, useful for trend monitoring and service planning. They are not a complete census.</div>
-<div class="period-note"><span class="pn-icon" aria-hidden="true"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16"/><path d="M8 3v3M16 3v3"/></svg></span><div><strong>2026 data period:</strong> Quarterly counts. Q1 (Jan–Mar 2026) was counted January 15, 2026 — 67 individuals across 56 locations, de-duplicated from 84 raw observations. Q2 (Apr–Jun 2026) was counted April 23, 2026 by Healthcare in Action — 58 individuals across 35 locations, all within the West Hollywood boundary. Q3 and Q4 have not yet been observed.</div></div>
 <div class="grid panel-grid two">
 <div class="card">
 <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;">
@@ -4535,7 +4534,12 @@ function renderPitCounts() {
     // Quarterly counts. Only quarters that have been reported are charted.
     var have = PIT_QTRS.filter(function(q) { return PIT_Q_2026[q] !== null && PIT_Q_2026[q] !== undefined; });
     var vals = have.map(function(q) { return PIT_Q_2026[q]; });
-    var labels = have.map(function(q) { return q; });
+    var labels = have.map(function(q) {
+      var m = PIT_Q_META[q] || {};
+      // Append the month the count actually took place, e.g. "Q1 · Jan".
+      var mo = m.date ? m.date.split(' ')[0] : '';
+      return mo ? (q + ' \u00b7 ' + mo) : q;
+    });
     if (title) title.textContent = 'Quarterly counts — 2026';
     if (note) note.innerHTML = obsTip + ', by quarter. Starting in 2026 the City conducts one field count per quarter instead of monthly counts.';
     renderBarChart('pit-monthly', labels, vals, {
@@ -4544,18 +4548,7 @@ function renderPitCounts() {
       format: function(v) { return v + ' individuals observed'; },
       ariaTitle: 'Observed unsheltered individuals by quarter, 2026'
     });
-    var pending = PIT_QTRS.filter(function(q) { return PIT_Q_2026[q] === null || PIT_Q_2026[q] === undefined; });
-    var bits = have.map(function(q) {
-      var m = PIT_Q_META[q] || {};
-      var s = q + ' (' + (m.span || '') + '): ' + PIT_Q_2026[q] + ' individuals';
-      if (m.locations) s += ' across ' + m.locations + ' locations';
-      if (m.date) s += ', counted ' + m.date;
-      if (m.program) s += ' by ' + m.program;
-      if (m.raw) s += ' (' + m.raw + ' raw observations before de-duplication)';
-      return s;
-    });
-    if (foot) foot.innerHTML = bits.join('. ') + '.' +
-      (pending.length ? ' Not yet reported: ' + pending.join(', ') + '.' : '');
+    if (foot) foot.textContent = '';
   } else {
     if (title) title.textContent = 'Monthly counts — 2025';
     if (note) note.innerHTML = obsTip + ', Jan–Sep 2025';
