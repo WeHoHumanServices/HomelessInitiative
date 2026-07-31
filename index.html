@@ -125,6 +125,16 @@ a { color:inherit; }
   flex-shrink:0;
   opacity:.85;
 }
+/* Outline icon system — SVGs inherit size from their container's font-size */
+.oico { width:1em; height:1em; display:block; }
+.tab-icon .oico { width:18px; height:18px; }
+.page-header-icon .oico { width:26px; height:26px; color:var(--blue); }
+.dash-card-icon .oico { width:19px; height:19px; color:var(--blue); }
+.pn-icon .oico { width:15px; height:15px; }
+.subset-arrow { flex:0 0 auto; color:var(--blue); }
+.subset-arrow .oico { width:16px; height:16px; }
+.inline-ico { display:inline-flex; vertical-align:-2px; }
+.inline-ico .oico { width:15px; height:15px; }
 .tab-text {
   display:flex;
   flex-direction:column;
@@ -191,6 +201,108 @@ a { color:inherit; }
 }
 .kpi-grid.k4 { grid-template-columns:repeat(4,1fr); }
 .kpi-grid.k3 { grid-template-columns:repeat(3,1fr); }
+.kpi-grid.k2 { grid-template-columns:repeat(2,1fr); }
+/* Holloway quarter/year filter bar */
+.hw-filter {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px 14px;
+  background:#f6f9fd;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 12px;
+  margin:10px 0 4px;
+}
+.hw-filter .hw-filter-group { display:flex; align-items:center; gap:6px; }
+.hw-filter label { font-size:12px; font-weight:700; color:var(--muted); }
+.hw-filter select {
+  font-size:13px; font-family:inherit; border:1px solid var(--line);
+  border-radius:8px; padding:5px 10px; color:#27405f; background:#fff;
+}
+.hw-filter .hw-filter-readout { font-size:12px; color:var(--muted); margin-left:auto; font-style:italic; }
+.status-chip.below-target { background:#fbeee8; color:#b45a1c; border-color:#f2d3bd; }
+/* Subset note callout */
+.subset-note {
+  display:flex; gap:9px; align-items:flex-start;
+  background:#eef4fb; border:1px solid #cfe0f2; border-left:3px solid var(--blue2);
+  border-radius:9px; padding:9px 12px; margin:10px 0 2px;
+  font-size:12.5px; color:#2c4a6e; line-height:1.5;
+}
+.subset-note strong { color:var(--blue); }
+/* Data period note — states what 2026 figures cover in each section */
+.period-note {
+  display:flex; gap:8px; align-items:flex-start;
+  background:#f7f9fc; border:1px dashed #c9d8ea;
+  border-radius:8px; padding:8px 11px; margin:10px 0 2px;
+  font-size:11.5px; color:#4a6480; line-height:1.5;
+}
+.period-note strong { color:var(--blue); font-weight:800; }
+.period-note .pn-icon { flex:0 0 auto; opacity:.65; }
+/* Funding bars */
+.fund-bars { display:flex; flex-direction:column; gap:9px; margin-top:4px; }
+.fund-bar-row { display:grid; grid-template-columns:1fr; gap:3px; }
+.fund-bar-head { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.fund-bar-name { font-size:12.5px; font-weight:700; color:var(--heading); }
+.fund-bar-amt { font-size:12.5px; font-weight:800; color:var(--blue); white-space:nowrap; }
+.fund-bar-track { height:9px; border-radius:999px; background:#edf3fa; overflow:hidden; }
+.fund-bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,var(--blue),var(--blue3)); }
+
+/* ── FUNDING FILTERS ── */
+.funding-filter-card { display:flex; flex-direction:column; gap:12px; }
+.funding-filter-row { display:flex; flex-wrap:wrap; align-items:flex-end; gap:16px; }
+.funding-filter-group { display:flex; flex-direction:column; gap:5px; }
+.funding-filter-group label, .funding-pill-group label { font-size:10.5px; font-weight:800; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; display:block; margin-bottom:4px; }
+.funding-filter-group select { border:1px solid var(--line); border-radius:9px; padding:6px 10px; color:#27405f; background:#fff; font-family:inherit; font-size:13px; height:34px; }
+.funding-filter-group select:focus { outline:2px solid var(--blue3); outline-offset:1px; }
+.funding-pill-group { display:flex; flex-direction:column; gap:0; }
+.funding-pill-options { display:flex; flex-wrap:wrap; gap:5px; }
+.funding-pill-btn { padding:5px 12px; border:1.5px solid var(--line); border-radius:999px; font-size:12px; font-weight:700; cursor:pointer; background:#fff; color:#3a4f6a; font-family:inherit; white-space:nowrap; transition:background .12s, color .12s, border-color .12s; line-height:1.4; }
+.funding-pill-btn:hover { background:#f0f5ff; border-color:#a8c0e0; color:var(--blue); }
+.funding-pill-btn.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+.funding-filter-divider { width:1px; height:38px; background:var(--line); align-self:flex-end; margin-bottom:2px; }
+.funding-reset-btn { padding:5px 13px; border:1.5px solid var(--line); border-radius:999px; font-size:12px; font-weight:700; cursor:pointer; background:#fff; color:var(--muted); font-family:inherit; align-self:flex-end; margin-bottom:2px; white-space:nowrap; transition:background .12s, color .12s, border-color .12s; }
+.funding-reset-btn:hover { background:#f7faff; color:var(--blue); border-color:#a8c0e0; }
+/* ── FUNDING DYNAMIC BARS ── */
+.funding-bars { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+.funding-bar-row { display:grid; grid-template-columns:minmax(130px,200px) 1fr auto; gap:10px; align-items:center; }
+.funding-bar-label { font-size:12.5px; color:#324760; font-weight:800; line-height:1.25; }
+.funding-bar-track { height:24px; border-radius:999px; background:#edf3fa; overflow:hidden; border:1px solid #dce8f5; }
+.funding-bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,var(--blue),var(--blue3)); min-width:2px; transition:width .3s ease; }
+.funding-bar-value { color:var(--muted); font-size:12px; font-weight:800; white-space:nowrap; min-width:52px; text-align:right; }
+.funding-bar-pct { font-size:10.5px; color:var(--blue3); font-weight:700; margin-left:3px; }
+/* ── FUNDING PROGRAM TABLE ── */
+.funding-programs-section { background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 1px 6px rgba(0,30,90,.06); padding:16px; margin-top:12px; }
+.funding-programs-section h3 { margin:0 0 4px; font-size:15px; font-weight:800; color:var(--heading); }
+.funding-programs-section .note { color:var(--muted); font-size:13px; line-height:1.5; margin:0 0 14px; }
+.funding-type-group { margin-bottom:18px; }
+.funding-type-group:last-child { margin-bottom:0; }
+.funding-type-header { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:2px solid var(--blue5); margin-bottom:8px; }
+.funding-type-header-label { font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--blue); flex:1; }
+.funding-type-header-area { font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--blue5); color:var(--blue2); white-space:nowrap; }
+.funding-type-header-total { font-size:12px; font-weight:800; color:var(--blue); white-space:nowrap; }
+.funding-program-row { display:grid; grid-template-columns:1fr 80px; gap:10px; align-items:center; padding:9px 0; border-bottom:1px solid #edf3fa; }
+.funding-program-row:last-child { border-bottom:none; }
+.funding-program-name { font-size:13px; font-weight:800; color:#18314f; line-height:1.2; }
+.funding-program-note { font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.35; }
+.funding-program-source { display:inline-flex; align-items:center; border-radius:999px; background:#f0f5ff; border:1px solid var(--blue5); color:var(--blue2); padding:3px 9px; font-size:11px; font-weight:800; white-space:nowrap; margin-top:4px; }
+.funding-program-amount { font-size:13px; font-weight:800; color:var(--blue); text-align:right; white-space:nowrap; }
+.funding-empty { padding:20px; text-align:center; color:var(--muted); font-size:13px; }
+.funding-empty-reset { display:inline-block; margin-top:8px; padding:6px 14px; border:1px solid var(--line); border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; background:#fff; color:var(--blue); }
+.funding-empty-reset:hover { background:#f0f5ff; }
+.funding-program-group-header { display:grid; grid-template-columns:1fr 80px; gap:10px; align-items:center; padding:9px 0; border-bottom:1px solid #edf3fa; cursor:pointer; user-select:none; }
+.funding-program-group-header:hover .funding-program-name { color:var(--blue); }
+.funding-program-group-chevron { font-size:11px; color:var(--blue3); margin-left:5px; display:inline-block; transition:transform .22s ease; }
+.funding-program-group.open .funding-program-group-chevron { transform:rotate(180deg); }
+.funding-program-subrows { max-height:0; overflow:hidden; transition:max-height .3s ease, opacity .25s ease; opacity:0; }
+.funding-program-group.open .funding-program-subrows { max-height:400px; opacity:1; }
+.funding-program-subrow { display:grid; grid-template-columns:1fr 80px; gap:10px; align-items:center; padding:7px 0 7px 14px; border-bottom:1px solid #f4f8fd; background:#fafcff; }
+.funding-program-subrow:last-child { border-bottom:1px solid #edf3fa; }
+.funding-program-subrow-name { font-size:12.5px; font-weight:700; color:#334a67; }
+.funding-program-subrow-name .oico { width:13px; height:13px; display:inline-block; vertical-align:-2px; margin-right:3px; color:var(--blue2); }
+.funding-program-subrow-note { font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.35; }
+@media (max-width:820px) { .funding-filter-divider { display:none; } .funding-filter-row { gap:12px; } }
+
 .kpi {
   background:var(--card);
   border-radius:12px;
@@ -2494,49 +2606,56 @@ body.embed .foot {
 <div class="tabs-label">Explore the system — select a section below</div>
 <div aria-label="Dashboard sections" class="tabs" role="tablist">
 <button aria-label="Summary: key outcomes and how to navigate" aria-selected="true" class="tab active" data-page="intro" role="tab" title="Summary: key outcomes and how to navigate">
-<span class="tab-icon">🏙️</span>
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21V9l5-3v4l5-3v5l5-2v11z"/><path d="M3 21h18"/><path d="M8 12.5v.01M8 16v.01M13 12.5v.01M13 16v.01M18 12.5v.01M18 16v.01"/></svg></span>
 <span class="tab-text">
 <span class="tab-title">At a Glance</span>
 <span class="tab-desc">Start here</span>
 </span>
 </button>
 <button aria-label="Overview: how the response system is structured and coordinated" aria-selected="false" class="tab" data-page="overview" role="tab" title="Overview: how the response system is structured and coordinated">
-<span class="tab-icon">📊</span>
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V4"/><path d="M4 20h16"/><rect x="7.5" y="12" width="2.6" height="5"/><rect x="12.2" y="8.5" width="2.6" height="8.5"/><rect x="16.9" y="10.5" width="2.6" height="6.5"/></svg></span>
 <span class="tab-text">
 <span class="tab-title">System Overview</span>
 <span class="tab-desc">System design</span>
 </span>
 </button>
 <button aria-label="Unsheltered Counts and Locations: counts, trends, and observed locations" aria-selected="false" class="tab" data-page="pit" role="tab" title="Unsheltered Counts and Locations: counts, trends, and observed locations">
-<span class="tab-icon">📍</span>
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s6-5.2 6-10a6 6 0 0 0-12 0c0 4.8 6 10 6 10z"/><circle cx="12" cy="11" r="2.3"/></svg></span>
 <span class="tab-text">
 <span class="tab-title">Unsheltered Counts &amp; Locations</span>
 <span class="tab-desc">Counts &amp; locations</span>
 </span>
 </button>
 <button aria-label="Concern Line: who calls, why they call, and how the City responds" aria-selected="false" class="tab" data-page="hcl" role="tab" title="Concern Line: who calls, why they call, and how the City responds">
-<span class="tab-icon">📞</span>
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></span>
 <span class="tab-text">
 <span class="tab-title">Concern Line</span>
 <span class="tab-desc">Calls &amp; responses</span>
 </span>
 </button>
 <button aria-label="Housing: shelter use and permanent housing outcomes" aria-selected="false" class="tab" data-page="housing" role="tab" title="Housing: shelter use and permanent housing outcomes">
-<span class="tab-icon">🏠</span>
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></span>
 <span class="tab-text">
 <span class="tab-title">Housing</span>
 <span class="tab-desc">Shelter &amp; placements</span>
 </span>
 </button>
 <button aria-label="Prevention: rental assistance, legal support, and housing stability" aria-selected="false" class="tab" data-page="prevention" role="tab" title="Prevention: rental assistance, legal support, and housing stability">
-<span class="tab-icon">🛡️</span>
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span>
 <span class="tab-text">
 <span class="tab-title">Prevention</span>
 <span class="tab-desc">Staying housed</span>
 </span>
 </button>
+<button aria-label="Funding: how homelessness investment is allocated across programs" aria-selected="false" class="tab" data-page="funding" role="tab" title="Funding: how homelessness investment is allocated across programs">
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5h.01M17.5 14.5h.01"/></svg></span>
+<span class="tab-text">
+<span class="tab-title">Funding</span>
+<span class="tab-desc">FY2026 investment</span>
+</span>
+</button>
 <button aria-label="About and Methods: data sources, definitions, periods, and contact" aria-selected="false" class="tab" data-page="about" role="tab" title="About and Methods: data sources, definitions, periods, and contact">
-<span class="tab-icon">ℹ️</span>
+<span class="tab-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><path d="M12 7.6v.01"/></svg></span>
 <span class="tab-text">
 <span class="tab-title">About &amp; Methods</span>
 <span class="tab-desc">Sources &amp; definitions</span>
@@ -2548,7 +2667,7 @@ body.embed .foot {
 <!-- ── SUMMARY / DASHBOARD GUIDE PAGE ── -->
 <section class="page active" id="page-intro">
 <div class="page-header">
-<div class="page-header-icon">🏙️</div>
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21V9l5-3v4l5-3v5l5-2v11z"/><path d="M3 21h18"/><path d="M8 12.5v.01M8 16v.01M13 12.5v.01M13 16v.01M18 12.5v.01M18 16v.01"/></svg></div>
 <div>
 <div class="page-header-title">Dashboard at a Glance</div>
 
@@ -2560,28 +2679,28 @@ body.embed .foot {
 <p class="summary-copy">This dashboard summarizes <span class="glossary-term" data-tip="&lt;strong&gt;operational, programmatic, and outcome data&lt;/strong&gt;Information about day-to-day service activity, program delivery, and results such as housing placements or services provided." tabindex="0">operational, programmatic, and outcome data</span> for City-funded homelessness response and prevention programs. For sources, definitions, periods, and limitations, see the <a href="#about" onclick="document.querySelector('[data-page=about]').click(); return false;" style="color:var(--blue);font-weight:700;text-decoration:none;border-bottom:1px dotted var(--blue);">About &amp; Methods</a> tab.</p>
 <div class="dashboard-contains-grid">
 <div class="dashboard-contains-card">
-<div class="dash-card-icon">📍</div>
+<div class="dash-card-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s6-5.2 6-10a6 6 0 0 0-12 0c0 4.8 6 10 6 10z"/><circle cx="12" cy="11" r="2.3"/></svg></div>
 <div>
 <h4>Unsheltered Counts &amp; Locations</h4>
 <p>Monthly count trends and mapped observations from field outreach.</p>
 </div>
 </div>
 <div class="dashboard-contains-card">
-<div class="dash-card-icon">📞</div>
+<div class="dash-card-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></div>
 <div>
 <h4>Concern Line Activity</h4>
 <p>Requests, reasons for calls, response patterns, and field outcomes.</p>
 </div>
 </div>
 <div class="dashboard-contains-card">
-<div class="dash-card-icon">🏠</div>
+<div class="dash-card-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></div>
 <div>
 <h4>Housing Outcomes</h4>
 <p><span class="glossary-term" data-tip="&lt;strong&gt;interim housing&lt;/strong&gt;Short-term housing with support services while someone works toward a longer-term housing option." tabindex="0">Interim housing</span> and <span class="glossary-term" data-tip="&lt;strong&gt;permanent housing&lt;/strong&gt;Long-term housing intended to provide ongoing housing stability, including independent housing and permanent supportive housing." tabindex="0">permanent housing</span> placements.</p>
 </div>
 </div>
 <div class="dashboard-contains-card">
-<div class="dash-card-icon">🛡️</div>
+<div class="dash-card-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></div>
 <div>
 <h4>Prevention Services</h4>
 <p>Rental assistance, eviction defense, and housing stability supports.</p>
@@ -2599,24 +2718,24 @@ body.embed .foot {
     <div class="kpi">
       <span class="period-eyebrow cumulative">Cumulative · Since 2016</span>
       <div class="k-label">People housed</div>
-      <div class="k-value">411</div>
-      <div class="k-sub">Long-term housing outcomes</div>
+      <div class="k-value">436</div>
+      <div class="k-sub">Long-term housing outcomes · includes 2026 year to date</div>
 
     </div>
 
     <div class="kpi alt">
       <span class="period-eyebrow cumulative">Cumulative · Since 2017</span>
       <div class="k-label">Interim placements</div>
-      <div class="k-value">781</div>
-      <div class="k-sub">Interim housing activity</div>
+      <div class="k-value">872</div>
+      <div class="k-sub">Interim housing activity · includes 2026 year to date</div>
 
     </div>
 
     <div class="kpi alt2">
       <span class="period-eyebrow cumulative">Cumulative · Since 2017</span>
       <div class="k-label">Households supported</div>
-      <div class="k-value">1,861</div>
-      <div class="k-sub">Rental assistance activity</div>
+      <div class="k-value">1,912</div>
+      <div class="k-sub">Rental assistance activity · includes 2026 year to date</div>
 
     </div>
 
@@ -2642,12 +2761,6 @@ body.embed .foot {
 </div>
 </div>
 
-<div class="banner" style="margin-top:18px;margin-bottom:18px;">
-  <div class="eyebrow">System improvement underway</div>
-  <h3>Building on existing services through the Coordinated Response Framework</h3>
-  <p>West Hollywood has built a homelessness response system. The City is now using the <strong><span class="glossary-term" data-tip="&lt;strong&gt;Coordinated Response Framework (CRF)&lt;/strong&gt;The City’s effort to strengthen coordination, clarify roles, improve protocols, and align data across homelessness response providers." tabindex="0">Coordinated Response Framework (CRF)</span></strong> to improve coordination, strengthen service pathways, and better support people with high-acuity needs.</p>
-</div>
-
 <div class="summary-section">
   <div class="card" style="padding:14px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
     <div style="flex:1 1 320px;">
@@ -2661,14 +2774,14 @@ body.embed .foot {
 </section>
 <section class="page" id="page-overview">
 <div class="page-header">
-<div class="page-header-icon">📊</div>
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V4"/><path d="M4 20h16"/><rect x="7.5" y="12" width="2.6" height="5"/><rect x="12.2" y="8.5" width="2.6" height="8.5"/><rect x="16.9" y="10.5" width="2.6" height="6.5"/></svg></div>
 <div>
 <div class="page-header-title">How the System Works</div>
 
 </div>
 </div>
 <div class="hero">
-      West Hollywood funds services to prevent homelessness and to help people experiencing homelessness find and maintain stable housing. The City's response runs 24/7 through City-contracted providers and the Homeless Concern Line, organized across 3 core service areas. Over the past nine years, the system has provided over 1,800 households with rental assistance to prevent homelessness, and has supported people experiencing homelessness by placing 781 individuals in interim housing and helping 411 secure permanent housing.*
+      West Hollywood funds services to prevent homelessness and to help people experiencing homelessness find and maintain stable housing. The City's response runs 24/7 through City-contracted providers and the Homeless Concern Line, organized across 3 core service areas. Over the past nine years, the system has provided over 1,800 households with rental assistance to prevent homelessness, and has supported people experiencing homelessness by placing 872 individuals in interim housing and helping 436 secure permanent housing.*
       <small>* The City's Homeless Initiative launched in 2017 and data collection began at that time. Some components of outcome tracking, including permanent housing placements, began in 2016 and have continued to strengthen as reporting practices matured.</small>
     </div>
 <div class="card" style="margin-top:12px;">
@@ -2687,7 +2800,7 @@ body.embed .foot {
 </div>
 <div class="step">
 <div class="step-num">3</div>
-<h4><span class="glossary-term" data-tip="&lt;strong&gt;interim housing&lt;/strong&gt;Short-term housing with support services while someone works toward a longer-term housing option." tabindex="0">interim housing</span></h4>
+<h4><span class="glossary-term" data-tip="&lt;strong&gt;interim housing&lt;/strong&gt;Short-term housing with support services while someone works toward a longer-term housing option." tabindex="0">Interim housing</span></h4>
 <p>When someone is ready, City-funded outreach teams connect them to interim housing options, including Holloway for eligible community members.</p>
 </div>
 <div class="step">
@@ -2721,26 +2834,37 @@ body.embed .foot {
 </section>
 <section class="page" id="page-pit">
 <div class="page-header">
-<div class="page-header-icon">📍</div>
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s6-5.2 6-10a6 6 0 0 0-12 0c0 4.8 6 10 6 10z"/><circle cx="12" cy="11" r="2.3"/></svg></div>
 <div>
 <div class="page-header-title">Unsheltered Counts &amp; Locations</div>
 
 </div>
 </div>
 <div class="hero">
-      The charts and map below help the City understand where people are being observed and how conditions shift over time. West Hollywood's contracted outreach providers conducted regular <span class="glossary-term" data-tip="&lt;strong&gt;Point-in-Time (PIT) data&lt;/strong&gt;A snapshot count of people experiencing homelessness during a defined observation period. PIT-related data helps communities understand trends and service needs, but it should not be interpreted as a precise census of every person experiencing homelessness." tabindex="0">Point-in-Time (PIT)</span>-related field counts from 2017 through September 2025, providing trend data to support operational awareness, community transparency, and service deployment planning.
+      The charts and map below help the City understand where people are being observed and how conditions shift over time. West Hollywood's contracted outreach providers conducted regular <span class="glossary-term" data-tip="&lt;strong&gt;Point-in-Time (PIT) data&lt;/strong&gt;A snapshot count of people experiencing homelessness during a defined observation period. PIT-related data helps communities understand trends and service needs, but it should not be interpreted as a precise census of every person experiencing homelessness." tabindex="0">Point-in-Time (PIT)</span>-related field counts monthly from 2017 through September 2025, and quarterly beginning in 2026, providing trend data to support operational awareness, community transparency, and service deployment planning.
 </div>
-<div class="how-read" style="border-left-color:#d4a043;background:#fff8e6;border-color:#f0d997;"><strong>Important data note:</strong> Monthly counts shown here end in <strong>September 2025</strong> because the Ascencia outreach and engagement contract ended. The City is now collecting quarterly observation updates, and trend continuity will be evaluated as new data becomes available. See the <strong>About &amp; Methods</strong> tab for details.</div>
+<div class="how-read" style="border-left-color:#d4a043;background:#fff8e6;border-color:#f0d997;"><strong>Important data note:</strong> Counts were collected <strong>monthly through September 2025</strong>, when the Ascencia outreach and engagement contract ended. Beginning in <strong>2026 the City moved to quarterly counts</strong>, currently conducted by Healthcare in Action. Because the cadence and provider changed, 2026 quarterly counts are not directly comparable to earlier monthly counts. Use the year selector to switch between the two. See the <strong>About &amp; Methods</strong> tab for details.</div>
 <div class="how-read"><strong>How to read this section:</strong> These are observations during field counts, useful for trend monitoring and service planning. They are not a complete census.</div>
+<div class="period-note"><span class="pn-icon" aria-hidden="true"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16"/><path d="M8 3v3M16 3v3"/></svg></span><div><strong>2026 data period:</strong> Quarterly counts. Q1 (Jan–Mar 2026) was counted January 15, 2026 — 67 individuals across 56 locations, de-duplicated from 84 raw observations. Q2 (Apr–Jun 2026) was counted April 23, 2026 by Healthcare in Action — 58 individuals across 35 locations, all within the West Hollywood boundary. Q3 and Q4 have not yet been observed.</div></div>
 <div class="grid panel-grid two">
 <div class="card">
-<h3>Monthly counts — 2025</h3>
-<div class="note"><span class="glossary-term" data-tip="&lt;strong&gt;Observed unsheltered individuals&lt;/strong&gt;People seen by outreach teams during field counts; this may not capture every person experiencing homelessness in the City." tabindex="0">Observed unsheltered individuals</span>, Jan–Sep 2025</div>
-<div class="chart compact" id="pit-monthly" role="img" aria-label="Bar chart of observed unsheltered individuals by month, January to September 2025. Loading…"></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;">
+<h3 id="pit-count-title">Monthly counts — 2025</h3>
+<div>
+<label for="pit-count-year" style="font-size:12px;font-weight:700;color:var(--muted);margin-right:6px;">Year</label>
+<select id="pit-count-year" style="font-size:13px;font-family:inherit;border:1px solid var(--line);border-radius:10px;padding:5px 10px;color:#27405f;background:#fff;">
+<option selected="" value="2025">2025 · monthly</option>
+<option value="2026">2026 · quarterly</option>
+</select>
+</div>
+</div>
+<div class="note" id="pit-count-note"><span class="glossary-term" data-tip="&lt;strong&gt;Observed unsheltered individuals&lt;/strong&gt;People seen by outreach teams during field counts; this may not capture every person experiencing homelessness in the City." tabindex="0">Observed unsheltered individuals</span>, Jan–Sep 2025</div>
+<div class="chart compact" id="pit-monthly" role="img" aria-label="Bar chart of observed unsheltered individuals. Loading…"></div>
+<div class="note" id="pit-count-foot" style="margin-top:6px;"></div>
 </div>
 <div class="card">
 <h3>Long-term trend</h3>
-<div class="note">Annual average monthly count, 2017–2025</div>
+<div class="note">Average individuals observed per count event, 2017–2026. Counts were monthly through 2025 and quarterly from 2026, so each year reflects the average of that year's count events. The 2026 point is shown dashed and hollow because it is <strong>provisional</strong> — it averages the two quarterly counts reported so far (Q1 and Q2) rather than a complete year.</div>
 <div class="chart compact" id="pit-trend" role="img" aria-label="Line chart of annual average monthly count of observed unsheltered individuals from 2017 to 2025. Loading…"></div>
 </div>
 </div>
@@ -2752,9 +2876,10 @@ body.embed .foot {
 <div>
 <label style="font-size:12px;font-weight:700;color:var(--muted);margin-right:6px;">Year</label>
 <select id="pit-year" style="font-size:13px;font-family:inherit;border:1px solid var(--line);border-radius:10px;padding:5px 10px;color:#27405f;background:#fff;">
-<option value="all">All (2024–2025)</option>
+<option value="all">All (2024–2026)</option>
 <option value="2024">2024</option>
-<option selected="" value="2025">2025</option>
+<option value="2025">2025</option>
+<option selected="" value="2026">2026</option>
 </select>
 </div>
 <div>
@@ -2773,7 +2898,7 @@ body.embed .foot {
 </section>
 <section class="page" id="page-hcl">
 <div class="page-header">
-<div class="page-header-icon">📞</div>
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></div>
 <div>
 <div class="page-header-title">Homeless Concern Line</div>
 
@@ -2784,9 +2909,10 @@ body.embed .foot {
     </div>
 <!-- HCL Filter panel: collapsible -->
 <div class="how-read"><strong>How to read this section:</strong> Some metrics count requests; others count direct contacts or call characteristics. Requests are not unique individuals.</div>
+<div class="period-note"><span class="pn-icon" aria-hidden="true"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16"/><path d="M8 3v3M16 3v3"/></svg></span><div><strong>2026 data period:</strong> Concern Line data covers July 2025 through June 30, 2026. July 2025 is a partial month (Jul 16–31), reflecting the start of data collection.</div></div>
 <details class="hcl-filter-panel" style="margin-bottom:12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 6px rgba(0,30,90,.06);">
 <summary style="cursor:pointer;list-style:none;padding:11px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:13px;color:var(--heading);">
-<span style="font-size:14px;">⚙️</span>
+<span class="inline-ico"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2M12 18.5v2M4.7 7l1.7 1M17.6 16l1.7 1M3.5 12h2M18.5 12h2M4.7 17l1.7-1M17.6 8l1.7-1"/></svg></span>
 <span>Filter the data on this page</span>
 <span style="font-size:11px;color:var(--muted);font-weight:600;margin-left:auto;">Click to expand · defaults to all months &amp; reasons</span>
 </summary>
@@ -2877,7 +3003,7 @@ body.embed .foot {
 </section>
 <section class="page" id="page-housing">
 <div class="page-header">
-<div class="page-header-icon">🏠</div>
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></div>
 <div>
 <div class="page-header-title">Housing Programs</div>
 
@@ -2892,37 +3018,58 @@ body.embed .foot {
 <div class="how-read"><strong>How to read this section:</strong> Admissions, placements, bed nights, exits, and people served are different. Each card states what it counts.</div>
 
 <div class="grid kpi-grid k3">
-<div class="kpi"><span class="period-eyebrow cumulative">Cumulative · Since 2016</span><div class="k-label">People permanently housed</div><div class="k-value">411</div><div class="k-sub">Long-term housing outcomes</div><div class="k-detail">72 people were housed in 2024, the highest annual total on record.</div></div>
-<div class="kpi alt"><span class="period-eyebrow cumulative">Cumulative · Since 2017</span><div class="k-label">Placed in interim shelter</div><div class="k-value">781</div><div class="k-sub">Interim housing activity</div><div class="k-detail">Admissions have grown steadily as interim housing capacity expanded.</div></div>
+<div class="kpi"><span class="period-eyebrow cumulative">Cumulative · Since 2016</span><div class="k-label">People permanently housed</div><div class="k-value">436</div><div class="k-sub">Long-term housing outcomes · includes 25 placements in 2026 to date</div><div class="k-detail">72 people were housed in 2024, the highest annual total on record.</div></div>
+<div class="kpi alt"><span class="period-eyebrow cumulative">Cumulative · Since 2017</span><div class="k-label">Placed in interim shelter</div><div class="k-value">872</div><div class="k-sub">Interim housing activity · includes 91 admissions in 2026 to date</div><div class="k-detail">Admissions have grown steadily as interim housing capacity expanded.</div></div>
 <div class="kpi alt2"><span class="period-eyebrow recent">Annual average · 2021–2025</span><div class="k-label">Shelter bed nights per year</div><div class="k-value">11,231</div><div class="k-sub">Interim shelter capacity</div><div class="k-detail">Reflects the scale of interim shelter capacity operating across the system.</div></div>
 </div>
+<div class="period-note"><span class="pn-icon" aria-hidden="true"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16"/><path d="M8 3v3M16 3v3"/></svg></span><div><strong>2026 data periods:</strong> Holloway Interim Housing is reported through June 30, 2026 (contract Q3). All other City-funded housing programs are reported through March 31, 2026 (mid-year). Cumulative totals above include 2026 figures through these dates.</div></div>
 <div class="grid panel-grid two" style="margin-top:12px;">
 <div class="card">
 <h3>Permanent housing placements — by year</h3>
-<div class="note">Data reflects reporting since the Homeless Initiative launched in 2017; some placements recorded from 2016 onward.*</div>
-<div class="chart compact" id="housing-perm" role="img" aria-label="Bar chart of permanent housing placements by year from 2021 to 2025. Loading…"></div>
+<div class="note">Data reflects reporting since the Homeless Initiative launched in 2017; some placements recorded from 2016 onward.* The 2026 column is contract year to date (through Jun 30, 2026) and covers a partial year, so it is not directly comparable to the full prior years.</div>
+<div class="chart compact" id="housing-perm" role="img" aria-label="Bar chart of permanent housing placements by year from 2021 to 2026, with 2026 partial year to date. Loading…"></div>
 </div>
 <div class="card">
 <h3>Interim housing admissions — by year</h3>
-<div class="note">Admissions have risen as system capacity expanded.</div>
-<div class="chart compact" id="housing-interim" role="img" aria-label="Bar chart of interim housing admissions by year from 2021 to 2025. Loading…"></div>
-<div class="note">Holloway Interim Housing Program admissions and outcomes (20 beds, opened October 2025) are tracked separately in the Q1 &amp; Q2 panel below and are not aggregated into this chart.</div>
+<div class="note">Admissions have risen as system capacity expanded. The 2026 column is contract year to date (through Jun 30, 2026) and covers a partial year, so it is not directly comparable to the full prior years.</div>
+<div class="chart compact" id="housing-interim" role="img" aria-label="Bar chart of interim housing admissions by year from 2021 to 2026, with 2026 partial year to date. Loading…"></div>
+<div class="note">The 2026 column reflects contract year-to-date interim admissions across City-funded housing programs — Holloway (42) and Ascencia emergency shelter (49).</div>
 </div>
 </div>
 <div class="card holloway-panel" style="margin-top:12px;">
-<h3>Holloway Interim Housing Program — Q1 &amp; Q2 Status</h3>
-<div class="note">Holloway is a 20-bed, non-congregate interim housing program in West Hollywood that opened October 2025. It serves residents experiencing chronic homelessness and living with a disability — one example of the City's broader interim housing portfolio, which has placed 781 individuals since 2017 alongside 411 permanent housing placements since 2016.</div>
-<div class="how-read"><strong>Early program context (first 6 months):</strong> Permanent housing placements typically take 9–12 months to materialize because of documentation, voucher, landlord, and supportive housing pipelines. In the meantime, early indicators include occupancy, engagement, stabilization, benefits enrollment, and pipeline development. Read the placement count alongside &mdash; not in isolation from &mdash; these supporting indicators.</div>
-<div class="grid kpi-grid k4">
-<div class="kpi"><span class="period-eyebrow recent">First 6 months · Oct 2025–Mar 2026</span><div class="k-label">Individuals served</div><div class="k-value">32</div><div class="k-sub">Unduplicated</div></div>
-<div class="kpi alt"><span class="period-eyebrow recent">Snapshot · Mar 31, 2026</span><div class="k-label">Current occupancy</div><div class="k-value">20/20</div><div class="k-sub">At capacity</div></div>
-<div class="kpi alt2"><div class="k-label">Housing pipeline</div><div class="k-value" style="font-size:22px;line-height:1.2;">1 confirmed<br><span style="font-size:15px;color:var(--blue3);">+ 3 pending</span></br></div><div class="k-sub">Toward 12 placements / year (typical horizon: 9–12 mo.)</div></div>
-<div class="kpi"><span class="period-eyebrow recent">Snapshot · Mar 31, 2026</span><div class="k-label">Current waitlist</div><div class="k-value">3</div><div class="k-sub">Eligible West Hollywood community members</div></div>
+<h3>Holloway Interim Housing Program — Contract Year 2025–26</h3>
+<div class="note">Holloway is a 20-bed, non-congregate interim housing program in West Hollywood that opened October 2025. It serves residents experiencing chronic homelessness and living with a disability — one example of the City's broader interim housing portfolio, which has placed 872 individuals since 2017 alongside 436 permanent housing placements since 2016.</div>
+<div class="subset-note"><span class="subset-arrow" aria-hidden="true"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V6"/><path d="M6.5 11.5 12 6l5.5 5.5"/></svg></span><div><strong>Program-level detail.</strong> Holloway's admissions and placements are included in the 2026 contract year-to-date columns of the charts above. The figures here break that activity out for Holloway specifically.</div></div>
+<div class="how-read"><strong>Reading early program results:</strong> Permanent housing placements typically take 9–12 months to materialize because of documentation, voucher, landlord, and supportive housing pipelines. Alongside the placement count, watch occupancy, engagement, stabilization, benefits enrollment, and pipeline development. Use the filter to view year-to-date results or a single quarter.</div>
+<div class="hw-filter">
+<div class="hw-filter-group">
+<label for="hw-year">Contract year</label>
+<select id="hw-year">
+<option selected="" value="2025-26">2025–26 (Oct–Sep)</option>
+</select>
 </div>
+<div class="hw-filter-group">
+<label for="hw-quarter">Quarter</label>
+<select id="hw-quarter">
+<option selected="" value="ytd">Year to date</option>
+<option value="q1">Q1 · Oct–Dec 2025</option>
+<option value="q2">Q2 · Jan–Mar 2026</option>
+<option value="q3">Q3 · Apr–Jun 2026</option>
+</select>
+</div>
+<div class="hw-filter-readout" id="hw-readout">Showing year to date · Oct 1, 2025 – Jun 30, 2026</div>
+</div>
+<div class="grid kpi-grid k4">
+<div class="kpi"><span class="period-eyebrow recent hw-eyebrow">Year to date · through Jun 30, 2026</span><div class="k-label" id="hw-served-label">Individuals served</div><div class="k-value" id="hw-served" data-raw="42">42</div><div class="k-sub" id="hw-served-sub">Unduplicated individuals served year to date</div></div>
+<div class="kpi alt"><span class="period-eyebrow recent hw-eyebrow">Year to date · through Jun 30, 2026</span><div class="k-label">Occupancy rate</div><div class="k-value" id="hw-occ" data-raw="90.2%">90.2%</div><div class="k-sub" id="hw-occ-sub">Meets the 90% annual goal</div></div>
+<div class="kpi alt2"><span class="period-eyebrow recent hw-eyebrow">Year to date · through Jun 30, 2026</span><div class="k-label">Exits to permanent housing</div><div class="k-value" id="hw-perm" data-raw="6">6</div><div class="k-sub" id="hw-perm-sub">5 additional pending · goal 12 / year</div></div>
+<div class="kpi"><span class="period-eyebrow recent hw-eyebrow">Year to date · through Jun 30, 2026</span><div class="k-label">Supportive services participation</div><div class="k-value" id="hw-part" data-raw="—">—</div><div class="k-sub" id="hw-part-sub">Reported by quarter (denominators vary) · goal 65%</div></div>
+</div>
+<div style="margin-top:8px;font-size:11.5px;color:var(--muted);font-style:italic;line-height:1.5;">Point-in-time snapshot (not affected by the quarter filter): as of June 30, 2026, Holloway was at full capacity with 20 of 20 beds occupied and a waitlist of 3 eligible West Hollywood community members.</div>
 <!-- Occupancy & Utilization -->
 <div class="holloway-subcard" style="margin-top:12px;">
 <h4>Occupancy &amp; utilization</h4>
-<p>Holloway reached its 90% occupancy target in its first quarter and is now operating at near full capacity.</p>
+<p id="hw-occ-narrative">After a ramp-up during its first quarter, Holloway has operated at near full capacity, bringing year-to-date occupancy to 90.2% — meeting the 90% annual goal.</p>
 <!-- Target label row -->
 <div style="position:relative;margin-top:14px;padding-right:0;">
 <div style="position:absolute;left:90%;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;pointer-events:none;z-index:2;">
@@ -2933,32 +3080,46 @@ body.embed .foot {
 </div>
 <div style="display:flex;flex-direction:column;gap:12px;">
 <!-- Q1 -->
-<div>
+<div id="occ-q1">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
 <span style="font-size:12px;font-weight:800;color:var(--heading);">Q1 · Oct–Dec 2025</span>
 <span style="display:inline-flex;align-items:center;gap:6px;">
-<span style="font-size:12px;font-weight:800;color:var(--blue);">90%</span>
-<span class="status-chip on-track">At target</span>
+<span style="font-size:12px;font-weight:800;color:var(--blue);">80.6%</span>
+<span class="status-chip below-target">Ramp-up</span>
 </span>
 </div>
 <div style="height:20px;border-radius:999px;background:#edf3fa;overflow:hidden;">
-<div style="height:100%;width:90%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue3));"></div>
+<div style="height:100%;width:80.6%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue3));"></div>
 </div>
-<div style="margin-top:4px;font-size:11px;color:var(--muted);">1,560 of 1,740 bed nights used</div>
+<div style="margin-top:4px;font-size:11px;color:var(--muted);">1,402 of 1,740 bed nights used</div>
 </div>
 <!-- Q2 -->
-<div>
+<div id="occ-q2">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
 <span style="font-size:12px;font-weight:800;color:var(--heading);">Q2 · Jan–Mar 2026</span>
 <span style="display:inline-flex;align-items:center;gap:6px;">
-<span style="font-size:12px;font-weight:800;color:var(--blue);">96%</span>
+<span style="font-size:12px;font-weight:800;color:var(--blue);">95.0%</span>
 <span class="status-chip on-track">Above target</span>
 </span>
 </div>
 <div style="height:20px;border-radius:999px;background:#edf3fa;overflow:hidden;">
-<div style="height:100%;width:96%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue2));"></div>
+<div style="height:100%;width:95%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue2));"></div>
 </div>
-<div style="margin-top:4px;font-size:11px;color:var(--muted);">1,720 of 1,800 bed nights used</div>
+<div style="margin-top:4px;font-size:11px;color:var(--muted);">1,710 of 1,800 bed nights used</div>
+</div>
+<!-- Q3 -->
+<div id="occ-q3">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+<span style="font-size:12px;font-weight:800;color:var(--heading);">Q3 · Apr–Jun 2026</span>
+<span style="display:inline-flex;align-items:center;gap:6px;">
+<span style="font-size:12px;font-weight:800;color:var(--blue);">94.8%</span>
+<span class="status-chip on-track">Above target</span>
+</span>
+</div>
+<div style="height:20px;border-radius:999px;background:#edf3fa;overflow:hidden;">
+<div style="height:100%;width:94.8%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue2));"></div>
+</div>
+<div style="margin-top:4px;font-size:11px;color:var(--muted);">1,725 of 1,820 bed nights used</div>
 </div>
 </div>
 </div>
@@ -2969,47 +3130,47 @@ body.embed .foot {
 <h4>Program flow</h4>
 <p>Holloway serves as a stabilization point between street outreach and permanent housing, supporting individuals through documentation, benefits access, and housing navigation.</p>
 <div class="mini-flow">
-<div class="mini-flow-item"><strong>32</strong><span>Entered</span></div>
+<div class="mini-flow-item"><strong>42</strong><span>Entered (YTD)</span></div>
 <div class="mini-flow-item"><strong>20</strong><span>Currently enrolled</span></div>
-<div class="mini-flow-item"><strong>12</strong><span>Total <span class="glossary-term" data-tip="&lt;strong&gt;exits&lt;/strong&gt;When someone leaves a program, whether for permanent housing, another program, or another destination." tabindex="0">exits</span><br><span style="font-size:11px;color:var(--muted);font-weight:600;">1 permanent · 11 non-permanent</span></br></span></div>
+<div class="mini-flow-item"><strong>22</strong><span>Total <span class="glossary-term" data-tip="&lt;strong&gt;exits&lt;/strong&gt;When someone leaves a program, whether for permanent housing, another program, or another destination." tabindex="0">exits</span><br><span style="font-size:11px;color:var(--muted);font-weight:600;">6 permanent · 16 non-permanent</span></br></span></div>
 </div>
 <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--heading);">Progress toward 12 annual placements</div>
 <div class="progress-shell">
 <div aria-label="Permanent housing progress toward annual goal" class="progress-track" style="display:flex;">
-<div class="progress-fill" style="width:8.3%;border-radius:999px 0 0 999px;"></div>
-<div class="progress-fill pending" style="width:25%;border-radius:0 999px 999px 0;margin-left:2px;"></div>
+<div class="progress-fill" style="width:50%;border-radius:999px 0 0 999px;"></div>
+<div class="progress-fill pending" style="width:41.7%;border-radius:0 999px 999px 0;margin-left:2px;"></div>
 </div>
-<div class="progress-caption"><span><strong>Permanent housing:</strong> 1 confirmed | 3 in progress</span><span>Annual goal: 12</span></div>
+<div class="progress-caption"><span><strong>Permanent housing:</strong> 6 confirmed | 5 in progress</span><span>Annual goal: 12</span></div>
 </div>
-<div class="holloway-insight">Placements are in progress, with additional housing activity expected as residents move through documentation, benefits, voucher, landlord, and supportive housing processes. The program is maintaining full occupancy and managing a waitlist.</div>
+<div class="holloway-insight">Permanent housing placements accelerated in Q3, with 5 exits to permanent housing — including placements that had been pending final inspection or funding at the close of Q2. The program has reached 6 of its 12 annual placements year to date, with 5 more pending, while maintaining full occupancy and a waitlist.</div>
 </div>
 <div class="holloway-subcard">
-<h4>Where people go after leaving Holloway <span class="n-callout">n=12 exits</span></h4>
-<p style="font-size:13px;color:var(--heading);font-weight:600;margin:6px 0 8px;">Of 12 exits in the first 6 months: <span style="color:var(--blue);font-weight:800;">1 to permanent housing</span>, 4 to other interim housing, 5 to other non-permanent destinations, 2 unknown.</p>
-<p>Most non-permanent exits reflect movement within the system or to another temporary setting rather than a return to unsheltered status. Permanent housing typically takes longer than 6 months to secure for the population served by this program (people experiencing chronic homelessness and living with a disability).</p>
+<h4>Where people go after leaving Holloway <span class="n-callout">n=22 exits · YTD</span></h4>
+<p style="font-size:13px;color:var(--heading);font-weight:600;margin:6px 0 8px;">Of 22 exits year to date: <span style="color:var(--blue);font-weight:800;">6 to permanent housing</span>, 4 to other interim housing, 5 to other non-permanent destinations, and 7 unknown or not yet coded.</p>
+<p>Most non-permanent exits reflect movement within the system or to another temporary setting rather than a return to unsheltered status. Permanent housing typically takes 9–12 months to secure for the population served by this program (people experiencing chronic homelessness and living with a disability).</p>
 <div class="holloway-bars">
 <div class="holloway-bar-row">
 <div class="holloway-bar-label">Permanent housing</div>
-<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:8.3%; background:var(--blue2);"></div></div>
-<div class="holloway-bar-value">1</div>
+<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:27%; background:var(--blue2);"></div></div>
+<div class="holloway-bar-value">6</div>
 </div>
 <div class="holloway-bar-row">
 <div class="holloway-bar-label">Other interim housing</div>
-<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:33%; background:var(--blue);"></div></div>
+<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:18%; background:var(--blue);"></div></div>
 <div class="holloway-bar-value">4</div>
 </div>
 <div class="holloway-bar-row">
 <div class="holloway-bar-label">Other non-permanent destinations</div>
-<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:42%; background:var(--blue3);"></div></div>
+<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:23%; background:var(--blue3);"></div></div>
 <div class="holloway-bar-value">5</div>
 </div>
 <div class="holloway-bar-row">
-<div class="holloway-bar-label">Unknown destination</div>
-<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:17%; background:var(--blue4);"></div></div>
-<div class="holloway-bar-value">2</div>
+<div class="holloway-bar-label">Unknown or not yet coded</div>
+<div class="holloway-bar-track"><div class="holloway-bar-fill" style="width:32%; background:var(--blue4);"></div></div>
+<div class="holloway-bar-value">7</div>
 </div>
 </div>
-<div class="holloway-insight">Unknown destinations signal an area for stronger follow-up. The City is using these exit patterns to refine intake screening, length of engagement, and warm-handoff protocols.</div>
+<div class="holloway-insight">Detailed destination coding is complete through Q2; several Q3 exits are still being finalized. The City is using these exit patterns to refine intake screening, length of engagement, and warm-handoff protocols.</div>
 </div>
 </div>
 
@@ -3020,12 +3181,12 @@ body.embed .foot {
 <div class="holloway-mini">
 <div class="mini-label">Permanent housing exit <span class="n-callout">n=1</span></div>
 <div class="mini-value">57 days</div>
-<div class="mini-sub">Single confirmed exit (Dec 2025) — pattern will become more meaningful as additional placements occur.</div>
+<div class="mini-sub">First confirmed permanent-housing exit (Dec 2025). Length of stay for the five Q3 permanent placements is still being finalized.</div>
 </div>
 <div class="holloway-mini">
-<div class="mini-label">All other exits <span class="n-callout">n=11</span></div>
+<div class="mini-label">All other exits <span class="n-callout">n=11 · through Q2</span></div>
 <div class="mini-value">~46 days</div>
-<div class="mini-sub">Average length of stay across non-permanent exits</div>
+<div class="mini-sub">Average length of stay across non-permanent exits with complete records</div>
 </div>
 </div>
 <!-- Exit type breakdown -->
@@ -3037,40 +3198,42 @@ body.embed .foot {
 <h4>Engagement and stability</h4>
 <p>Supportive services participation increased as the program stabilized and remained above the annual goal.</p>
 <div class="holloway-topline">
-<div class="holloway-mini"><div class="mini-label">Q1 participation</div><div class="mini-value">66.7%</div><div class="mini-sub">Initial quarter of operations</div></div>
-<div class="holloway-mini"><div class="mini-label">Q2 participation</div><div class="mini-value">89.7%</div><div class="mini-sub">Above 65% annual goal</div></div>
-<div class="holloway-mini"><div class="mini-label">Income / benefits</div><div class="mini-value">7 of 32 individuals served</div><div class="mini-sub">Increased income or gained new public benefits. The remaining 25 maintained existing income or benefits throughout participation.</div></div>
+<div class="holloway-mini"><div class="mini-label">Q1 participation</div><div class="mini-value">66.7%</div><div class="mini-sub">16 of 24 served · initial quarter</div></div>
+<div class="holloway-mini"><div class="mini-label">Q2 participation</div><div class="mini-value">89.7%</div><div class="mini-sub">26 of 29 served · above 65% goal</div></div>
+<div class="holloway-mini"><div class="mini-label">Q3 participation</div><div class="mini-value">70.0%</div><div class="mini-sub">14 of 20 residents · above 65% goal</div></div>
 </div>
-<div class="holloway-insight">Participation rose from 66.7% in Q1 to 89.7% in Q2 — a positive signal for housing readiness going into Q3.</div>
+<div class="holloway-mini" style="margin-top:10px;"><div class="mini-label">Income / benefits (YTD)</div><div class="mini-value">8 of 42 individuals served</div><div class="mini-sub">Increased income or gained new public benefits year to date. In Q3, 19 residents maintained existing income or benefits.</div></div>
+<div class="holloway-insight">Supportive services participation has stayed above the 65% annual goal in every quarter since the Q1 ramp-up — 66.7% in Q1, 89.7% in Q2, and 70.0% in Q3 — reflecting steady engagement as enrollment turned over.</div>
 </div>
 </div>
 <div class="card" style="margin-top:12px;">
 <div class="holloway-subcard">
-<h4>Participant profile <span class="n-callout">n=32 individuals served</span></h4>
-<p>The population served reflects the demographics of the chronically unhoused population in West Hollywood, according to the City’s demographic survey: older, predominantly male, and disproportionately <span class="glossary-term" data-tip="&lt;strong&gt;BIPOC&lt;/strong&gt;A broad term meaning Black, Indigenous, and People of Color." tabindex="0">BIPOC</span>. 78% are age 45 or older; all meet eligibility related to chronic homelessness and disability.</p>
-<div class="small-n-banner">All percentages below are based on 32 individuals served. Because the population served is relatively small, small percentage differences may reflect only one or two individuals.</div>
+<h4>Participant profile <span class="n-callout">n=42 individuals served · YTD</span></h4>
+<p>The population served reflects the demographics of the chronically unhoused population in West Hollywood, according to the City’s demographic survey: older, predominantly male, and disproportionately <span class="glossary-term" data-tip="&lt;strong&gt;BIPOC&lt;/strong&gt;A broad term meaning Black, Indigenous, and People of Color." tabindex="0">BIPOC</span>. Half are age 50 or older; all meet eligibility related to chronic homelessness and disability.</p>
+<div class="small-n-banner">All percentages below are based on 42 individuals served year to date. Because the population served is relatively small, small percentage differences may reflect only one or two individuals.</div>
 <div class="demographic-grid">
 <div class="demographic-card">
 <h4>Age</h4>
-<div class="demo-row"><span class="demo-label">18–44</span><span class="demo-track"><span class="demo-fill" style="display:block;width:22%;"></span></span><span class="demo-value">22%</span></div>
-<div class="demo-row"><span class="demo-label">45–61</span><span class="demo-track"><span class="demo-fill" style="display:block;width:44%;"></span></span><span class="demo-value">44%</span></div>
-<div class="demo-row"><span class="demo-label">62+</span><span class="demo-track"><span class="demo-fill" style="display:block;width:34%;"></span></span><span class="demo-value">34%</span></div>
+<div class="demo-row"><span class="demo-label">18–39</span><span class="demo-track"><span class="demo-fill" style="display:block;width:21%;"></span></span><span class="demo-value">21%</span></div>
+<div class="demo-row"><span class="demo-label">40–49</span><span class="demo-track"><span class="demo-fill" style="display:block;width:29%;"></span></span><span class="demo-value">29%</span></div>
+<div class="demo-row"><span class="demo-label">50–61</span><span class="demo-track"><span class="demo-fill" style="display:block;width:24%;"></span></span><span class="demo-value">24%</span></div>
+<div class="demo-row"><span class="demo-label">62+</span><span class="demo-track"><span class="demo-fill" style="display:block;width:26%;"></span></span><span class="demo-value">26%</span></div>
 </div>
 <div class="demographic-card">
 <h4>Gender</h4>
-<div class="demo-row"><span class="demo-label">Women</span><span class="demo-track"><span class="demo-fill" style="display:block;width:41%;"></span></span><span class="demo-value">41%</span></div>
-<div class="demo-row"><span class="demo-label">Men</span><span class="demo-track"><span class="demo-fill" style="display:block;width:59%;"></span></span><span class="demo-value">59%</span></div>
-<div class="demo-row" style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);"><span class="demo-label">Transgender</span><span class="demo-track"><span class="demo-fill" style="display:block;width:12%;background:var(--blue2);"></span></span><span class="demo-value">12%</span></div>
+<div class="demo-row"><span class="demo-label">Women</span><span class="demo-track"><span class="demo-fill" style="display:block;width:31%;"></span></span><span class="demo-value">31%</span></div>
+<div class="demo-row"><span class="demo-label">Men</span><span class="demo-track"><span class="demo-fill" style="display:block;width:69%;"></span></span><span class="demo-value">69%</span></div>
+<div class="demo-row" style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);"><span class="demo-label">Transgender</span><span class="demo-track"><span class="demo-fill" style="display:block;width:10%;background:var(--blue2);"></span></span><span class="demo-value">10%</span></div>
 <div style="margin-top:6px;color:var(--muted);font-size:11px;line-height:1.4;font-style:italic;">Transgender count overlaps with the categories above.</div>
 </div>
 <div class="demographic-card">
 <h4>Race / ethnicity</h4>
-<div class="demo-row"><span class="demo-label">White</span><span class="demo-track"><span class="demo-fill" style="display:block;width:34%;"></span></span><span class="demo-value">34%</span></div>
-<div class="demo-row"><span class="demo-label">Black</span><span class="demo-track"><span class="demo-fill" style="display:block;width:28%;"></span></span><span class="demo-value">28%</span></div>
-<div class="demo-row"><span class="demo-label">Hispanic</span><span class="demo-track"><span class="demo-fill" style="display:block;width:28%;"></span></span><span class="demo-value">28%</span></div>
-<div class="demo-row" style="opacity:0.92;"><span class="demo-label" style="font-size:11.5px;">Asian</span><span class="demo-track"><span class="demo-fill" style="display:block;width:3%;background:var(--blue4);"></span></span><span class="demo-value" style="font-size:11.5px;">3%</span></div>
-<div class="demo-row" style="opacity:0.92;"><span class="demo-label" style="font-size:11.5px;">Indigenous</span><span class="demo-track"><span class="demo-fill" style="display:block;width:3%;background:var(--blue4);"></span></span><span class="demo-value" style="font-size:11.5px;">3%</span></div>
-<div class="demo-row" style="opacity:0.92;"><span class="demo-label glossary-term" data-tip="&lt;strong&gt;MENA&lt;/strong&gt;Middle Eastern and North African — a demographic category used in race/ethnicity reporting to identify community members with origins in the Middle East or North Africa." tabindex="0" style="font-size:11.5px;">MENA</span><span class="demo-track"><span class="demo-fill" style="display:block;width:3%;background:var(--blue4);"></span></span><span class="demo-value" style="font-size:11.5px;">3%</span></div>
+<div class="demo-row"><span class="demo-label">White</span><span class="demo-track"><span class="demo-fill" style="display:block;width:38%;"></span></span><span class="demo-value">38%</span></div>
+<div class="demo-row"><span class="demo-label">Black</span><span class="demo-track"><span class="demo-fill" style="display:block;width:29%;"></span></span><span class="demo-value">29%</span></div>
+<div class="demo-row"><span class="demo-label">Hispanic</span><span class="demo-track"><span class="demo-fill" style="display:block;width:26%;"></span></span><span class="demo-value">26%</span></div>
+<div class="demo-row" style="opacity:0.92;"><span class="demo-label" style="font-size:11.5px;">Asian</span><span class="demo-track"><span class="demo-fill" style="display:block;width:2%;background:var(--blue4);"></span></span><span class="demo-value" style="font-size:11.5px;">2%</span></div>
+<div class="demo-row" style="opacity:0.92;"><span class="demo-label" style="font-size:11.5px;">Indigenous</span><span class="demo-track"><span class="demo-fill" style="display:block;width:2%;background:var(--blue4);"></span></span><span class="demo-value" style="font-size:11.5px;">2%</span></div>
+<div class="demo-row" style="opacity:0.92;"><span class="demo-label glossary-term" data-tip="&lt;strong&gt;MENA&lt;/strong&gt;Middle Eastern and North African — a demographic category used in race/ethnicity reporting to identify community members with origins in the Middle East or North Africa." tabindex="0" style="font-size:11.5px;">MENA</span><span class="demo-track"><span class="demo-fill" style="display:block;width:2%;background:var(--blue4);"></span></span><span class="demo-value" style="font-size:11.5px;">2%</span></div>
 </div>
 </div>
 <div class="holloway-insight">Demographics are tracked to support program planning and equity review &mdash; specifically to monitor whether the population served at Holloway aligns with the broader population experiencing chronic homelessness in West Hollywood.</div>
@@ -3083,7 +3246,7 @@ body.embed .foot {
 </div></section>
 <section class="page" id="page-prevention">
 <div class="page-header">
-<div class="page-header-icon">🛡️</div>
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></div>
 <div>
 <div class="page-header-title">Homelessness Prevention</div>
 
@@ -3113,17 +3276,18 @@ body.embed .foot {
 
 
 <div class="how-read"><strong>How to read this section:</strong> Prevention metrics describe dollars, households, or services. Each card states what it counts.</div>
+<div class="period-note"><span class="pn-icon" aria-hidden="true"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16"/><path d="M8 3v3M16 3v3"/></svg></span><div><strong>2026 data period:</strong> Rental assistance figures are year-to-date through March 2026 (mid-year). 2026 combines NCJW|LA (28 households, $117,015) and APLA Health Aging in Place rental assistance (23 households, $69,842), for $186,857 disbursed. Annual bars for 2021–2025 reflect full calendar years.</div></div>
 <div class="grid kpi-grid k3">
-<div class="kpi"><span class="period-eyebrow cumulative">Cumulative · Since 2018</span><div class="k-label">Rental assistance disbursed</div><div class="k-value">$2.6M+</div><div class="k-sub">Direct rental assistance</div></div>
-<div class="kpi alt"><span class="period-eyebrow cumulative">Cumulative · Since 2017</span><div class="k-label">Households supported</div><div class="k-value">1,861</div><div class="k-sub">Rental assistance activity</div></div>
-<div class="kpi alt2"><div class="k-label">Households served in 2025</div><div class="k-value">108</div><div class="k-sub">Most recent full year</div></div>
+<div class="kpi"><span class="period-eyebrow cumulative">Cumulative · Since 2018</span><div class="k-label">Rental assistance disbursed</div><div class="k-value">$2.79M</div><div class="k-sub">Direct rental assistance · includes 2026 year to date</div></div>
+<div class="kpi alt"><span class="period-eyebrow cumulative">Cumulative · Since 2017</span><div class="k-label">Households supported</div><div class="k-value">1,912</div><div class="k-sub">Rental assistance activity · includes 2026 year to date</div></div>
+<div class="kpi alt2"><span class="period-eyebrow recent">Year to date · through March 2026</span><div class="k-label">Disbursed in 2026</div><div class="k-value" data-raw="$186,857">$186,857</div><div class="k-sub">NCJW|LA and APLA Aging in Place · 51 households</div></div>
 </div>
 <div class="grid panel-grid two" style="margin-top:12px;">
 <div class="card">
 <h3>Rental assistance — households served by year</h3>
-<div class="note">The 2021 spike reflects expanded COVID-19 emergency rental assistance. Activity has since returned to a steady annual baseline.</div>
+<div class="note">The 2021 spike reflects expanded COVID-19 emergency rental assistance. Activity has since returned to a steady annual baseline. The 2026 bar is year to date through March 2026 and covers a partial year, so it is not directly comparable to the full prior years.</div>
 <div class="how-read" style="margin-top:10px;"><strong>Program history:</strong> West Hollywood has provided rental assistance for decades. The program originated with Alliance for Housing and Healing (now APLA Health) serving residents living with HIV/AIDS. In 2009 the City expanded into two complementary tracks — rental assistance for older adults (55+) through APLA Health, and assistance for younger residents at risk of housing loss through NCJW|LA. These two tracks continue to anchor the prevention portfolio today.</div>
-<div class="chart compact" id="prevention-rental" role="img" aria-label="Bar chart of rental assistance households served by year from 2021 to 2025. Loading…"></div>
+<div class="chart compact" id="prevention-rental" role="img" aria-label="Bar chart of rental assistance households served by year from 2021 to 2026, with 2026 year to date through March (partial). Loading…"></div>
 </div>
 <div class="card">
 <h3>What prevention services cover</h3>
@@ -3142,9 +3306,83 @@ body.embed .foot {
 
 </section>
 
+<section class="page" id="page-funding">
+<div class="page-header">
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5h.01M17.5 14.5h.01"/></svg></div>
+<div>
+<div class="page-header-title">Funding</div>
+</div>
+</div>
+<div class="hero">
+West Hollywood's homelessness investment combines local City funding with external grants from State, County, and Federal sources. Most of it supports direct outreach, behavioral health response, and interim housing, while prevention funding keeps housed residents from becoming unhoused.
+<small>All figures on this page are <strong>FY2026 budgeted amounts, not actual expenditures</strong>. Actual spending may vary based on program utilization and reimbursement timing.</small>
+</div>
+<div class="how-read"><strong>How to read this section:</strong> Amounts reflect what is budgeted for the fiscal year, rounded for display. Program totals may combine multiple funding sources.</div>
+<div class="period-note"><span class="pn-icon" aria-hidden="true"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9h16"/><path d="M8 3v3M16 3v3"/></svg></span><div><strong>2026 data period:</strong> Figures are FY2026 budgeted amounts covering July 1, 2025 through June 30, 2026. They are not actual expenditures and do not reflect spending to date.</div></div>
+<div class="grid kpi-grid k3">
+<div class="kpi"><span class="period-eyebrow recent">Budgeted · FY2026</span><div class="k-label">Total FY2026 investment</div><div class="k-value" id="funding-kpi-total">$7.93M</div><div class="k-sub" id="funding-kpi-count">All programs</div></div>
+<div class="kpi alt"><span class="period-eyebrow recent">Budgeted · FY2026</span><div class="k-label">Homeless prevention</div><div class="k-value" id="funding-kpi-prevention">$1.88M</div><div class="k-sub" id="funding-kpi-prevention-pct">24% of total · financial assistance, housing stability &amp; legal</div></div>
+<div class="kpi alt2"><span class="period-eyebrow recent">Budgeted · FY2026</span><div class="k-label">Outreach &amp; housing</div><div class="k-value" id="funding-kpi-response">$6.05M</div><div class="k-sub" id="funding-kpi-response-pct">76% of total · outreach, behavioral health response, interim housing</div></div>
+</div>
+<div class="card" style="margin-top:12px;padding:14px 16px;">
+<div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;">Refine the view</div>
+<div class="funding-filter-card" aria-label="Funding filters">
+<div class="funding-filter-row">
+<div class="funding-pill-group">
+<label>Service area</label>
+<div class="funding-pill-options" id="funding-area-pills">
+<button class="funding-pill-btn active" data-filter="area" data-value="all">All</button>
+<button class="funding-pill-btn" data-filter="area" data-value="Prevention">Homeless Prevention</button>
+<button class="funding-pill-btn" data-filter="area" data-value="Response">Outreach &amp; Housing</button>
+</div>
+</div>
+<div class="funding-filter-divider"></div>
+<div class="funding-pill-group">
+<label>Funding source</label>
+<div class="funding-pill-options" id="funding-source-pills">
+<button class="funding-pill-btn active" data-filter="source" data-value="all">All</button>
+<button class="funding-pill-btn" data-filter="source" data-value="City / Local">City / Local</button>
+<button class="funding-pill-btn" data-filter="source" data-value="Grant / External">Grant / External</button>
+</div>
+</div>
+<div class="funding-filter-divider"></div>
+<div class="funding-filter-group">
+<label for="funding-type-filter">Program type</label>
+<select id="funding-type-filter"><option value="all">All types</option></select>
+</div>
+<button type="button" class="funding-reset-btn" onclick="fundingResetFilters()">&#8634; Reset</button>
+</div>
+</div>
+</div>
+<div class="grid panel-grid two" style="margin-top:12px;">
+<div class="card">
+<h3>FY2026 investment by program type <span id="funding-badge-type" style="display:none;font-size:10px;font-weight:700;background:#e8f0fb;color:var(--blue2);border:1px solid #c5d8f5;border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:6px;">Filtered</span></h3>
+<div class="note">Budgeted amounts, not actuals. Percentages reflect share of the filtered total.</div>
+<div id="funding-type-bars" class="funding-bars"></div>
+</div>
+<div class="card">
+<h3>FY2026 investment by funding source <span id="funding-badge-source" style="display:none;font-size:10px;font-weight:700;background:#e8f0fb;color:var(--blue2);border:1px solid #c5d8f5;border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:6px;">Filtered</span></h3>
+<div class="note">Budgeted amounts, not actuals. Percentages reflect share of the filtered total.</div>
+<div id="funding-source-bars" class="funding-bars"></div>
+<div style="margin-top:12px;font-size:12px;color:var(--muted);line-height:1.5;">External grants include Homekey (State), Measure A / LSF (County), CDBG (Federal), and regional COG funds.</div>
+</div>
+</div>
+<div class="funding-programs-section">
+<h3>Program detail</h3>
+<div class="note">All programs organized by service type. Each row shows the program, description, funding source, and budgeted amount. Use the filters above to narrow the list.</div>
+<div id="funding-project-table"></div>
+</div>
+<div class="banner" style="margin-top:12px;border-left-color:var(--blue2);">
+<p><strong>Holloway Interim Housing:</strong> $1.55M is budgeted for the Holloway Interim Housing Program in FY2026 — $1.43M from external grants and $0.13M from the City's Affordable Housing Trust Fund. Holloway's service and placement outcomes are detailed in the <a href="#housing" onclick="document.querySelector('[data-page=housing]').click(); return false;" style="color:var(--blue);font-weight:700;text-decoration:none;border-bottom:1px dotted var(--blue);">Housing</a> section.</p>
+</div>
+<div class="banner" style="margin-top:12px;">
+<p><strong>Note on figures:</strong> All amounts shown are budgeted for FY2026 and are not based on actual expenditures. Actuals will vary with program utilization, reimbursement timing, and contract amendments over the course of the fiscal year.</p>
+</div>
+</section>
+
 <section class="page" id="page-about">
 <div class="page-header">
-<div class="page-header-icon">ℹ️</div>
+<div class="page-header-icon"><svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><path d="M12 7.6v.01"/></svg></div>
 <div>
 <div class="page-header-title">About &amp; Methods</div>
 
@@ -3206,9 +3444,9 @@ body.embed .foot {
 <dt><span class="dt-bullet"></span>Unsheltered Counts &amp; Locations</dt>
 <dd>
 <div class="dd-grid">
-<span class="dd-label">Source</span><span>Field outreach observations during PIT-related observation periods, conducted historically by Ascencia.</span>
-<span class="dd-label">Period</span><span>Monthly Jan&ndash;Sep 2025; long-term trend 2017&ndash;2025.</span>
-<span class="dd-label">Cadence</span><span>Monthly through Sep 2025; transitioning to quarterly.</span>
+<span class="dd-label">Source</span><span>Field outreach observations during PIT-related observation periods, conducted by Ascencia through Sep 2025 and by Healthcare in Action beginning in 2026.</span>
+<span class="dd-label">Period</span><span>Monthly Jan&ndash;Sep 2025; long-term trend 2017&ndash;2026 (2026 provisional); quarterly from 2026 (Q1 counted Jan 15, 2026; Q2 counted Apr 23, 2026).</span>
+<span class="dd-label">Cadence</span><span>Monthly through Sep 2025; quarterly beginning 2026. Because cadence and provider changed, quarterly counts are not directly comparable to the monthly series.</span><span class="dd-label dd-label--note">Note</span><span class="dd-note">The Q1 2026 file reports both a raw and an adjusted count; the adjusted (de-duplicated) figure is used throughout. Q1 2026: 67 adjusted vs 84 raw.</span>
 <span class="dd-label dd-label--note">Note</span><span class="dd-note">The Ascencia contract ended September 2025; subsequent cadence will not be directly comparable to prior monthly data.</span>
 </div>
 </dd>
@@ -3225,9 +3463,9 @@ body.embed .foot {
 <dd>
 <div class="dd-grid">
 <span class="dd-label">Source</span><span>Contracted provider quarterly reports and City tracking.</span>
-<span class="dd-label">Period</span><span>Permanent housing 2016&ndash;Present; interim admissions 2017&ndash;Present; bed nights 2021&ndash;2025; Holloway Q1&ndash;Q2 covers Oct 2025&ndash;Mar 2026.</span>
+<span class="dd-label">Period</span><span>Permanent housing 2016&ndash;Present; interim admissions 2017&ndash;Present; bed nights 2021&ndash;2025; Holloway contract year Q1&ndash;Q3 covers Oct 2025&ndash;Jun 2026. For 2026, Holloway figures run through Jun 30, 2026 and all other housing programs through Mar 31, 2026; cumulative totals include 2026 activity through those dates.</span>
 <span class="dd-label">Cadence</span><span>Quarterly.</span>
-<span class="dd-label dd-label--note">Note</span><span class="dd-note">Holloway opened October 2025; early outcomes reflect a small population (n=20&ndash;32) and should be read alongside occupancy, engagement, and pipeline indicators.</span>
+<span class="dd-label dd-label--note">Note</span><span class="dd-note">Holloway opened October 2025; early outcomes reflect a small population (n=20&ndash;42) and should be read alongside occupancy, engagement, and pipeline indicators. Holloway quarters follow the City's contract year (Q1 = Oct&ndash;Dec 2025); the provider's fiscal-year report labels these same periods Q2&ndash;Q4.</span>
 <span class="dd-label dd-label--note">Note</span><span class="dd-note">Participant demographic profile reflects the City’s most recent demographic survey of the unhoused population in West Hollywood.</span>
 </div>
 </dd>
@@ -3235,7 +3473,7 @@ body.embed .foot {
 <dd>
 <div class="dd-grid">
 <span class="dd-label">Source</span><span>Contracted provider reports and internal City tracking of rental assistance disbursements and household counts.</span>
-<span class="dd-label">Period</span><span>Rental assistance 2018&ndash;Present; households supported 2017&ndash;Present; recent year detail for 2025.</span>
+<span class="dd-label">Period</span><span>Rental assistance 2018&ndash;Present; households supported 2017&ndash;Present; 2026 detail year-to-date through March 2026.</span>
 <span class="dd-label">Cadence</span><span>Quarterly, with annual reconciliation.</span>
 <span class="dd-label dd-label--note">Note</span><span class="dd-note">The 2021 spike reflects expanded COVID-19 emergency rental assistance and is not representative of typical volume.</span>
 </div>
@@ -3359,7 +3597,7 @@ body.embed .foot {
 
 <div class="foot">
 <div>City of West Hollywood  ·  Human Services Division</div>
-<div>Data current through April 2026 where available · Individual sections may reflect different reporting periods depending on source availability.</div>
+<div>Last updated: July 23, 2026 · Individual sections may reflect different reporting periods depending on source availability.</div>
 </div>
 </div>
 <div aria-hidden="true" class="tooltip" id="tooltip"></div>
@@ -3368,10 +3606,26 @@ const PIT_PTS = [[34.09075, -118.355484, 1, "Curson and Santa Monica", "Jan 2024
 const HCL_HEAT_PTS = [[34.0925171,-118.3511926,"Jul 2025",0],[34.0872899,-118.3781865,"Jul 2025",2],[34.0855659,-118.3302512,"Jul 2025",2],[34.0907035,-118.3436688,"Jul 2025",0],[34.0925171,-118.3511926,"Jul 2025",0],[34.0904774,-118.3706843,"Jul 2025",0],[34.0904774,-118.3706843,"Jul 2025",0],[34.0904774,-118.3706843,"Jul 2025",0],[34.0871672,-118.3574079,"Jul 2025",2],[34.08971,-118.3447263,"Jul 2025",3],[34.08971,-118.3447263,"Jul 2025",3],[34.08971,-118.3447263,"Jul 2025",0],[34.0904774,-118.3706843,"Jul 2025",0],[34.0904774,-118.3706843,"Jul 2025",0],[34.0904774,-118.3706843,"Jul 2025",0],[34.095329,-118.3717101,"Jul 2025",0],[34.0779182,-118.3786994,"Jul 2025",3],[34.0905657,-118.3686301,"Jul 2025",2],[34.0815712,-118.381387,"Jul 2025",3],[34.0806836,-118.3826709,"Jul 2025",4],[34.08971,-118.3447263,"Jul 2025",0],[34.08971,-118.3447263,"Jul 2025",3],[34.08971,-118.3447263,"Jul 2025",2],[34.0885738,-118.3786368,"Jul 2025",0],[34.0904774,-118.3706843,"Jul 2025",2],[34.0904774,-118.3706843,"Jul 2025",0],[34.0907035,-118.3436688,"Jul 2025",3],[34.0904774,-118.3706843,"Jul 2025",2],[34.0903556,-118.3736348,"Jul 2025",3],[34.095329,-118.3717101,"Jul 2025",2],[34.0889966,-118.3713057,"Jul 2025",2],[34.0835954,-118.3869083,"Jul 2025",0],[34.0897979,-118.3753022,"Aug 2025",3],[34.0904774,-118.3706843,"Aug 2025",0],[34.095329,-118.3717101,"Aug 2025",3],[34.0827725,-118.3844358,"Aug 2025",3],[34.0871672,-118.3574079,"Aug 2025",3],[34.0925171,-118.3511926,"Aug 2025",0],[34.095329,-118.3717101,"Aug 2025",3],[34.0904774,-118.3706843,"Aug 2025",0],[34.0873777,-118.3808194,"Aug 2025",3],[34.0925171,-118.3511926,"Aug 2025",0],[34.0846313,-118.3859583,"Aug 2025",2],[34.0904774,-118.3706843,"Aug 2025",0],[34.0835954,-118.3869083,"Aug 2025",3],[34.0844308,-118.38338,"Aug 2025",0],[34.0904774,-118.3706843,"Aug 2025",0],[34.0904774,-118.3706843,"Aug 2025",0],[34.0904774,-118.3706843,"Aug 2025",2],[34.0907087,-118.3703284,"Aug 2025",0],[34.0901835,-118.3762817,"Aug 2025",0],[34.0820216,-118.3763723,"Aug 2025",3],[34.0904774,-118.3706843,"Aug 2025",0],[34.0907087,-118.3703284,"Aug 2025",0],[34.0904774,-118.3706843,"Aug 2025",0],[34.0904147,-118.3860901,"Aug 2025",0],[34.0904147,-118.3860901,"Aug 2025",3],[34.074889,-118.3771833,"Aug 2025",0],[34.0844308,-118.38338,"Aug 2025",3],[34.08971,-118.3447263,"Aug 2025",2],[34.0904774,-118.3706843,"Aug 2025",0],[34.0904774,-118.3706843,"Aug 2025",0],[34.0904774,-118.3706843,"Aug 2025",0],[34.0925171,-118.3511926,"Aug 2025",0],[34.0904589,-118.3846217,"Aug 2025",2],[34.08971,-118.3447263,"Aug 2025",0],[34.0904774,-118.3706843,"Aug 2025",2],[34.090477,-118.370684,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",0],[34.090604,-118.344387,"Aug 2025",0],[34.090781,-118.370616,"Aug 2025",0],[34.095837,-118.367786,"Aug 2025",5],[34.090336,-118.371162,"Aug 2025",0],[34.095837,-118.367786,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",2],[34.098849,-118.337568,"Aug 2025",2],[34.082772,-118.384436,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",0],[34.0904332,-118.372948,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",2],[34.082772,-118.384436,"Aug 2025",0],[34.07516,-118.381094,"Aug 2025",0],[34.0899,-118.375,"Aug 2025",2],[34.089413,-118.376981,"Aug 2025",5],[34.083717,-118.385324,"Aug 2025",0],[34.092517,-118.351193,"Aug 2025",0],[34.090875,-118.362358,"Aug 2025",4],[34.090783,-118.382863,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",2],[34.090477,-118.370684,"Aug 2025",5],[34.090477,-118.370684,"Aug 2025",0],[34.087547,-118.383115,"Aug 2025",4],[34.090875,-118.362358,"Aug 2025",0],[34.090477,-118.370684,"Aug 2025",2],[34.0904332,-118.372948,"Aug 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.0904332,-118.372948,"Sep 2025",0],[34.090846,-118.384174,"Sep 2025",0],[34.090531,-118.376496,"Sep 2025",0],[34.090531,-118.376496,"Sep 2025",0],[34.087641,-118.342994,"Sep 2025",4],[34.09353,-118.35917,"Sep 2025",0],[34.07763,-118.382876,"Sep 2025",0],[34.089805,-118.340426,"Sep 2025",2],[34.090477,-118.370684,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.081844,-118.383788,"Sep 2025",0],[34.0904332,-118.372948,"Sep 2025",5],[34.090477,-118.370684,"Sep 2025",5],[34.092543,-118.368885,"Sep 2025",4],[34.083595,-118.386908,"Sep 2025",5],[34.092517,-118.351193,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.0904332,-118.372948,"Sep 2025",0],[34.09509,-118.37212,"Sep 2025",0],[34.082059,-118.376298,"Sep 2025",4],[34.090846,-118.384174,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.084431,-118.38338,"Sep 2025",0],[34.0904332,-118.372948,"Sep 2025",4],[34.089829,-118.379019,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",5],[34.080238,-118.377987,"Sep 2025",0],[34.090846,-118.384174,"Sep 2025",0],[34.0904332,-118.372948,"Sep 2025",5],[34.083084,-118.386233,"Sep 2025",0],[34.091964,-118.362991,"Sep 2025",0],[34.083595,-118.386908,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.089063,-118.377623,"Sep 2025",4],[34.090846,-118.384174,"Sep 2025",0],[34.090477,-118.370684,"Sep 2025",0],[34.0848185,-118.3840331,"Sep 2025",0],[34.0909554,-118.3490739,"Sep 2025",0],[34.0890712,-118.3667086,"Sep 2025",2],[34.09031,-118.37064,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",2],[34.09031,-118.37064,"Sep 2025",0],[34.082437,-118.3842211,"Sep 2025",2],[34.090477,-118.370684,"Sep 2025",0],[34.0895482,-118.3764769,"Sep 2025",2],[34.0859251,-118.3798946,"Sep 2025",3],[34.0943175,-118.3449201,"Sep 2025",4],[34.0663031,-118.3839099,"Sep 2025",4],[34.0773501,-118.3877338,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.0828073,-118.3843387,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.0766498,-118.3687562,"Sep 2025",4],[34.0749862,-118.370386,"Sep 2025",2],[34.0909582,-118.3553642,"Sep 2025",5],[34.0909582,-118.3553642,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.0828073,-118.3843387,"Sep 2025",2],[34.0904548,-118.3642419,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",3],[34.0828073,-118.3843387,"Sep 2025",0],[34.090679,-118.3742846,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.0891314,-118.351104,"Sep 2025",3],[34.083713,-118.3855931,"Sep 2025",3],[34.0895482,-118.3764769,"Sep 2025",0],[34.0908109,-118.3442361,"Sep 2025",2],[34.0847567,-118.3847134,"Sep 2025",2],[34.0854281,-118.3794523,"Sep 2025",0],[34.0913195,-118.3508651,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.09031,-118.37064,"Sep 2025",0],[34.0873282,-118.3812742,"Oct 2025",0],[34.09031,-118.37064,"Oct 2025",5],[34.0895482,-118.3764769,"Oct 2025",4],[34.09031,-118.37064,"Oct 2025",5],[34.0915748,-118.3676516,"Oct 2025",3],[34.0907791,-118.3678897,"Oct 2025",0],[34.0955637,-118.3716057,"Oct 2025",0],[34.0827026,-118.3870322,"Oct 2025",5],[34.082527,-118.386973,"Oct 2025",4],[34.0811847,-118.375586,"Oct 2025",3],[34.0910288,-118.3637963,"Oct 2025",5],[34.0814886,-118.3832451,"Oct 2025",3],[34.09031,-118.37064,"Oct 2025",0],[34.0930618,-118.3712067,"Oct 2025",3],[34.0884808,-118.37966,"Oct 2025",2],[34.09031,-118.37064,"Oct 2025",3],[34.0913195,-118.3508651,"Oct 2025",0],[34.09031,-118.37064,"Oct 2025",5],[34.09031,-118.37064,"Oct 2025",0],[34.0907087,-118.3703284,"Oct 2025",0],[34.0835973,-118.3865799,"Oct 2025",3],[34.0913213,-118.3681413,"Oct 2025",5],[34.0910319,-118.3740654,"Oct 2025",3],[34.0909755,-118.366011,"Oct 2025",3],[34.0913195,-118.3508651,"Oct 2025",0],[34.0911804,-118.3525737,"Oct 2025",0],[34.0942838,-118.3494497,"Oct 2025",0],[34.0940513,-118.3429384,"Oct 2025",3],[34.0917437,-118.3641964,"Oct 2025",4],[34.0908507,-118.3642359,"Oct 2025",0],[34.0908004,-118.3739727,"Oct 2025",3],[34.0907191,-118.3649523,"Oct 2025",0],[34.092631,-118.3513744,"Oct 2025",0],[34.0751974,-118.3808229,"Oct 2025",1],[34.0751974,-118.3808229,"Oct 2025",0],[34.0894229,-118.3545572,"Oct 2025",3],[34.0908928,-118.365635,"Oct 2025",1],[34.0976863,-118.37307,"Oct 2025",4],[34.0883839,-118.354558,"Oct 2025",2],[34.0905068,-118.3706543,"Oct 2025",0],[34.0830457,-118.3845043,"Oct 2025",2],[34.0907087,-118.3703284,"Oct 2025",2],[34.092631,-118.3513744,"Oct 2025",2],[34.0938943,-118.3442668,"Oct 2025",3],[34.0915188,-118.3825915,"Oct 2025",1],[34.0968343,-118.3649044,"Oct 2025",3],[34.0908587,-118.3667062,"Oct 2025",3],[34.0795475,-118.3845555,"Oct 2025",3],[34.0905068,-118.3706543,"Oct 2025",1],[34.0875112,-118.3798188,"Oct 2025",3],[34.092631,-118.3513744,"Oct 2025",2],[34.0916194,-118.382017,"Oct 2025",1],[34.0969399,-118.3648797,"Oct 2025",4],[34.0815025,-118.3826475,"Oct 2025",2],[34.0822872,-118.3811123,"Oct 2025",3],[34.0906682,-118.3620775,"Oct 2025",0],[34.0836384,-118.3722534,"Oct 2025",0],[34.092631,-118.3513744,"Oct 2025",0],[34.0875112,-118.3798188,"Oct 2025",0],[34.0828267,-118.3844173,"Oct 2025",1],[34.0908587,-118.3667062,"Oct 2025",2],[34.0845951,-118.3833758,"Oct 2025",2],[34.0905068,-118.3706543,"Oct 2025",1],[34.0905068,-118.3706543,"Oct 2025",3],[34.0824154,-118.3842775,"Nov 2025",0],[34.0824154,-118.3842775,"Nov 2025",1],[34.090607,-118.3629376,"Nov 2025",2],[34.0751974,-118.3808229,"Nov 2025",5],[34.0964802,-118.370406,"Nov 2025",1],[34.0909763,-118.3857737,"Nov 2025",2],[34.0905068,-118.3706543,"Nov 2025",1],[34.0934497,-118.3512093,"Nov 2025",2],[34.0824154,-118.3842775,"Nov 2025",1],[34.0885217,-118.3837559,"Nov 2025",3],[34.0905919,-118.3897748,"Nov 2025",2],[34.0824154,-118.3842775,"Nov 2025",1],[34.0905919,-118.3897748,"Nov 2025",2],[34.0815523,-118.3836456,"Nov 2025",2],[34.0905068,-118.3706543,"Nov 2025",1],[34.0915761,-118.3843712,"Nov 2025",2],[34.090607,-118.3629376,"Nov 2025",1],[34.0907054,-118.3763889,"Nov 2025",3],[34.0875112,-118.3798188,"Nov 2025",2],[34.0884506,-118.3837881,"Nov 2025",2],[34.093558,-118.3727229,"Nov 2025",2],[34.0761613,-118.3627595,"Nov 2025",3],[34.090607,-118.3629376,"Nov 2025",0],[34.090607,-118.3629376,"Nov 2025",0],[34.0908399,-118.3616553,"Nov 2025",0],[34.0908399,-118.3616553,"Nov 2025",3],[34.0839961,-118.3856282,"Nov 2025",0],[34.090607,-118.3629376,"Nov 2025",1],[34.092631,-118.3513744,"Nov 2025",0],[34.0901526,-118.3765626,"Nov 2025",3],[34.0830457,-118.3845043,"Nov 2025",0],[34.0901526,-118.3765626,"Nov 2025",3],[34.0906642,-118.3844447,"Nov 2025",3],[34.09031,-118.37064,"Nov 2025",2],[34.0837157,-118.3855637,"Nov 2025",0],[34.0754,-118.3627,"Nov 2025",3],[34.0837,-118.3808,"Nov 2025",2],[34.0945539,-118.3451853,"Nov 2025",3],[34.0908004,-118.3739727,"Nov 2025",1],[34.0847269,-118.3847291,"Nov 2025",2],[34.0847269,-118.3847291,"Nov 2025",2],[34.0874702,-118.3798015,"Nov 2025",3],[34.09031,-118.37064,"Nov 2025",1],[34.0830457,-118.3845043,"Nov 2025",0],[34.0905023,-118.3704106,"Nov 2025",2],[34.0828671,-118.3866299,"Nov 2025",3],[34.0909661,-118.3362525,"Nov 2025",2],[34.0840026,-118.3852454,"Nov 2025",3],[34.0837157,-118.3855637,"Nov 2025",3],[34.09031,-118.37064,"Nov 2025",1],[34.0908004,-118.3739727,"Nov 2025",1],[34.0837928,-118.3854489,"Nov 2025",1],[34.0837928,-118.3854489,"Nov 2025",1],[34.0909389,-118.3680727,"Nov 2025",1],[34.09031,-118.37064,"Nov 2025",1],[34.0907466,-118.3635191,"Nov 2025",1],[34.0881756,-118.3796381,"Nov 2025",0],[34.0908056,-118.3627574,"Nov 2025",1],[34.090679,-118.3742846,"Nov 2025",0],[34.090679,-118.3742846,"Nov 2025",2],[34.0908871,-118.3518252,"Nov 2025",2],[34.0906368,-118.3742372,"Nov 2025",1],[34.0895482,-118.3764769,"Nov 2025",3],[34.090679,-118.3742846,"Nov 2025",1],[34.090679,-118.3742846,"Nov 2025",1],[34.0908399,-118.3616553,"Nov 2025",1],[34.0905,-118.3765,"Nov 2025",3],[34.09031,-118.37064,"Nov 2025",1],[34.09031,-118.37064,"Nov 2025",2],[34.09031,-118.37064,"Nov 2025",1],[34.0911991,-118.3573784,"Nov 2025",3],[34.0842,-118.3716,"Nov 2025",2],[34.089389,-118.3763503,"Nov 2025",3],[34.0911319,-118.3707886,"Nov 2025",0],[34.08971,-118.3447263,"Nov 2025",0],[34.0907122,-118.3648782,"Nov 2025",1],[34.0879329,-118.3791669,"Nov 2025",3],[34.0907601,-118.3832486,"Nov 2025",3],[34.0895482,-118.3764769,"Nov 2025",2],[34.09031,-118.37064,"Nov 2025",0],[34.0837928,-118.3854489,"Nov 2025",0],[34.0857227,-118.3832721,"Nov 2025",0],[34.0938397,-118.3734847,"Nov 2025",3],[34.0904112,-118.3711113,"Nov 2025",0],[34.0902074,-118.3746787,"Nov 2025",1],[34.0909034,-118.365943,"Nov 2025",0],[34.0907054,-118.3763889,"Nov 2025",3],[34.0895482,-118.3764769,"Nov 2025",2],[34.0905568,-118.3744402,"Nov 2025",0],[34.0830457,-118.3845043,"Nov 2025",0],[34.0904975,-118.3705642,"Nov 2025",0],[34.0841585,-118.3860599,"Nov 2025",0],[34.0775321,-118.3876647,"Nov 2025",3],[34.0909866,-118.3899984,"Nov 2025",0],[34.0837157,-118.3855637,"Nov 2025",0],[34.0830457,-118.3845043,"Nov 2025",0],[34.0837928,-118.3854489,"Nov 2025",1],[34.0978025,-118.3661546,"Nov 2025",0],[34.0837928,-118.3854489,"Nov 2025",1],[34.0837157,-118.3855637,"Nov 2025",0],[34.0909755,-118.366011,"Nov 2025",1],[34.0909755,-118.366011,"Nov 2025",1],[34.084028,-118.3850249,"Nov 2025",1],[34.0906078,-118.3847289,"Nov 2025",2],[34.0909582,-118.3553642,"Dec 2025",0],[34.09031,-118.37064,"Dec 2025",0],[34.09031,-118.37064,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",2],[34.0830457,-118.3845043,"Dec 2025",2],[34.09031,-118.37064,"Dec 2025",2],[34.0837157,-118.3855637,"Dec 2025",0],[34.0909389,-118.3627565,"Dec 2025",3],[34.0909389,-118.3627565,"Dec 2025",3],[34.0908899,-118.3629576,"Dec 2025",0],[34.0907434,-118.3627405,"Dec 2025",3],[34.0907434,-118.3627405,"Dec 2025",3],[34.0907434,-118.3627405,"Dec 2025",3],[34.0906682,-118.3620775,"Dec 2025",1],[34.0905919,-118.3897748,"Dec 2025",1],[34.0909866,-118.3899984,"Dec 2025",2],[34.0926262,-118.3791503,"Dec 2025",2],[34.0911319,-118.3707886,"Dec 2025",0],[34.0924,-118.3527,"Dec 2025",1],[34.0907434,-118.3627405,"Dec 2025",3],[34.0821,-118.3747,"Dec 2025",1],[34.0904975,-118.3705642,"Dec 2025",2],[34.095329,-118.3717101,"Dec 2025",3],[34.0917,-118.3642,"Dec 2025",1],[34.0907122,-118.3648782,"Dec 2025",1],[34.092631,-118.3513744,"Dec 2025",1],[34.0928228,-118.382426,"Dec 2025",3],[34.0753,-118.3801,"Dec 2025",2],[34.092631,-118.3513744,"Dec 2025",1],[34.0910112,-118.3680437,"Dec 2025",2],[34.0942692,-118.3442843,"Dec 2025",0],[34.0908399,-118.3616553,"Dec 2025",0],[34.0926262,-118.3791503,"Dec 2025",2],[34.085956,-118.3833304,"Dec 2025",2],[34.0907087,-118.3648582,"Dec 2025",3],[34.0905023,-118.3704106,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",2],[34.0819,-118.3553,"Dec 2025",3],[34.0881756,-118.3796381,"Dec 2025",3],[34.08971,-118.3447263,"Dec 2025",0],[34.0909929,-118.3644557,"Dec 2025",3],[34.0942207,-118.3659873,"Dec 2025",3],[34.0929,-118.3695,"Dec 2025",2],[34.09031,-118.37064,"Dec 2025",0],[34.092631,-118.3513744,"Dec 2025",2],[34.092631,-118.3513744,"Dec 2025",2],[34.0857684,-118.3832752,"Dec 2025",0],[34.0907466,-118.3635191,"Dec 2025",3],[34.0907264,-118.3623918,"Dec 2025",2],[34.0912172,-118.3578271,"Dec 2025",2],[34.0927104,-118.3441115,"Dec 2025",0],[34.0908899,-118.3629576,"Dec 2025",3],[34.0949352,-118.3759582,"Dec 2025",2],[34.0909755,-118.366011,"Dec 2025",0],[34.0908899,-118.3629576,"Dec 2025",3],[34.0908899,-118.3629576,"Dec 2025",3],[34.0908899,-118.3629576,"Dec 2025",3],[34.0908899,-118.3629576,"Dec 2025",3],[34.0908899,-118.3629576,"Dec 2025",3],[34.0906273,-118.3441856,"Dec 2025",2],[34.0820417,-118.3797969,"Dec 2025",0],[34.0841271,-118.3855991,"Dec 2025",2],[34.0837157,-118.3855637,"Dec 2025",0],[34.083084,-118.386233,"Dec 2025",3],[34.0836447,-118.3855701,"Dec 2025",0],[34.0905205,-118.3717326,"Dec 2025",2],[34.0793,-118.3808,"Dec 2025",0],[34.0908056,-118.3627574,"Dec 2025",0],[34.0873282,-118.3812742,"Dec 2025",2],[34.0934849,-118.3739958,"Dec 2025",0],[34.0801139,-118.3847106,"Dec 2025",0],[34.090682,-118.3623596,"Dec 2025",2],[34.0907466,-118.3635191,"Dec 2025",2],[34.0911998,-118.3642688,"Dec 2025",3],[34.0830457,-118.3845043,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",2],[34.0905068,-118.3706543,"Dec 2025",4],[34.085956,-118.3833304,"Dec 2025",3],[34.0905625,-118.3629162,"Dec 2025",5],[34.0905625,-118.3629162,"Dec 2025",3],[34.0920799,-118.3460029,"Dec 2025",0],[34.0921599,-118.3459171,"Dec 2025",3],[34.0910112,-118.3680437,"Dec 2025",3],[34.0910112,-118.3680437,"Dec 2025",0],[34.0905068,-118.3706543,"Dec 2025",0],[34.0910112,-118.3680437,"Dec 2025",3],[34.0911998,-118.3642688,"Dec 2025",3],[34.084718,-118.3847506,"Dec 2025",0],[34.0905205,-118.3717326,"Dec 2025",3],[34.0911998,-118.3642688,"Dec 2025",0],[34.092631,-118.3513744,"Dec 2025",0],[34.092631,-118.3513744,"Dec 2025",3],[34.0905068,-118.3706543,"Dec 2025",3],[34.0830457,-118.3845043,"Dec 2025",0],[34.0905625,-118.3629162,"Dec 2025",0],[34.0905046,-118.3723265,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",3],[34.0830457,-118.3845043,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",2],[34.0830457,-118.3845043,"Dec 2025",0],[34.0831387,-118.3850903,"Dec 2025",0],[34.0831387,-118.3850903,"Dec 2025",0],[34.0910112,-118.3680437,"Dec 2025",5],[34.0904574,-118.3678385,"Dec 2025",0],[34.08885,-118.3714966,"Dec 2025",0],[34.08885,-118.3714966,"Dec 2025",0],[34.0910175,-118.355352,"Dec 2025",4],[34.0905745,-118.3702092,"Dec 2025",0],[34.08885,-118.3714966,"Dec 2025",0],[34.0907087,-118.3648582,"Dec 2025",2],[34.0907087,-118.3648582,"Dec 2025",3],[34.090607,-118.3629376,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",3],[34.0909533,-118.3638345,"Dec 2025",3],[34.0909533,-118.3638345,"Dec 2025",3],[34.0909121,-118.3482761,"Dec 2025",0],[34.0909121,-118.3482761,"Dec 2025",5],[34.0750984,-118.3808584,"Dec 2025",2],[34.0913847,-118.3592163,"Dec 2025",0],[34.0943059,-118.3501047,"Dec 2025",3],[34.090783,-118.382863,"Dec 2025",3],[34.0905625,-118.3629162,"Dec 2025",2],[34.0905625,-118.3629162,"Dec 2025",0],[34.0905745,-118.3702092,"Dec 2025",2],[34.0837,-118.3626,"Dec 2025",0],[34.0908056,-118.3627574,"Dec 2025",0],[34.084718,-118.3847506,"Dec 2025",0],[34.084718,-118.3847506,"Dec 2025",0],[34.090783,-118.382863,"Dec 2025",0],[34.0830457,-118.3845043,"Dec 2025",2],[34.0908399,-118.3616553,"Dec 2025",0],[34.0907439,-118.3614553,"Dec 2025",3],[34.0907734,-118.3615931,"Dec 2025",0],[34.0835676,-118.3869386,"Jan 2026",2],[34.0835676,-118.3869386,"Jan 2026",0],[34.0908899,-118.3629576,"Jan 2026",0],[34.0912606,-118.3605652,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",0],[34.0905669,-118.3630786,"Jan 2026",2],[34.0908899,-118.3629576,"Jan 2026",3],[34.0918521,-118.3630063,"Jan 2026",0],[34.0844308,-118.38338,"Jan 2026",0],[34.0905068,-118.3706543,"Jan 2026",0],[34.0905068,-118.3706543,"Jan 2026",0],[34.0906827,-118.3679251,"Jan 2026",3],[34.0909755,-118.366011,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",1],[34.092631,-118.3513744,"Jan 2026",5],[34.0837928,-118.3854489,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",0],[34.0918915,-118.3617337,"Jan 2026",0],[34.091733,-118.361166,"Jan 2026",2],[34.0834153,-118.3868627,"Jan 2026",2],[34.0835984,-118.386714,"Jan 2026",0],[34.0844308,-118.38338,"Jan 2026",3],[34.0907511,-118.3486962,"Jan 2026",0],[34.0905625,-118.3629162,"Jan 2026",2],[34.0905625,-118.3629162,"Jan 2026",3],[34.0906827,-118.3679251,"Jan 2026",0],[34.0907587,-118.3777035,"Jan 2026",0],[34.0907587,-118.3777035,"Jan 2026",0],[34.0818135,-118.3846174,"Jan 2026",0],[34.0895398,-118.3779176,"Jan 2026",0],[34.092631,-118.3513744,"Jan 2026",2],[34.0905068,-118.3706543,"Jan 2026",2],[34.0905068,-118.3706543,"Jan 2026",0],[34.092631,-118.3513744,"Jan 2026",0],[34.0838128,-118.3855553,"Jan 2026",2],[34.0835647,-118.3869326,"Jan 2026",0],[34.0905068,-118.3706543,"Jan 2026",0],[34.0845866,-118.3833518,"Jan 2026",0],[34.0918915,-118.3617337,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",0],[34.0906043,-118.3895223,"Jan 2026",0],[34.0906043,-118.3895223,"Jan 2026",0],[34.0907586,-118.3914357,"Jan 2026",2],[34.0906043,-118.3895223,"Jan 2026",5],[34.090682,-118.3623596,"Jan 2026",0],[34.0908439,-118.3618518,"Jan 2026",0],[34.0907797,-118.3576129,"Jan 2026",0],[34.0906167,-118.3762761,"Jan 2026",0],[34.0906043,-118.3895223,"Jan 2026",0],[34.0830457,-118.3845043,"Jan 2026",2],[34.092631,-118.3513744,"Jan 2026",0],[34.08971,-118.3447263,"Jan 2026",1],[34.0910175,-118.3657298,"Jan 2026",2],[34.0907665,-118.3659681,"Jan 2026",0],[34.0910175,-118.355352,"Jan 2026",0],[34.0910175,-118.3657298,"Jan 2026",2],[34.0847781,-118.3850114,"Jan 2026",4],[34.0847781,-118.3850114,"Jan 2026",1],[34.0837,-118.3668,"Jan 2026",1],[34.082772,-118.384436,"Jan 2026",1],[34.0830457,-118.3845043,"Jan 2026",2],[34.0844308,-118.38338,"Jan 2026",3],[34.0846042,-118.3835359,"Jan 2026",1],[34.0908899,-118.3629576,"Jan 2026",5],[34.0911668,-118.3561027,"Jan 2026",3],[34.0895482,-118.3764769,"Jan 2026",3],[34.0905068,-118.3706543,"Jan 2026",4],[34.0905068,-118.3706543,"Jan 2026",3],[34.0830457,-118.3845043,"Jan 2026",2],[34.0905068,-118.3706543,"Jan 2026",4],[34.0905068,-118.3706543,"Jan 2026",2],[34.0907936,-118.3633061,"Jan 2026",3],[34.0905669,-118.3630786,"Jan 2026",0],[34.0910112,-118.3680437,"Jan 2026",2],[34.091322,-118.3628672,"Jan 2026",3],[34.0908899,-118.3629576,"Jan 2026",0],[34.0905271,-118.3717268,"Jan 2026",2],[34.0904574,-118.3678385,"Jan 2026",2],[34.0909572,-118.3544065,"Jan 2026",3],[34.0905068,-118.3706543,"Jan 2026",0],[34.0895,-118.3616,"Jan 2026",3],[34.09031,-118.37064,"Jan 2026",0],[34.0847191,-118.384182,"Jan 2026",3],[34.0912163,-118.3636126,"Jan 2026",3],[34.0905821,-118.3627523,"Jan 2026",3],[34.09031,-118.37064,"Jan 2026",0],[34.0919572,-118.3644651,"Jan 2026",1],[34.0873282,-118.3812742,"Jan 2026",1],[34.0802,-118.3761,"Jan 2026",4],[34.0906043,-118.3895223,"Jan 2026",1],[34.092631,-118.3513744,"Jan 2026",2],[34.0844308,-118.38338,"Jan 2026",3],[34.0830457,-118.3845043,"Jan 2026",0],[34.0906043,-118.3895223,"Jan 2026",3],[34.09031,-118.37064,"Jan 2026",0],[34.0864,-118.3827,"Jan 2026",1],[34.0908899,-118.3629576,"Jan 2026",2],[34.0830457,-118.3845043,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",3],[34.0871672,-118.3574079,"Jan 2026",2],[34.0874002,-118.3808122,"Jan 2026",0],[34.0873,-118.3682,"Jan 2026",3],[34.0804,-118.3742,"Jan 2026",1],[34.089063,-118.377623,"Jan 2026",1],[34.08971,-118.3447263,"Jan 2026",1],[34.0968936,-118.33832,"Jan 2026",4],[34.0909533,-118.3638345,"Jan 2026",1],[34.0864,-118.3827,"Jan 2026",1],[34.0907054,-118.3763889,"Jan 2026",1],[34.0895482,-118.3764769,"Jan 2026",1],[34.0968936,-118.33832,"Jan 2026",4],[34.0901152,-118.3678136,"Jan 2026",0],[34.0906043,-118.3895223,"Jan 2026",1],[34.0925171,-118.3511926,"Jan 2026",0],[34.0907156,-118.3703022,"Jan 2026",1],[34.0846042,-118.3835359,"Jan 2026",1],[34.0907191,-118.3649523,"Jan 2026",1],[34.0830457,-118.3845043,"Jan 2026",0],[34.092631,-118.3513744,"Jan 2026",0],[34.0847191,-118.384182,"Jan 2026",0],[34.0914421,-118.3822879,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",0],[34.0789,-118.3771,"Jan 2026",1],[34.0911998,-118.3642688,"Jan 2026",3],[34.0908439,-118.3618518,"Jan 2026",1],[34.0909582,-118.3553642,"Jan 2026",0],[34.0919572,-118.3644651,"Jan 2026",1],[34.082772,-118.384436,"Jan 2026",2],[34.0809,-118.3764,"Jan 2026",3],[34.0909755,-118.366011,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",0],[34.0889966,-118.3713057,"Jan 2026",5],[34.0835676,-118.3869386,"Jan 2026",2],[34.0846042,-118.3835359,"Jan 2026",0],[34.0830457,-118.3845043,"Jan 2026",0],[34.0875112,-118.3798188,"Jan 2026",3],[34.0908111,-118.3566881,"Jan 2026",1],[34.092631,-118.3513744,"Jan 2026",0],[34.0895398,-118.3779176,"Jan 2026",3],[34.087547,-118.383115,"Jan 2026",1],[34.0846042,-118.3835359,"Jan 2026",0],[34.0828073,-118.3843387,"Jan 2026",5],[34.09031,-118.37064,"Jan 2026",0],[34.09031,-118.37064,"Jan 2026",0],[34.0907648,-118.3511424,"Jan 2026",3],[34.0844308,-118.38338,"Jan 2026",2],[34.092631,-118.3513744,"Jan 2026",0],[34.0908899,-118.3629576,"Jan 2026",4],[34.0907445,-118.365952,"Jan 2026",3],[34.0907445,-118.365952,"Jan 2026",0],[34.0909582,-118.3553642,"Jan 2026",0],[34.0908587,-118.3667062,"Jan 2026",3],[34.0908399,-118.3616553,"Jan 2026",0],[34.0908399,-118.3616553,"Jan 2026",1],[34.0918578,-118.3615198,"Jan 2026",1],[34.090607,-118.3629376,"Jan 2026",1],[34.08971,-118.3447263,"Jan 2026",1],[34.0925171,-118.3511926,"Jan 2026",0],[34.09031,-118.37064,"Jan 2026",5],[34.0846042,-118.3835359,"Jan 2026",0],[34.09031,-118.37064,"Jan 2026",0],[34.0903,-118.344,"Jan 2026",2],[34.092631,-118.3513744,"Jan 2026",0],[34.090446,-118.3631736,"Jan 2026",0],[34.0933,-118.344,"Jan 2026",4],[34.0793,-118.387,"Jan 2026",0],[34.092631,-118.3513744,"Jan 2026",2],[34.09031,-118.37064,"Jan 2026",2],[34.09031,-118.37064,"Jan 2026",0],[34.082772,-118.384436,"Jan 2026",0],[34.0966596,-118.3250997,"Jan 2026",5],[34.092631,-118.3513744,"Jan 2026",3],[34.092631,-118.3513744,"Jan 2026",2],[34.0908399,-118.3616553,"Jan 2026",1],[34.0857227,-118.3832721,"Jan 2026",0],[34.0905493,-118.35237,"Jan 2026",1],[34.0908399,-118.3616553,"Jan 2026",1],[34.0906043,-118.3895223,"Jan 2026",1],[34.0906043,-118.3895223,"Jan 2026",1],[34.0907791,-118.3678897,"Jan 2026",3],[34.0925171,-118.3511926,"Jan 2026",3],[34.08971,-118.3447263,"Jan 2026",1],[34.092631,-118.3513744,"Jan 2026",1],[34.092631,-118.3513744,"Jan 2026",0],[34.092631,-118.3513744,"Jan 2026",2],[34.0830457,-118.3845043,"Jan 2026",0],[34.0899327,-118.3753148,"Feb 2026",2],[34.0890713,-118.3667086,"Feb 2026",0],[34.0895482,-118.3764769,"Feb 2026",0],[34.08971,-118.3447263,"Feb 2026",0],[34.0907445,-118.365952,"Feb 2026",0],[34.0907791,-118.3678897,"Feb 2026",0],[34.0895482,-118.3764769,"Feb 2026",0],[34.0907791,-118.3678897,"Feb 2026",5],[34.0909034,-118.365943,"Feb 2026",3],[34.090679,-118.3742846,"Feb 2026",2],[34.09076,-118.3670156,"Feb 2026",2],[34.0841272,-118.3855991,"Feb 2026",4],[34.09031,-118.37064,"Feb 2026",5],[34.0830457,-118.3845043,"Feb 2026",0],[34.0918,-118.3544,"Feb 2026",1],[34.09031,-118.37064,"Feb 2026",5],[34.0846042,-118.3835359,"Feb 2026",0],[34.09031,-118.37064,"Feb 2026",5],[34.0830457,-118.3845043,"Feb 2026",0],[34.092631,-118.3513744,"Feb 2026",2],[34.092631,-118.3513744,"Feb 2026",0],[34.0908399,-118.3616553,"Feb 2026",2],[34.0908399,-118.3616553,"Feb 2026",2],[34.0717,-118.3607,"Feb 2026",5],[34.0890713,-118.3667086,"Feb 2026",2],[34.0830457,-118.3845043,"Feb 2026",0],[34.0846042,-118.3835359,"Feb 2026",0],[34.0830457,-118.3845043,"Feb 2026",0],[34.0908111,-118.3566881,"Feb 2026",2],[34.0841272,-118.3855991,"Feb 2026",3],[34.092631,-118.3513744,"Feb 2026",2],[34.0857227,-118.3832721,"Feb 2026",2],[34.0809,-118.3764,"Feb 2026",1],[34.0836,-118.382,"Feb 2026",1],[34.0907445,-118.365952,"Feb 2026",0],[34.0908587,-118.3667062,"Feb 2026",1],[34.0911469,-118.3499159,"Feb 2026",4],[34.0828073,-118.3843387,"Feb 2026",5],[34.0830457,-118.3845043,"Feb 2026",2],[34.09031,-118.37064,"Feb 2026",0],[34.09076,-118.3670156,"Feb 2026",3],[34.0895,-118.3761,"Feb 2026",3],[34.092631,-118.3513744,"Feb 2026",1],[34.0799,-118.3779,"Feb 2026",3],[34.0847781,-118.3850114,"Feb 2026",3],[34.092631,-118.3513744,"Feb 2026",1],[34.0835984,-118.386714,"Feb 2026",0],[34.092631,-118.3513744,"Feb 2026",1],[34.0886665,-118.3789353,"Feb 2026",0],[34.0917,-118.3785,"Feb 2026",4],[34.0905919,-118.3897748,"Feb 2026",2],[34.092631,-118.3513744,"Feb 2026",1],[34.0909582,-118.3553642,"Feb 2026",3],[34.0907434,-118.3627405,"Feb 2026",0],[34.0908399,-118.3616553,"Feb 2026",3],[34.08971,-118.3447263,"Feb 2026",3],[34.0907445,-118.365952,"Feb 2026",5],[34.0847781,-118.3850114,"Feb 2026",0],[34.0895482,-118.3764769,"Feb 2026",3],[34.0905374,-118.3701139,"Feb 2026",1],[34.0908899,-118.3629576,"Feb 2026",1],[34.0835676,-118.3869386,"Feb 2026",0],[34.09031,-118.37064,"Feb 2026",5],[34.092631,-118.3513744,"Feb 2026",5],[34.0857227,-118.3832721,"Feb 2026",0],[34.092631,-118.3513744,"Feb 2026",1],[34.08971,-118.3447263,"Feb 2026",0],[34.0872006,-118.3627279,"Feb 2026",3],[34.0922,-118.36,"Feb 2026",4],[34.08971,-118.3447263,"Feb 2026",1],[34.0907087,-118.3703284,"Feb 2026",0],[34.0868,-118.3813,"Feb 2026",3],[34.08971,-118.3447263,"Feb 2026",0],[34.0910919,-118.3635911,"Feb 2026",1],[34.0908399,-118.3616553,"Feb 2026",2],[34.0895482,-118.3764769,"Feb 2026",3],[34.0905657,-118.3686301,"Feb 2026",2],[34.09031,-118.37064,"Feb 2026",2],[34.09031,-118.37064,"Feb 2026",2],[34.09031,-118.37064,"Feb 2026",2],[34.09031,-118.37064,"Feb 2026",5],[34.09031,-118.37064,"Feb 2026",2],[34.0910074,-118.3584534,"Feb 2026",1],[34.09031,-118.37064,"Feb 2026",5],[34.085956,-118.3833304,"Feb 2026",3],[34.0910074,-118.3584534,"Feb 2026",1],[34.0907984,-118.3553646,"Feb 2026",0],[34.0907984,-118.3553646,"Feb 2026",2],[34.085956,-118.3833304,"Feb 2026",3],[34.0908911,-118.3614342,"Feb 2026",1],[34.08971,-118.3447263,"Feb 2026",1],[34.0917437,-118.3641964,"Feb 2026",4],[34.0917437,-118.3641964,"Feb 2026",3],[34.092631,-118.3513744,"Feb 2026",1],[34.0924,-118.3514,"Feb 2026",1],[34.090336,-118.371162,"Feb 2026",3],[34.090336,-118.371162,"Feb 2026",3],[34.0895482,-118.3764769,"Feb 2026",1],[34.090734,-118.3691484,"Feb 2026",1],[34.090734,-118.3691484,"Feb 2026",1],[34.0835676,-118.3869386,"Feb 2026",1],[34.0793,-118.3808,"Feb 2026",1],[34.0857227,-118.3832721,"Feb 2026",0],[34.0857227,-118.3832721,"Feb 2026",0],[34.0895482,-118.3764769,"Feb 2026",1],[34.0905,-118.3787,"Feb 2026",0],[34.0906043,-118.3895223,"Feb 2026",3],[34.0905,-118.3787,"Feb 2026",0],[34.0915004,-118.3823632,"Feb 2026",1],[34.0874002,-118.3808122,"Feb 2026",1],[34.0875112,-118.3798188,"Feb 2026",1],[34.0917,-118.3642,"Feb 2026",3],[34.0906043,-118.3895223,"Feb 2026",3],[34.0907445,-118.365952,"Feb 2026",2],[34.0908508,-118.3644557,"Feb 2026",1],[34.09031,-118.37064,"Feb 2026",0],[34.0907087,-118.3703284,"Feb 2026",0],[34.0924,-118.3514,"Feb 2026",1],[34.09031,-118.37064,"Feb 2026",5],[34.0803,-118.3766,"Feb 2026",1],[34.0910136,-118.3569925,"Feb 2026",0],[34.090403,-118.3540939,"Feb 2026",3],[34.0907445,-118.365952,"Feb 2026",0],[34.0909322,-118.3557263,"Feb 2026",0],[34.0907445,-118.365952,"Feb 2026",2],[34.0907445,-118.365952,"Feb 2026",4],[34.0907445,-118.365952,"Feb 2026",0],[34.0925171,-118.3511926,"Feb 2026",0],[34.092631,-118.3513744,"Feb 2026",2],[34.09031,-118.37064,"Feb 2026",2],[34.0846042,-118.3835359,"Feb 2026",0],[34.090779,-118.3627565,"Feb 2026",0],[34.0803,-118.3766,"Feb 2026",5],[34.0803,-118.3766,"Feb 2026",0],[34.0793,-118.3808,"Feb 2026",0],[34.0907445,-118.365952,"Feb 2026",2],[34.0911469,-118.3499159,"Feb 2026",3],[34.0920202,-118.3630098,"Feb 2026",2],[34.0921,-118.3667,"Feb 2026",0],[34.0922,-118.346,"Feb 2026",2],[34.0907445,-118.365952,"Feb 2026",2],[34.0846042,-118.3835359,"Feb 2026",0],[34.09031,-118.37064,"Feb 2026",5],[34.09031,-118.37064,"Feb 2026",5],[34.0907896,-118.3614277,"Feb 2026",2],[34.0845,-118.384,"Feb 2026",1],[34.0867121,-118.3815715,"Feb 2026",1],[34.0907445,-118.365952,"Feb 2026",0],[34.0929,-118.344,"Feb 2026",0],[34.0836,-118.3831,"Feb 2026",4],[34.0786,-118.3808,"Feb 2026",5],[34.0907445,-118.365952,"Feb 2026",0],[34.0907445,-118.365952,"Feb 2026",5],[34.0907445,-118.365952,"Feb 2026",0],[34.0793,-118.3808,"Feb 2026",2],[34.08,-118.3802,"Feb 2026",1],[34.0830457,-118.3845043,"Feb 2026",5],[34.0907445,-118.365952,"Feb 2026",0],[34.082463,-118.3437893,"Feb 2026",1],[34.0907445,-118.365952,"Feb 2026",0],[34.0786,-118.3808,"Feb 2026",5],[34.082463,-118.3437893,"Feb 2026",2],[34.0793,-118.387,"Feb 2026",0],[34.0908508,-118.3644557,"Feb 2026",1],[34.0909582,-118.3553642,"Feb 2026",0],[34.0911527,-118.3593894,"Feb 2026",0],[34.0911469,-118.3499159,"Feb 2026",1],[34.0920202,-118.3630098,"Feb 2026",1],[34.0994331,-118.3170394,"Feb 2026",5],[34.0910321,-118.3365608,"Feb 2026",5],[34.0895,-118.378,"Feb 2026",3],[34.0801672,-118.3752889,"Feb 2026",0],[34.0907445,-118.365952,"Feb 2026",0],[34.0907445,-118.365952,"Feb 2026",0],[34.0925171,-118.3511926,"Feb 2026",0],[34.09031,-118.37064,"Feb 2026",5],[34.0828073,-118.3843387,"Feb 2026",0],[34.09031,-118.37064,"Feb 2026",0],[34.0920202,-118.3630098,"Feb 2026",2],[34.0905817,-118.3544593,"Feb 2026",5],[34.0803,-118.3766,"Feb 2026",0],[34.0836,-118.3831,"Feb 2026",1],[34.0907445,-118.365952,"Feb 2026",0],[34.0793,-118.3808,"Feb 2026",1],[34.0857944,-118.3829034,"Feb 2026",1],[34.09031,-118.37064,"Feb 2026",5],[34.09031,-118.37064,"Feb 2026",5],[34.0786,-118.3808,"Feb 2026",0],[34.0830457,-118.3845043,"Feb 2026",0],[34.09031,-118.37064,"Feb 2026",5],[34.0786,-118.3808,"Feb 2026",0],[34.0907445,-118.365952,"Feb 2026",0],[34.090734,-118.3691484,"Feb 2026",1],[34.0905364,-118.3673194,"Feb 2026",2],[34.0803,-118.3838,"Feb 2026",2],[34.0901152,-118.3678136,"Feb 2026",3],[34.08971,-118.3447263,"Feb 2026",1],[34.0891191,-118.3774096,"Feb 2026",3],[34.0902279,-118.3744182,"Feb 2026",2],[34.0907445,-118.365952,"Feb 2026",5],[34.0803,-118.3838,"Feb 2026",3],[34.0786,-118.3808,"Feb 2026",1],[34.0786,-118.3808,"Feb 2026",0],[34.0786,-118.3808,"Feb 2026",0],[34.0786,-118.3808,"Feb 2026",2],[34.0786,-118.3808,"Feb 2026",0],[34.0907648,-118.3511424,"Feb 2026",2],[34.0907445,-118.365952,"Feb 2026",3],[34.0907648,-118.3511424,"Feb 2026",2],[34.0907445,-118.365952,"Mar 2026",1],[34.0924,-118.3514,"Mar 2026",0],[34.0793,-118.387,"Mar 2026",0],[34.0908111,-118.3566881,"Mar 2026",3],[34.0910321,-118.3365608,"Mar 2026",1],[34.0890715,-118.358393,"Mar 2026",0],[34.0910321,-118.3365608,"Mar 2026",0],[34.0907087,-118.3703284,"Mar 2026",0],[34.09031,-118.37064,"Mar 2026",5],[34.0786,-118.3808,"Mar 2026",2],[34.092,-118.3527,"Mar 2026",5],[34.0910321,-118.3365608,"Mar 2026",2],[34.09031,-118.37064,"Mar 2026",0],[34.09031,-118.37064,"Mar 2026",0],[34.09031,-118.37064,"Mar 2026",2],[34.0836,-118.3831,"Mar 2026",0],[34.0895,-118.3616,"Mar 2026",0],[34.0836,-118.3831,"Mar 2026",1],[34.0803,-118.3838,"Mar 2026",0],[34.0846042,-118.3835359,"Mar 2026",0],[34.09031,-118.37064,"Mar 2026",0],[34.09031,-118.37064,"Mar 2026",5],[34.09031,-118.37064,"Mar 2026",0],[34.0836,-118.3827,"Mar 2026",1],[34.0908994,-118.3453519,"Mar 2026",0],[34.0924,-118.3514,"Mar 2026",0],[34.0803,-118.3766,"Mar 2026",0],[34.0907156,-118.3703022,"Mar 2026",0],[34.0905,-118.3765,"Mar 2026",3],[34.0895,-118.3616,"Mar 2026",0],[34.09031,-118.37064,"Mar 2026",0],[34.09031,-118.37064,"Mar 2026",2],[34.0803,-118.3838,"Mar 2026",2],[34.0786,-118.3808,"Mar 2026",5],[34.0907984,-118.3553646,"Mar 2026",2],[34.0915004,-118.3823632,"Mar 2026",2],[34.0913213,-118.3681413,"Mar 2026",0],[34.0907756,-118.3638238,"Mar 2026",4],[34.0883,-118.3583,"Mar 2026",0],[34.0934,-118.3515,"Mar 2026",5],[34.0762438,-118.379936,"Mar 2026",0],[34.0907445,-118.365952,"Mar 2026",0],[34.0907445,-118.365952,"Mar 2026",0],[34.0924,-118.3514,"Mar 2026",0],[34.0909582,-118.3553642,"Mar 2026",0],[34.0803,-118.3838,"Mar 2026",2],[34.0907764,-118.353293,"Mar 2026",1],[34.0845,-118.384,"Mar 2026",3],[34.0909625,-118.3560812,"Mar 2026",2],[34.0762438,-118.379936,"Mar 2026",0],[34.0905,-118.3642,"Mar 2026",1],[34.0936,-118.3667,"Mar 2026",1],[34.0942317,-118.3769885,"Mar 2026",4],[34.0911837,-118.3678808,"Mar 2026",1],[34.0916462,-118.3671409,"Mar 2026",3],[34.0905,-118.3642,"Mar 2026",4],[34.0902266,-118.3706797,"Mar 2026",3],[34.09031,-118.37064,"Mar 2026",5],[34.09031,-118.37064,"Mar 2026",5],[34.09031,-118.37064,"Mar 2026",5],[34.0907156,-118.3703022,"Mar 2026",3],[34.09031,-118.37064,"Mar 2026",0],[34.0864,-118.3827,"Mar 2026",3],[34.09031,-118.37064,"Mar 2026",5],[34.0793,-118.3808,"Mar 2026",2],[34.0793026,-118.3824466,"Mar 2026",3],[34.08,-118.3802,"Mar 2026",3],[34.0907087,-118.3703284,"Mar 2026",5],[34.0872006,-118.3627279,"Mar 2026",0],[34.0904332,-118.372948,"Mar 2026",3],[34.0885681,-118.3773343,"Mar 2026",2],[34.0786,-118.3808,"Mar 2026",0],[34.091,-118.387,"Mar 2026",0],[34.0907445,-118.365952,"Mar 2026",0],[34.0904044,-118.3583505,"Mar 2026",1],[34.0834817,-118.3544149,"Mar 2026",2],[34.0909455,-118.362037,"Mar 2026",1],[34.0830457,-118.3845043,"Mar 2026",2],[34.0895,-118.3616,"Mar 2026",2],[34.0924,-118.3514,"Mar 2026",2],[34.082772,-118.384436,"Mar 2026",0],[34.08,-118.3802,"Mar 2026",3],[34.082772,-118.384436,"Mar 2026",0],[34.0920399,-118.3685037,"Mar 2026",4],[34.0905576,-118.3624025,"Mar 2026",0],[34.0932,-118.3667,"Mar 2026",1],[34.0910321,-118.3365608,"Mar 2026",0],[34.0932,-118.36,"Mar 2026",0],[34.0910321,-118.3365608,"Mar 2026",1],[34.0933,-118.36,"Mar 2026",3],[34.090647,-118.36069,"Mar 2026",0],[34.0910919,-118.3635911,"Mar 2026",0],[34.090546,-118.376488,"Mar 2026",0],[34.0907054,-118.3763889,"Mar 2026",3],[34.08168,-118.38317,"Mar 2026",2],[34.090546,-118.376488,"Mar 2026",0],[34.087689,-118.378791,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",2],[34.082778,-118.384444,"Mar 2026",0],[34.082108,-118.383983,"Mar 2026",0],[34.084391,-118.383493,"Mar 2026",0],[34.0935261,-118.3580734,"Mar 2026",2],[34.092616,-118.351403,"Mar 2026",0],[34.090515,-118.371938,"Mar 2026",2],[34.090452,-118.362946,"Mar 2026",0],[34.090452,-118.362946,"Mar 2026",2],[34.090846,-118.37585,"Mar 2026",0],[34.0835954,-118.3869083,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.088896,-118.376924,"Mar 2026",2],[34.091174,-118.38318,"Mar 2026",2],[34.0885,-118.3778324,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.0904774,-118.3706843,"Mar 2026",0],[34.0875759,-118.3803108,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",0],[34.0904774,-118.3706843,"Mar 2026",0],[34.084391,-118.383493,"Mar 2026",0],[34.0903481,-118.3753755,"Mar 2026",0],[34.0894746,-118.376047,"Mar 2026",0],[34.0908928,-118.365635,"Mar 2026",2],[34.0906744,-118.3520492,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",2],[34.082778,-118.384444,"Mar 2026",2],[34.082778,-118.384444,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.084391,-118.383493,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",0],[34.089892,-118.375009,"Mar 2026",2],[34.090656,-118.363982,"Mar 2026",2],[34.0907164,-118.3576828,"Mar 2026",0],[34.091147,-118.349916,"Mar 2026",0],[34.084391,-118.383493,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.0908011,-118.3577069,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",2],[34.0905966,-118.37626,"Mar 2026",0],[34.0907164,-118.3576828,"Mar 2026",2],[34.092616,-118.351403,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.0855865,-118.3834326,"Mar 2026",0],[34.090526,-118.3733974,"Mar 2026",0],[34.092616,-118.351403,"Mar 2026",0],[34.092616,-118.351403,"Mar 2026",2],[34.092616,-118.351403,"Mar 2026",0],[34.092616,-118.351403,"Mar 2026",0],[34.084391,-118.383493,"Mar 2026",0],[34.0908928,-118.365635,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",0],[34.090952,-118.38945,"Mar 2026",0],[34.09486,-118.372712,"Mar 2026",0],[34.0777013,-118.3797297,"Mar 2026",0],[34.087797,-118.380115,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.096478,-118.370827,"Mar 2026",2],[34.0905471,-118.3720045,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.0905471,-118.3720045,"Mar 2026",0],[34.0909642,-118.3754791,"Mar 2026",0],[34.0794366,-118.3774682,"Mar 2026",0],[34.0927263,-118.351951,"Mar 2026",2],[34.0890019,-118.358742,"Mar 2026",0],[34.0906948,-118.3830555,"Mar 2026",2],[34.0835954,-118.3869083,"Mar 2026",2],[34.092616,-118.351403,"Mar 2026",0],[34.084391,-118.383493,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.0905615,-118.3704193,"Mar 2026",2],[34.090915,-118.344287,"Mar 2026",2],[34.090915,-118.344287,"Mar 2026",0],[34.0835954,-118.3869083,"Mar 2026",0],[34.0908296,-118.3615503,"Mar 2026",0],[34.0905615,-118.3704193,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",2],[34.090452,-118.362946,"Mar 2026",0],[34.0808549,-118.3897665,"Mar 2026",0],[34.0890903,-118.3498203,"Mar 2026",0],[34.0907366,-118.3758008,"Mar 2026",2],[34.0835954,-118.3869083,"Mar 2026",0],[34.092616,-118.351403,"Mar 2026",0],[34.092616,-118.351403,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.0906442,-118.3442571,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",0],[34.0982696,-118.3754969,"Mar 2026",0],[34.0908447,-118.3529271,"Mar 2026",0],[34.090452,-118.362946,"Mar 2026",0],[34.0908296,-118.3615503,"Mar 2026",0],[34.0908296,-118.3615503,"Mar 2026",2],[34.090918,-118.373724,"Mar 2026",0],[34.080275,-118.376442,"Mar 2026",0],[34.0932294,-118.3452583,"Mar 2026",0],[34.0907366,-118.3758008,"Mar 2026",0],[34.090659,-118.349189,"Mar 2026",0],[34.0906192,-118.3896566,"Mar 2026",0],[34.092616,-118.351403,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.092616,-118.351403,"Mar 2026",0],[34.0896478,-118.3763302,"Mar 2026",0],[34.0906726,-118.3796606,"Mar 2026",0],[34.0847663,-118.3839905,"Mar 2026",2],[34.082778,-118.384444,"Mar 2026",0],[34.0935298,-118.3591703,"Mar 2026",0],[34.0857197,-118.3829622,"Mar 2026",0],[34.0874201,-118.355217,"Mar 2026",0],[34.0905816,-118.3897295,"Mar 2026",0],[34.0904048,-118.3897171,"Mar 2026",0],[34.0907498,-118.3614566,"Mar 2026",2],[34.084391,-118.383493,"Mar 2026",0],[34.082778,-118.384444,"Mar 2026",0],[34.0849623,-118.3841363,"Mar 2026",0],[34.0908295,-118.3472416,"Mar 2026",0],[34.090455,-118.374774,"Mar 2026",0],[34.0855415,-118.3834967,"Mar 2026",0],[34.090227,-118.37068,"Mar 2026",0],[34.0762438,-118.379936,"Mar 2026",2],[34.0820493,-118.3887446,"Mar 2026",0],[34.090452,-118.362946,"Mar 2026",0],[34.0774264,-118.3873448,"Mar 2026",0],[34.082108,-118.383983,"Mar 2026",0],[34.092783,-118.351126,"Apr 2026",3],[34.090824,-118.358061,"Apr 2026",1],[34.091033,-118.37443,"Apr 2026",0],[34.091033,-118.37443,"Apr 2026",1],[34.090474,-118.370711,"Apr 2026",0],[34.092783,-118.351126,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",0],[34.090779,-118.362757,"Apr 2026",2],[34.094448,-118.363017,"Apr 2026",2],[34.084655,-118.38341,"Apr 2026",0],[34.090505,-118.351584,"Apr 2026",4],[34.090474,-118.370711,"Apr 2026",0],[34.091075,-118.349294,"Apr 2026",0],[34.091033,-118.37443,"Apr 2026",2],[34.090744,-118.365952,"Apr 2026",3],[34.090683,-118.361706,"Apr 2026",2],[34.090811,-118.356688,"Apr 2026",1],[34.090744,-118.365952,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.090798,-118.355365,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",1],[34.090115,-118.367814,"Apr 2026",2],[34.09071,-118.344086,"Apr 2026",1],[34.090115,-118.367814,"Apr 2026",2],[34.091033,-118.37443,"Apr 2026",0],[34.090115,-118.367814,"Apr 2026",2],[34.090115,-118.367814,"Apr 2026",2],[34.09057,-118.367219,"Apr 2026",2],[34.088094,-118.379567,"Apr 2026",0],[34.090716,-118.370302,"Apr 2026",1],[34.09091,-118.385249,"Apr 2026",1],[34.091033,-118.37443,"Apr 2026",1],[34.090918,-118.373724,"Apr 2026",3],[34.090474,-118.370711,"Apr 2026",0],[34.089109,-118.371402,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",0],[34.090779,-118.362757,"Apr 2026",2],[34.09079,-118.361428,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",1],[34.09079,-118.361428,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",1],[34.092783,-118.351126,"Apr 2026",0],[34.090251,-118.371122,"Apr 2026",3],[34.090638,-118.376297,"Apr 2026",2],[34.090779,-118.362757,"Apr 2026",1],[34.091033,-118.37443,"Apr 2026",1],[34.085794,-118.382903,"Apr 2026",3],[34.089569,-118.376341,"Apr 2026",3],[34.090115,-118.374597,"Apr 2026",3],[34.09079,-118.361428,"Apr 2026",1],[34.091033,-118.37443,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",0],[34.086759,-118.381751,"Apr 2026",3],[34.085045,-118.324714,"Apr 2026",3],[34.090474,-118.370711,"Apr 2026",1],[34.092783,-118.351126,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.09071,-118.344086,"Apr 2026",2],[34.088094,-118.379567,"Apr 2026",0],[34.090249,-118.36306,"Apr 2026",1],[34.092783,-118.351126,"Apr 2026",0],[34.090558,-118.362403,"Apr 2026",0],[34.09079,-118.361428,"Apr 2026",3],[34.085056,-118.384429,"Apr 2026",0],[34.090683,-118.361706,"Apr 2026",2],[34.084558,-118.384676,"Apr 2026",0],[34.087659,-118.379841,"Apr 2026",3],[34.09071,-118.344086,"Apr 2026",0],[34.090825,-118.359525,"Apr 2026",0],[34.090825,-118.359525,"Apr 2026",3],[34.09071,-118.344086,"Apr 2026",3],[34.090883,-118.36035,"Apr 2026",1],[34.090825,-118.359525,"Apr 2026",1],[34.090899,-118.345352,"Apr 2026",2],[34.090474,-118.370711,"Apr 2026",1],[34.084644,-118.376125,"Apr 2026",2],[34.090779,-118.362757,"Apr 2026",3],[34.088094,-118.379567,"Apr 2026",2],[34.094338,-118.344111,"Apr 2026",0],[34.082105,-118.383987,"Apr 2026",2],[34.09071,-118.344086,"Apr 2026",1],[34.090744,-118.365952,"Apr 2026",0],[34.091033,-118.37443,"Apr 2026",0],[34.090824,-118.358061,"Apr 2026",0],[34.091032,-118.336561,"Apr 2026",2],[34.090474,-118.370711,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",5],[34.088094,-118.379567,"Apr 2026",0],[34.086637,-118.380949,"Apr 2026",1],[34.092783,-118.351126,"Apr 2026",0],[34.090779,-118.362757,"Apr 2026",1],[34.09071,-118.344086,"Apr 2026",0],[34.090798,-118.355365,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",5],[34.090474,-118.370711,"Apr 2026",3],[34.090638,-118.376297,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",0],[34.091033,-118.37443,"Apr 2026",2],[34.091033,-118.37443,"Apr 2026",2],[34.0903,-118.3617,"Apr 2026",0],[34.091033,-118.37443,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",2],[34.091144,-118.3682,"Apr 2026",0],[34.092065,-118.367232,"Apr 2026",4],[34.091033,-118.37443,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.077363,-118.387622,"Apr 2026",2],[34.090474,-118.370711,"Apr 2026",0],[34.090744,-118.365952,"Apr 2026",3],[34.090474,-118.370711,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.090744,-118.365952,"Apr 2026",0],[34.09071,-118.344086,"Apr 2026",0],[34.085794,-118.382903,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.091353,-118.389776,"Apr 2026",3],[34.088094,-118.379567,"Apr 2026",2],[34.090115,-118.374597,"Apr 2026",4],[34.090779,-118.362757,"Apr 2026",1],[34.074965,-118.380848,"Apr 2026",2],[34.092783,-118.351126,"Apr 2026",0],[34.090779,-118.362757,"Apr 2026",0],[34.09079,-118.361428,"Apr 2026",0],[34.090638,-118.376297,"Apr 2026",2],[34.090779,-118.362757,"Apr 2026",2],[34.087224,-118.361375,"Apr 2026",3],[34.093156,-118.378656,"Apr 2026",4],[34.082421,-118.384009,"Apr 2026",1],[34.084948,-118.384136,"Apr 2026",0],[34.084948,-118.384136,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",5],[34.079284,-118.38177,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.08552,-118.383297,"Apr 2026",0],[34.090512,-118.385826,"Apr 2026",0],[34.090512,-118.385826,"Apr 2026",0],[34.091702,-118.345944,"Apr 2026",1],[34.090779,-118.362757,"Apr 2026",3],[34.090115,-118.367814,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",0],[34.076634,-118.389132,"Apr 2026",2],[34.092783,-118.351126,"Apr 2026",3],[34.091033,-118.37443,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",2],[34.084948,-118.384136,"Apr 2026",0],[34.091033,-118.37443,"Apr 2026",2],[34.092783,-118.351126,"Apr 2026",2],[34.090851,-118.364456,"Apr 2026",3],[34.090474,-118.370711,"Apr 2026",1],[34.089569,-118.376341,"Apr 2026",0],[34.092577,-118.344101,"Apr 2026",3],[34.090414,-118.367162,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",1],[34.082105,-118.383987,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",0],[34.09071,-118.344086,"Apr 2026",2],[34.090438,-118.362927,"Apr 2026",2],[34.0823,-118.3757,"Apr 2026",0],[34.090459,-118.372199,"Apr 2026",1],[34.090765,-118.351142,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",2],[34.092193,-118.380163,"Apr 2026",1],[34.094422,-118.355024,"Apr 2026",0],[34.090851,-118.364456,"Apr 2026",3],[34.09071,-118.344086,"Apr 2026",0],[34.089109,-118.371402,"Apr 2026",3],[34.090251,-118.371122,"Apr 2026",2],[34.090474,-118.370711,"Apr 2026",1],[34.090753,-118.349858,"Apr 2026",1],[34.09071,-118.344086,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",2],[34.092783,-118.351126,"Apr 2026",0],[34.091033,-118.37443,"Apr 2026",1],[34.08391,-118.386049,"Apr 2026",0],[34.076623,-118.379489,"Apr 2026",3],[34.090512,-118.385826,"Apr 2026",4],[34.090638,-118.376297,"Apr 2026",1],[34.089569,-118.376341,"Apr 2026",4],[34.088094,-118.379567,"Apr 2026",0],[34.091014,-118.352564,"Apr 2026",0],[34.090459,-118.374269,"Apr 2026",1],[34.09076,-118.367016,"Apr 2026",1],[34.090779,-118.362757,"Apr 2026",2],[34.09079,-118.361428,"Apr 2026",1],[34.092783,-118.351126,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",2],[34.090824,-118.358061,"Apr 2026",1],[34.084948,-118.384136,"Apr 2026",1],[34.083836,-118.385521,"Apr 2026",0],[34.084251,-118.384511,"Apr 2026",2],[34.09079,-118.361428,"Apr 2026",3],[34.088762,-118.377526,"Apr 2026",0],[34.081462,-118.383652,"Apr 2026",1],[34.087569,-118.383186,"Apr 2026",4],[34.077042,-118.380151,"Apr 2026",0],[34.092783,-118.351126,"Apr 2026",2],[34.0823,-118.3757,"Apr 2026",0],[34.09071,-118.344086,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",6],[34.092639,-118.376289,"Apr 2026",3],[34.090744,-118.365952,"Apr 2026",3],[34.090474,-118.370711,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",0],[34.090744,-118.365952,"Apr 2026",1],[34.090459,-118.374269,"Apr 2026",0],[34.08391,-118.386049,"Apr 2026",0],[34.090474,-118.370711,"Apr 2026",6],[34.090512,-118.385826,"Apr 2026",2],[34.084948,-118.384136,"Apr 2026",3],[34.089569,-118.376341,"Apr 2026",1],[34.090638,-118.376297,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",2],[34.091033,-118.37443,"Apr 2026",2],[34.08669,-118.381834,"Apr 2026",4],[34.088094,-118.379567,"Apr 2026",2],[34.09076,-118.367016,"Apr 2026",1],[34.090638,-118.376297,"Apr 2026",1],[34.09071,-118.344086,"Apr 2026",3],[34.088094,-118.379567,"Apr 2026",3],[34.090251,-118.371122,"Apr 2026",4],[34.090638,-118.376297,"Apr 2026",3],[34.090952,-118.38945,"Apr 2026",0],[34.090846,-118.37585,"Apr 2026",2],[34.090474,-118.370711,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",1],[34.088094,-118.379567,"Apr 2026",2],[34.090474,-118.370711,"Apr 2026",0],[34.091147,-118.349916,"Apr 2026",4],[34.091033,-118.37443,"Apr 2026",2],[34.090474,-118.370711,"Apr 2026",3],[34.087079,-118.385248,"Apr 2026",0],[34.088094,-118.379567,"Apr 2026",0],[34.0803, -118.3862, "May 2026", 1],[34.0816, -118.3875, "May 2026", 1],[34.0803, -118.3699, "May 2026", 0],[34.0803, -118.3614, "May 2026", 0],[34.0803, -118.3581, "May 2026", 1],[34.0803, -118.3614, "May 2026", 0],[34.095326, -118.371718, "May 2026", 2],[34.090744, -118.365952, "May 2026", 1],[34.090779, -118.362757, "May 2026", 1],[34.090824, -118.358061, "May 2026", 0],[34.0803, -118.37, "May 2026", 2],[34.090744, -118.365952, "May 2026", 3],[34.090779, -118.362757, "May 2026", 1],[34.082421, -118.384009, "May 2026", 5],[34.090779, -118.362757, "May 2026", 5],[34.084558, -118.384676, "May 2026", 5],[34.0803, -118.3799, "May 2026", 0],[34.090398, -118.343611, "May 2026", 3],[34.092783, -118.351126, "May 2026", 5],[34.0835, -118.3869, "May 2026", 2],[34.0803, -118.3699, "May 2026", 1],[34.0835, -118.3869, "May 2026", 2],[34.090474, -118.370711, "May 2026", 3],[34.082105, -118.383987, "May 2026", 1],[34.090753, -118.349858, "May 2026", 1],[34.088457, -118.384198, "May 2026", 0],[34.090779, -118.362757, "May 2026", 1],[34.082421, -118.384009, "May 2026", 0],[34.090996, -118.372752, "May 2026", 2],[34.090779, -118.362757, "May 2026", 1],[34.090725, -118.346256, "May 2026", 0],[34.0803, -118.37, "May 2026", 0],[34.083836, -118.385521, "May 2026", 0],[34.090751, -118.349101, "May 2026", 1],[34.090996, -118.372752, "May 2026", 0],[34.09071, -118.344086, "May 2026", 1],[34.090754, -118.368076, "May 2026", 0],[34.090779, -118.362757, "May 2026", 2],[34.092783, -118.351126, "May 2026", 0],[34.082105, -118.383987, "May 2026", 0],[34.0843, -118.3825, "May 2026", 0],[34.085682, -118.384273, "May 2026", 0],[34.090825, -118.359525, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.0803, -118.3614, "May 2026", 0],[34.0803, -118.3799, "May 2026", 2],[34.092783, -118.351126, "May 2026", 2],[34.090952, -118.38945, "May 2026", 0],[34.0813, -118.3844, "May 2026", 0],[34.0803, -118.3699, "May 2026", 0],[34.090694, -118.371767, "May 2026", 1],[34.082421, -118.384009, "May 2026", 0],[34.092783, -118.351126, "May 2026", 0],[34.090779, -118.362757, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.090779, -118.362757, "May 2026", 2],[34.082105, -118.383987, "May 2026", 2],[34.090618, -118.389771, "May 2026", 6],[34.090474, -118.370711, "May 2026", 0],[34.089617, -118.378019, "May 2026", 3],[34.092783, -118.351126, "May 2026", 1],[34.090694, -118.371767, "May 2026", 1],[34.090744, -118.365952, "May 2026", 4],[34.076623, -118.379489, "May 2026", 5],[34.09079, -118.361428, "May 2026", 2],[34.087985, -118.379004, "May 2026", 2],[34.082421, -118.384009, "May 2026", 5],[34.089394, -118.377056, "May 2026", 5],[34.090618, -118.389771, "May 2026", 6],[34.082421, -118.384009, "May 2026", 1],[34.082421, -118.384009, "May 2026", 2],[34.082421, -118.384009, "May 2026", 0],[34.090438, -118.362927, "May 2026", 0],[34.090751, -118.349101, "May 2026", 2],[34.090438, -118.362927, "May 2026", 0],[34.092783, -118.351126, "May 2026", 0],[34.091056, -118.363204, "May 2026", 2],[34.092783, -118.351126, "May 2026", 1],[34.090996, -118.372752, "May 2026", 0],[34.091056, -118.363204, "May 2026", 4],[34.09071, -118.344086, "May 2026", 0],[34.090996, -118.372752, "May 2026", 6],[34.08391, -118.386049, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.09071, -118.344086, "May 2026", 0],[34.092783, -118.351126, "May 2026", 2],[34.090744, -118.365952, "May 2026", 0],[34.090618, -118.389771, "May 2026", 6],[34.092783, -118.351126, "May 2026", 2],[34.092783, -118.351126, "May 2026", 1],[34.090457, -118.374786, "May 2026", 0],[34.094338, -118.344111, "May 2026", 6],[34.092783, -118.351126, "May 2026", 1],[34.090457, -118.374786, "May 2026", 0],[34.092841, -118.353289, "May 2026", 0],[34.092783, -118.351126, "May 2026", 1],[34.092783, -118.351126, "May 2026", 0],[34.080855, -118.389766, "May 2026", 3],[34.083035, -118.386672, "May 2026", 0],[34.09071, -118.344086, "May 2026", 0],[34.090972, -118.382869, "May 2026", 1],[34.082105, -118.383987, "May 2026", 2],[34.0803, -118.3862, "May 2026", 6],[34.090967, -118.368102, "May 2026", 4],[34.0803, -118.3699, "May 2026", 1],[34.09064, -118.373951, "May 2026", 0],[34.092783, -118.351126, "May 2026", 0],[34.090455, -118.374774, "May 2026", 0],[34.08552, -118.383297, "May 2026", 2],[34.084558, -118.384676, "May 2026", 3],[34.077179, -118.395566, "May 2026", 2],[34.082421, -118.384009, "May 2026", 0],[34.0803, -118.3862, "May 2026", 0],[34.090744, -118.365952, "May 2026", 3],[34.090618, -118.389771, "May 2026", 0],[34.094338, -118.344111, "May 2026", 5],[34.089455, -118.376894, "May 2026", 1],[34.0803, -118.3862, "May 2026", 1],[34.090618, -118.389771, "May 2026", 1],[34.089109, -118.371402, "May 2026", 1],[34.089109, -118.371402, "May 2026", 1],[34.089109, -118.371402, "May 2026", 1],[34.085752, -118.383405, "May 2026", 0],[34.092486, -118.370712, "May 2026", 4],[34.088094, -118.379567, "May 2026", 0],[34.090744, -118.365952, "May 2026", 0],[34.081355, -118.383231, "May 2026", 0],[34.081355, -118.383231, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.090618, -118.389771, "May 2026", 0],[34.09079, -118.361428, "May 2026", 6],[34.093895, -118.343798, "May 2026", 5],[34.082421, -118.384009, "May 2026", 0],[34.091011, -118.355965, "May 2026", 0],[34.089569, -118.376341, "May 2026", 0],[34.090779, -118.362757, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.087264, -118.380059, "May 2026", 1],[34.087434, -118.380686, "May 2026", 1],[34.090744, -118.365952, "May 2026", 3],[34.081745, -118.37555, "May 2026", 6],[34.090638, -118.376297, "May 2026", 1],[34.090996, -118.372752, "May 2026", 0],[34.092783, -118.351126, "May 2026", 0],[34.090457, -118.374786, "May 2026", 1],[34.090101, -118.374246, "May 2026", 3],[34.090197, -118.362511, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.082105, -118.383987, "May 2026", 0],[34.090709, -118.370328, "May 2026", 6],[34.090728, -118.383352, "May 2026", 6],[34.090618, -118.389771, "May 2026", 0],[34.092783, -118.351126, "May 2026", 1],[34.0803, -118.3799, "May 2026", 3],[34.090753, -118.349858, "May 2026", 2],[34.082421, -118.384009, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.082421, -118.384009, "May 2026", 0],[34.09663, -118.361978, "May 2026", 6],[34.090996, -118.372752, "May 2026", 0],[34.091144, -118.3682, "May 2026", 2],[34.0803, -118.37, "May 2026", 0],[34.090744, -118.365952, "May 2026", 1],[34.09071, -118.344086, "May 2026", 1],[34.082421, -118.384009, "May 2026", 0],[34.090967, -118.368102, "May 2026", 1],[34.090495, -118.372826, "May 2026", 0],[34.090457, -118.374786, "May 2026", 0],[34.090694, -118.371767, "May 2026", 2],[34.0803, -118.3699, "May 2026", 0],[34.090996, -118.372752, "May 2026", 0],[34.090342, -118.373917, "May 2026", 0],[34.090974, -118.383239, "May 2026", 6],[34.091947, -118.345949, "May 2026", 4],[34.089109, -118.371402, "May 2026", 1],[34.090952, -118.38945, "May 2026", 1],[34.090618, -118.389771, "May 2026", 1],[34.077189, -118.389742, "May 2026", 0],[34.076623, -118.379489, "May 2026", 0],[34.090694, -118.371767, "May 2026", 3],[34.085192, -118.384117, "May 2026", 3],[34.090474, -118.370711, "May 2026", 3],[34.09071, -118.344086, "May 2026", 1],[34.094, -118.3615, "May 2026", 3],[34.092783, -118.351126, "May 2026", 0],[34.090618, -118.389771, "May 2026", 0],[34.091144, -118.3682, "May 2026", 3],[34.09079, -118.361428, "May 2026", 1],[34.090474, -118.370711, "May 2026", 2],[34.090996, -118.372752, "May 2026", 4],[34.082386, -118.38573, "May 2026", 0],[34.090779, -118.362757, "May 2026", 0],[34.0803, -118.37, "May 2026", 0],[34.094518, -118.346035, "May 2026", 1],[34.082105, -118.383987, "May 2026", 0],[34.0803, -118.3584, "May 2026", 1],[34.092783, -118.351126, "May 2026", 1],[34.090779, -118.362757, "May 2026", 1],[34.090468, -118.341437, "May 2026", 0],[34.090558, -118.362403, "May 2026", 0],[34.09071, -118.344086, "May 2026", 0],[34.092783, -118.351126, "May 2026", 2],[34.090779, -118.362757, "May 2026", 1],[34.091144, -118.3682, "May 2026", 1],[34.082109, -118.376794, "May 2026", 1],[34.078223, -118.383706, "May 2026", 0],[34.078223, -118.383706, "May 2026", 1],[34.090825, -118.359525, "May 2026", 2],[34.085682, -118.384273, "May 2026", 1],[34.080661, -118.38786, "May 2026", 1],[34.07654, -118.38409, "May 2026", 0],[34.090744, -118.365952, "May 2026", 0],[34.092379, -118.347963, "May 2026", 6],[34.097044, -118.364217, "May 2026", 6],[34.097044, -118.364217, "May 2026", 6],[34.090638, -118.376297, "May 2026", 1],[34.090996, -118.372752, "May 2026", 0],[34.090754, -118.368076, "May 2026", 3],[34.0882, -118.3797, "May 2026", 0],[34.092783, -118.351126, "May 2026", 1],[34.090618, -118.389771, "May 2026", 0],[34.090618, -118.389771, "May 2026", 0],[34.089783,-118.370578,"Jun 2026",1],[34.077189,-118.389742,"Jun 2026",3],[34.076623,-118.379489,"Jun 2026",0],[34.090694,-118.371767,"Jun 2026",3],[34.085192,-118.384117,"Jun 2026",3],[34.089783,-118.370578,"Jun 2026",3],[34.091665,-118.344538,"Jun 2026",2],[34.088783,-118.36157,"Jun 2026",3],[34.092616,-118.351403,"Jun 2026",0],[34.090618,-118.389771,"Jun 2026",1],[34.091144,-118.3682,"Jun 2026",3],[34.09079,-118.361428,"Jun 2026",0],[34.08391,-118.386049,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",2],[34.1016,-118.3269,"Jun 2026",2],[34.090455,-118.374774,"Jun 2026",4],[34.089783,-118.370578,"Jun 2026",1],[34.089783,-118.370578,"Jun 2026",2],[34.089783,-118.370578,"Jun 2026",2],[34.082386,-118.38573,"Jun 2026",0],[34.091082,-118.344632,"Jun 2026",1],[34.091082,-118.344632,"Jun 2026",2],[34.094518,-118.346035,"Jun 2026",1],[34.082108,-118.383983,"Jun 2026",0],[34.090776,-118.353293,"Jun 2026",2],[34.092616,-118.351403,"Jun 2026",1],[34.090779,-118.362757,"Jun 2026",0],[34.090468,-118.341437,"Jun 2026",0],[34.090558,-118.362403,"Jun 2026",0],[34.09071,-118.344086,"Jun 2026",0],[34.092616,-118.351403,"Jun 2026",2],[34.090779,-118.362757,"Jun 2026",1],[34.091144,-118.3682,"Jun 2026",0],[34.082109,-118.376794,"Jun 2026",0],[34.078223,-118.383706,"Jun 2026",1],[34.078223,-118.383706,"Jun 2026",1],[34.090825,-118.359525,"Jun 2026",2],[34.085794,-118.382903,"Jun 2026",0],[34.085596,-118.384326,"Jun 2026",0],[34.080661,-118.38786,"Jun 2026",2],[34.07654,-118.38409,"Jun 2026",0],[34.090744,-118.365952,"Jun 2026",0],[34.092379,-118.347963,"Jun 2026",1],[34.097044,-118.364217,"Jun 2026",0],[34.090638,-118.376297,"Jun 2026",0],[34.090853,-118.39002,"Jun 2026",0],[34.090455,-118.374774,"Jun 2026",0],[34.090754,-118.368076,"Jun 2026",3],[34.090455,-118.374774,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",0],[34.09093,-118.370555,"Jun 2026",0],[34.092616,-118.351403,"Jun 2026",1],[34.090618,-118.389771,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",2],[34.09079,-118.361428,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",1],[34.090779,-118.362757,"Jun 2026",0],[34.094422,-118.355024,"Jun 2026",0],[34.090734,-118.369148,"Jun 2026",2],[34.090455,-118.374774,"Jun 2026",2],[34.091518,-118.368416,"Jun 2026",4],[34.090638,-118.376297,"Jun 2026",0],[34.085596,-118.384326,"Jun 2026",0],[34.090637,-118.388575,"Jun 2026",0],[34.082068,-118.385352,"Jun 2026",0],[34.090455,-118.374774,"Jun 2026",0],[34.085596,-118.384326,"Jun 2026",0],[34.081745,-118.37555,"Jun 2026",1],[34.090853,-118.39002,"Jun 2026",0],[34.089406,-118.371305,"Jun 2026",2],[34.082778,-118.384444,"Jun 2026",1],[34.080855,-118.389766,"Jun 2026",0],[34.098045,-118.355034,"Jun 2026",2],[34.09093,-118.370555,"Jun 2026",0],[34.090744,-118.365952,"Jun 2026",2],[34.089783,-118.370578,"Jun 2026",1],[34.089783,-118.370578,"Jun 2026",2],[34.090779,-118.362757,"Jun 2026",0],[34.0894,-118.3782,"Jun 2026",0],[34.0852,-118.3808,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",2],[34.092616,-118.351403,"Jun 2026",0],[34.090635,-118.38447,"Jun 2026",0],[34.088639,-118.360229,"Jun 2026",2],[34.090545,-118.368366,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",2],[34.090618,-118.389771,"Jun 2026",0],[34.092616,-118.351403,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",1],[34.091795,-118.346117,"Jun 2026",0],[34.1016,-118.3269,"Jun 2026",2],[34.076244,-118.379936,"Jun 2026",5],[34.086759,-118.381751,"Jun 2026",2],[34.090476,-118.361693,"Jun 2026",0],[34.090744,-118.365952,"Jun 2026",0],[34.090853,-118.39002,"Jun 2026",4],[34.092616,-118.351403,"Jun 2026",1],[34.092616,-118.351403,"Jun 2026",0],[34.082068,-118.385352,"Jun 2026",0],[34.090754,-118.368076,"Jun 2026",4],[34.090251,-118.371122,"Jun 2026",1],[34.083836,-118.385521,"Jun 2026",0],[34.09079,-118.361428,"Jun 2026",0],[34.083836,-118.385521,"Jun 2026",0],[34.090853,-118.39002,"Jun 2026",0],[34.090853,-118.39002,"Jun 2026",2],[34.082778,-118.384444,"Jun 2026",0],[34.082778,-118.384444,"Jun 2026",0],[34.092616,-118.351403,"Jun 2026",0],[34.090455,-118.374774,"Jun 2026",2],[34.090459,-118.374269,"Jun 2026",2],[34.092616,-118.351403,"Jun 2026",1],[34.085233,-118.383976,"Jun 2026",0],[34.091795,-118.346117,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",2],[34.090753,-118.349858,"Jun 2026",3],[34.087659,-118.379841,"Jun 2026",0],[34.090851,-118.364456,"Jun 2026",0],[34.076357,-118.373401,"Jun 2026",2],[34.092832,-118.349814,"Jun 2026",2],[34.082108,-118.383983,"Jun 2026",2],[34.089783,-118.370578,"Jun 2026",2],[34.089783,-118.370578,"Jun 2026",2],[34.087254,-118.385543,"Jun 2026",0],[34.092621,-118.349762,"Jun 2026",4],[34.090779,-118.362757,"Jun 2026",0],[34.090779,-118.362757,"Jun 2026",0],[34.081745,-118.37555,"Jun 2026",1],[34.087254,-118.385543,"Jun 2026",2],[34.076623,-118.379489,"Jun 2026",0],[34.091795,-118.346117,"Jun 2026",3],[34.090964,-118.347802,"Jun 2026",1],[34.089783,-118.370578,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",0],[34.09071,-118.344086,"Jun 2026",3],[34.080855,-118.389766,"Jun 2026",1],[34.077363,-118.387622,"Jun 2026",0],[34.090725,-118.346256,"Jun 2026",0],[34.09071,-118.344086,"Jun 2026",0],[34.091795,-118.346117,"Jun 2026",0],[34.090381,-118.386375,"Jun 2026",0],[34.089394,-118.377056,"Jun 2026",4],[34.084447,-118.384387,"Jun 2026",0],[34.090779,-118.362757,"Jun 2026",0],[34.090455,-118.374774,"Jun 2026",0],[34.090725,-118.346256,"Jun 2026",2],[34.087463,-118.380485,"Jun 2026",2],[34.087463,-118.380485,"Jun 2026",2],[34.089435,-118.375869,"Jun 2026",2],[34.090853,-118.39002,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",1],[34.089783,-118.370578,"Jun 2026",1],[34.090638,-118.376297,"Jun 2026",0],[34.082778,-118.384444,"Jun 2026",3],[34.092616,-118.351403,"Jun 2026",2],[34.1016,-118.3269,"Jun 2026",2],[34.090459,-118.374269,"Jun 2026",0],[34.090779,-118.362757,"Jun 2026",2],[34.092616,-118.351403,"Jun 2026",1],[34.092616,-118.351403,"Jun 2026",0],[34.089436,-118.35879,"Jun 2026",0],[34.085484,-118.384325,"Jun 2026",3],[34.0888,-118.3505,"Jun 2026",2],[34.090798,-118.390067,"Jun 2026",0],[34.090952,-118.38945,"Jun 2026",0],[34.080855,-118.389766,"Jun 2026",0],[34.089,-118.3627,"Jun 2026",0],[34.081707,-118.385288,"Jun 2026",5],[34.092616,-118.351403,"Jun 2026",0],[34.09233,-118.352078,"Jun 2026",4],[34.090249,-118.36306,"Jun 2026",3],[34.090566,-118.367809,"Jun 2026",0],[34.088933,-118.361901,"Jun 2026",0],[34.0874,-118.380812,"Jun 2026",0],[34.0893,-118.3671,"Jun 2026",3],[34.090618,-118.389771,"Jun 2026",4],[34.089892,-118.375009,"Jun 2026",0],[34.086739,-118.382568,"Jun 2026",4],[34.092577,-118.344101,"Jun 2026",1],[34.090268,-118.379398,"Jun 2026",0],[34.087659,-118.379841,"Jun 2026",1],[34.090694,-118.371767,"Jun 2026",0],[34.090694,-118.371767,"Jun 2026",0],[34.090372,-118.375345,"Jun 2026",0],[34.09079,-118.361428,"Jun 2026",1],[34.090853,-118.39002,"Jun 2026",2],[34.0894,-118.3782,"Jun 2026",4],[34.0894,-118.386,"Jun 2026",0],[34.090455,-118.374774,"Jun 2026",1],[34.083665,-118.371746,"Jun 2026",0],[34.09071,-118.344086,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",0],[34.090875,-118.347507,"Jun 2026",0],[34.090268,-118.379398,"Jun 2026",3],[34.090779,-118.362757,"Jun 2026",0],[34.090372,-118.375345,"Jun 2026",0],[34.092982,-118.345407,"Jun 2026",0],[34.090744,-118.365952,"Jun 2026",0],[34.092982,-118.345407,"Jun 2026",4],[34.092616,-118.351403,"Jun 2026",0],[34.082778,-118.384444,"Jun 2026",0],[34.089783,-118.370578,"Jun 2026",0],[34.090372,-118.375345,"Jun 2026",0]];
 const HCL_BY_MONTH = {"Jul 2025":{"total":34,"days":16,"reasons":[16,0,10,7,1,0,0],"outcomes":[19,7,4,4],"time":[2,8,12,12,0],"dow":[0,6,6,9,10,3,0]},"Aug 2025":{"total":68,"days":31,"reasons":[41,0,11,11,2,3,0],"outcomes":[32,6,11,19],"time":[11,15,20,22,0],"dow":[1,12,15,17,12,11,0]},"Sep 2025":{"total":80,"days":30,"reasons":[53,0,9,4,8,6,0],"outcomes":[27,16,15,22],"time":[10,18,28,19,5],"dow":[0,17,18,8,16,16,5]},"Oct 2025":{"total":67,"days":31,"reasons":[21,7,9,18,5,7,0],"outcomes":[26,14,17,10],"time":[9,14,22,19,2],"dow":[1,19,12,9,12,10,4]},"Nov 2025":{"total":107,"days":30,"reasons":[27,32,25,22,0,1,0],"outcomes":[44,28,18,17],"time":[19,22,28,25,0],"dow":[19,13,9,16,12,21,17]},"Dec 2025":{"total":136,"days":31,"reasons":[54,8,30,39,2,3,0],"outcomes":[46,33,34,23],"time":[28,37,48,20,3],"dow":[12,22,18,30,10,19,25]},"Jan 2026":{"total":191,"days":31,"reasons":[79,37,29,29,8,9,0],"outcomes":[74,55,34,28],"time":[52,45,56,37,1],"dow":[18,25,37,11,27,49,24]},"Feb 2026":{"total":212,"days":28,"reasons":[66,44,38,28,7,29,0],"outcomes":[86,59,40,27],"time":[59,66,50,31,6],"dow":[41,21,22,24,41,39,24]},"Mar 2026":{"total":239,"days":31,"reasons":[156,13,42,13,4,11,0],"outcomes":[98,69,46,26],"time":[40,75,64,52,8],"dow":[41,38,33,33,32,35,27]},"Apr 2026":{"total":251,"days":30,"reasons":[97,51,51,33,10,7,2],"outcomes":[99,45,45,62],"time":[92,61,91,7,0],"dow":[25,34,29,41,50,36,36]},"May 2026":{"total":248,"days":31,"reasons":[102,59,29,17,6,20,15],"outcomes":[81,31,21,115],"time":[55,69,63,54,7],"dow":[44,28,44,31,32,38,31]},"Jun 2026":{"total":215,"days":30,"reasons":[108,31,47,15,11,3,0],"outcomes":[97,30,29,59],"time":[55,58,59,42,1],"dow":[23,35,37,30,30,29,31]}};
 const PIT_MO_2025 = {"Jan": 59, "Feb": 52, "Mar": 55, "Apr": 55, "May": 59, "Jun": 53, "Jul": 55, "Aug": 53, "Sep": 52};
-const PIT_YR_AVGS = [30.4, 38.8, 49.5, 43.4, 39.4, 41.7, 47.1, 51.4, 55];
-const PIT_YR_LBLS = ["2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"];
+const PIT_YR_AVGS = [30.4, 38.8, 49.5, 43.4, 39.4, 41.7, 47.1, 51.4, 55, 62.5];
+const PIT_YR_LBLS = ["2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"];
 const PIT_MONTHS9 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
+/* ── 2026 PIT: quarterly observation counts ──
+   Starting 2026 the City moved from monthly to quarterly field counts.
+   Add a quarter by filling its value below; null = not yet reported. */
+const PIT_PTS_2026 = [[34.090851, -118.364456, 1, "S/m & Laural AAME Walking", "Apr 2026", 2026, 4], [34.09079, -118.361428, 1, "S/m & Fairfax Post Office", "Apr 2026", 2026, 4], [34.095232, -118.372759, 1, "Sunset & Kings Rd Near Park", "Apr 2026", 2026, 4], [34.082778, -118.384444, 1, "Hart Park Dog Area", "Apr 2026", 2026, 4], [34.094367, -118.376382, 2, "Sunset & Miller Bus Stop", "Apr 2026", 2026, 4], [34.092193, -118.380163, 2, "Sunset & Loma Coffee Shop", "Apr 2026", 2026, 4], [34.096531, -118.370378, 1, "Sunset & Sweetzer Bus Stop", "Apr 2026", 2026, 4], [34.090851, -118.364456, 1, "S/m & Laural Gas Station", "Apr 2026", 2026, 4], [34.09079, -118.361428, 1, "S/m & Fairfax Bus Stop", "Apr 2026", 2026, 4], [34.087202, -118.362701, 1, "S/m & Willoughby Bus Stop", "Apr 2026", 2026, 4], [34.081355, -118.383231, 2, "Melrose & San Vicente Bus Stop", "Apr 2026", 2026, 4], [34.089569, -118.376341, 4, "S/m & La Cienega Bank of America", "Apr 2026", 2026, 4], [34.090459, -118.374269, 2, "S/m & Holloway Dr 7-Eleven", "Apr 2026", 2026, 4], [34.09079, -118.361428, 2, "S/m & Fairfax Dental Office", "Apr 2026", 2026, 4], [34.09079, -118.361428, 1, "S/m & Fairfax Bus Stop", "Apr 2026", 2026, 4], [34.090459, -118.374269, 1, "S/m & Holloway Dr Holloway Park", "Apr 2026", 2026, 4], [34.090753, -118.349858, 1, "S/m & Fuller Bus Stop", "Apr 2026", 2026, 4], [34.09071, -118.344086, 1, "SMB & La Brea / Genesee Oakden", "Apr 2026", 2026, 4], [34.090753, -118.349858, 2, "SMB & Fuller Bus Stop", "Apr 2026", 2026, 4], [34.092616, -118.351403, 1, "Plummer Park Car Wash", "Apr 2026", 2026, 4], [34.092616, -118.351403, 6, "Plummer Park Person in Vehicle", "Apr 2026", 2026, 4], [34.092616, -118.351403, 3, "Plummer Park Person in Vehicle", "Apr 2026", 2026, 4], [34.090776, -118.353293, 1, "SMB & Gardner St Bus Stop", "Apr 2026", 2026, 4], [34.090798, -118.355365, 1, "SMB & Curson Ave Sidewalk", "Apr 2026", 2026, 4], [34.09079, -118.361428, 3, "SMB & Fairfax Bus Stop", "Apr 2026", 2026, 4], [34.090744, -118.365952, 1, "SMB & Crescent Heights Bus Stop", "Apr 2026", 2026, 4], [34.090754, -118.368076, 1, "SMB & La Jolla Bus Stop", "Apr 2026", 2026, 4], [34.090716, -118.370302, 2, "SMB & Sweetzer Bus Stop", "Apr 2026", 2026, 4], [34.089569, -118.376341, 2, "SMB & La Cienega Bus Stop", "Apr 2026", 2026, 4], [34.088762, -118.377526, 1, "SMB & W. Knoll Sidewalk", "Apr 2026", 2026, 4], [34.087659, -118.379841, 2, "SMB & Westbourne Dr Sidewalk", "Apr 2026", 2026, 4], [34.085794, -118.382903, 1, "SMB & Palm Ave Bus Stop", "Apr 2026", 2026, 4], [34.084948, -118.384136, 1, "SMB & San Vicente Sidewalk", "Apr 2026", 2026, 4], [34.082778, -118.384444, 3, "Doheny-WeHo Park", "Apr 2026", 2026, 4], [34.090459, -118.389773, 1, "Doheny Dr Sidewalk", "Apr 2026", 2026, 4]];
+const PIT_PTS_2026_JAN = [[34.09071, -118.34408, 1, "La Brea & Santa Monica \u2014 Bus stop / Target", "Jan 2026", 2026, 1], [34.09262, -118.3514, 1, "Plummer Park \u2014 Tennis", "Jan 2026", 2026, 1], [34.09262, -118.3514, 1, "Plummer Park (parking lot) \u2014 Parking lot", "Jan 2026", 2026, 1], [34.08495, -118.38414, 1, "Santa Monica & San Vicente \u2014 Fire station", "Jan 2026", 2026, 1], [34.09082, -118.35806, 1, "Santa Monica & Genesee \u2014 Deli", "Jan 2026", 2026, 1], [34.09078, -118.36276, 1, "Santa Monica & Hayworth \u2014 7-Eleven", "Jan 2026", 2026, 1], [34.09078, -118.36276, 1, "Santa Monica & Hayworth \u2014 Pass 7-Eleven", "Jan 2026", 2026, 1], [34.09079, -118.36143, 1, "Santa Monica & Fairfax \u2014 Bus stop", "Jan 2026", 2026, 1], [34.09085, -118.36446, 1, "Santa Monica & Laurel \u2014 Inside parking", "Jan 2026", 2026, 1], [34.09085, -118.36446, 1, "Santa Monica & Laurel \u2014 Parking lot", "Jan 2026", 2026, 1], [34.0908, -118.3635, 1, "Santa Monica & Lydell \u2014 Bus stop", "Jan 2026", 2026, 1], [34.09072, -118.3703, 1, "Santa Monica & Sweetzer \u2014 By trash / parking lot", "Jan 2026", 2026, 1], [34.09046, -118.37427, 2, "Santa Monica & Holloway \u2014 Burney / pharmacy", "Jan 2026", 2026, 1], [34.08957, -118.37634, 1, "Santa Monica & La Cienega Blvd \u2014 Bus stop", "Jan 2026", 2026, 1], [34.08798, -118.379, 1, "Santa Monica & Westmount \u2014 Supercuts", "Jan 2026", 2026, 1], [34.08766, -118.37984, 1, "Santa Monica & Westbourne \u2014 Bus stop", "Jan 2026", 2026, 1], [34.0878, -118.3805, 1, "Santa Monica & Lombard \u2014 Bus stop", "Jan 2026", 2026, 1], [34.08384, -118.38552, 1, "Santa Monica & Robertson \u2014 Casa Migos", "Jan 2026", 2026, 1], [34.0865, -118.382, 1, "Santa Monica & Rampart \u2014 Bus stop", "Jan 2026", 2026, 1], [34.08384, -118.38552, 1, "Santa Monica & Robertson \u2014 By the light", "Jan 2026", 2026, 1], [34.08456, -118.38468, 1, "Santa Monica & Hilldale \u2014 Bank of America", "Jan 2026", 2026, 1], [34.08303, -118.38667, 3, "Santa Monica & La Peer Dr \u2014 Pavilions", "Jan 2026", 2026, 1], [34.08278, -118.38444, 2, "WeHo Park Library \u2014 Library", "Jan 2026", 2026, 1], [34.08439, -118.38349, 1, "Santa Monica & San Vicente \u2014 Sheriff station", "Jan 2026", 2026, 1], [34.08278, -118.38444, 1, "WeHo Park \u2014 Dog park", "Jan 2026", 2026, 1], [34.08081, -118.38552, 1, "Melrose & Robertson \u2014 Surf shop", "Jan 2026", 2026, 1], [34.08579, -118.3829, 1, "Santa Monica & Palm \u2014 Car wash", "Jan 2026", 2026, 1], [34.082, -118.37653, 1, "Melrose & La Cienega \u2014 Bus stop", "Jan 2026", 2026, 1], [34.09074, -118.36595, 4, "Santa Monica & Crescent Heights \u2014 Bus stop", "Jan 2026", 2026, 1], [34.09064, -118.3763, 1, "Holloway and La Cienega \u2014 Weho Bistro", "Jan 2026", 2026, 1], [34.09079, -118.36143, 1, "Santa Monica and Fairfax \u2014 Whole Foods", "Jan 2026", 2026, 1], [34.09082, -118.35806, 1, "SB and Genesee \u2014 Alley behind eye specialist", "Jan 2026", 2026, 1], [34.09082, -118.35806, 1, "Down SB (near Genesee) \u2014 Near bus stop", "Jan 2026", 2026, 1], [34.09434, -118.34411, 1, "La Brea and Fountain \u2014 Exer Urgent Care", "Jan 2026", 2026, 1], [34.09434, -118.34411, 1, "La Brea and Fountain \u2014 Ralphs store", "Jan 2026", 2026, 1], [34.092, -118.344, 1, "La Brea Ave \u2014 Premium Collision", "Jan 2026", 2026, 1], [34.09071, -118.34408, 1, "La Brea and SB \u2014 The Melt", "Jan 2026", 2026, 1], [34.09075, -118.36808, 1, "Santa Monica and La Jolla \u2014 By donut shop", "Jan 2026", 2026, 1], [34.08495, -118.38414, 1, "SB and San Vicente \u2014 By bus stop", "Jan 2026", 2026, 1], [34.09437, -118.37638, 1, "Sunset and La Cienega \u2014 By bus stop", "Jan 2026", 2026, 1], [34.09539, -118.37155, 2, "Flores St & De Longpre Ave \u2014 Hart Park", "Jan 2026", 2026, 1], [34.09797, -118.36747, 1, "Havenhurst and Sunset \u2014 On street", "Jan 2026", 2026, 1], [34.09074, -118.36595, 1, "SB and Crescent Heights \u2014 Sleeping on a bench", "Jan 2026", 2026, 1], [34.098, -118.36565, 1, "Crescent Heights & Sunset \u2014 Bus stop @ Chevron", "Jan 2026", 2026, 1], [34.098, -118.36565, 1, "Crescent Heights & Sunset \u2014 By pole", "Jan 2026", 2026, 1], [34.098, -118.36565, 1, "Crescent Heights & Sunset \u2014 By bus stop", "Jan 2026", 2026, 1], [34.098, -118.36565, 1, "Crescent Heights & Sunset \u2014 W/ dog", "Jan 2026", 2026, 1], [34.09085, -118.36446, 1, "Ellenberg & Santa Monica \u2014 By Laurel Pet Hospital", "Jan 2026", 2026, 1], [34.09078, -118.36276, 1, "Hayworth & SB \u2014 7/11", "Jan 2026", 2026, 1], [34.09079, -118.36143, 1, "Santa Monica & Fairfax \u2014 Jennings Store", "Jan 2026", 2026, 1], [34.09079, -118.36143, 2, "Santa Monica & Fairfax \u2014 Whole Foods Bus Stop", "Jan 2026", 2026, 1], [34.082, -118.37653, 1, "La Cienega & Melrose \u2014 Real Real store / bus stop", "Jan 2026", 2026, 1], [34.08384, -118.38552, 1, "Robertson & SB \u2014 Werle Building", "Jan 2026", 2026, 1], [34.08798, -118.379, 3, "Santa Monica & Westmount Dr \u2014 By Trader J & Body Energy", "Jan 2026", 2026, 1], [34.08957, -118.37634, 1, "La Cienega Blvd & SB \u2014 WeHo Wine & Spirits", "Jan 2026", 2026, 1], [34.09739, -118.36493, 1, "8000 W Sunset Blvd \u2014 In front of CVS", "Jan 2026", 2026, 1]];
+PIT_PTS.push(...PIT_PTS_2026, ...PIT_PTS_2026_JAN);
+const PIT_Q_2026 = { "Q1": 67, "Q2": 58, "Q3": null, "Q4": null };
+const PIT_Q_META = {
+  "Q1": { span:"Jan\u2013Mar 2026", date:"Jan 15, 2026", locations:56, raw:84 },
+  "Q2": { span:"Apr\u2013Jun 2026", date:"Apr 23, 2026", locations:35, program:"Healthcare in Action" },
+  "Q3": { span:"Jul\u2013Sep 2026" },
+  "Q4": { span:"Oct\u2013Dec 2026" }
+};
+const PIT_QTRS = ["Q1","Q2","Q3","Q4"];
 
+
+const SRC_ICON = { city: '<svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="4" width="14" height="17" rx="1"/><path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01"/><path d="M10 21v-3.5h4V21"/></svg> ', grant: '<svg class="oico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l2.3-2.3a4 4 0 0 0-5.7-5.7L11 7.3"/><path d="M14 10a4 4 0 0 0-5.7 0L6 12.3a4 4 0 0 0 5.7 5.7L13 16.7"/></svg> ' };
 const COLORS = {
   blue:'#003087',
   blue2:'#1c6ccf',
@@ -3390,8 +3644,66 @@ const DATA = {
   years:['2021','2022','2023','2024','2025'],
   permTotal:[50,49,57,72,44],
   intTotal:[64,85,117,134,151],
-  rentalTotal:[442,139,132,83,108]
+  rentalTotal:[442,139,132,83,108,51]
 };
+
+// ── HOLLOWAY QUARTER / YEAR FILTER ──
+// Provider fiscal-year report labels these periods Q2–Q4; the dashboard uses
+// contract-year quarters (Q1 = Oct–Dec 2025).
+const HOLLOWAY_Q = {
+  ytd: { eyebrow:'Year to date · through Jun 30, 2026', readout:'Showing year to date · Oct 1, 2025 – Jun 30, 2026',
+    servedLabel:'Individuals served', served:'42', servedSub:'Unduplicated individuals served year to date',
+    occ:'90.2%', occSub:'Meets the 90% annual goal',
+    occNarr:'After a ramp-up during its first quarter, Holloway has operated at near full capacity, bringing year-to-date occupancy to 90.2% — meeting the 90% annual goal.',
+    perm:'6', permSub:'5 additional pending · goal 12 / year',
+    part:'—', partSub:'Reported by quarter (denominators vary) · goal 65%' },
+  q1: { eyebrow:'Q1 · Oct–Dec 2025', readout:'Showing Q1 · Oct 1 – Dec 31, 2025 (program ramp-up)',
+    servedLabel:'Served during quarter', served:'24', servedSub:'Served during Q1 · 24 newly enrolled',
+    occ:'80.6%', occSub:'1,402 of 1,740 bed nights · ramp-up quarter',
+    occNarr:'Q1 was the program\u2019s ramp-up quarter: occupancy was 80.6% (1,402 of 1,740 bed nights) as intake and enrollment got underway.',
+    perm:'1', permSub:'Exits to permanent housing in Q1',
+    part:'66.7%', partSub:'16 of 24 served · goal 65%' },
+  q2: { eyebrow:'Q2 · Jan–Mar 2026', readout:'Showing Q2 · Jan 1 – Mar 31, 2026',
+    servedLabel:'Served during quarter', served:'29', servedSub:'Served during Q2 · 8 newly enrolled',
+    occ:'95.0%', occSub:'1,710 of 1,800 bed nights · above target',
+    occNarr:'In Q2, Holloway reached 95.0% occupancy (1,710 of 1,800 bed nights), moving above the 90% target as the program stabilized.',
+    perm:'0', permSub:'Exits to permanent housing in Q2',
+    part:'89.7%', partSub:'26 of 29 served · goal 65%' },
+  q3: { eyebrow:'Q3 · Apr–Jun 2026', readout:'Showing Q3 · Apr 1 – Jun 30, 2026',
+    servedLabel:'Served during quarter', served:'30', servedSub:'Served during Q3 · 10 newly enrolled',
+    occ:'94.8%', occSub:'1,725 of 1,820 bed nights · above target',
+    occNarr:'In Q3, Holloway held occupancy at 94.8% (1,725 of 1,820 bed nights), staying above the 90% target while maintaining full capacity and a waitlist.',
+    perm:'5', permSub:'5 to permanent housing · 5 more pending',
+    part:'70.0%', partSub:'14 of 20 residents · goal 65%' }
+};
+function renderHolloway() {
+  var qSel = document.getElementById('hw-quarter');
+  if (!qSel) return;
+  var d = HOLLOWAY_Q[qSel.value] || HOLLOWAY_Q.ytd;
+  function set(id, val) { var el = document.getElementById(id); if (el) { el.textContent = val; el.setAttribute('data-raw', val); } }
+  function setText(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+  set('hw-served', d.served); setText('hw-served-sub', d.servedSub); setText('hw-served-label', d.servedLabel);
+  set('hw-occ', d.occ); setText('hw-occ-sub', d.occSub);
+  set('hw-perm', d.perm); setText('hw-perm-sub', d.permSub);
+  set('hw-part', d.part); setText('hw-part-sub', d.partSub);
+  document.querySelectorAll('.hw-eyebrow').forEach(function(e) { e.textContent = d.eyebrow; });
+  setText('hw-readout', d.readout);
+  // Occupancy subcard: show every quarter for the year-to-date view, or just
+  // the selected quarter's bar when a single quarter is chosen.
+  var occSel = qSel.value;
+  ['q1','q2','q3'].forEach(function(q) {
+    var row = document.getElementById('occ-' + q);
+    if (row) row.style.display = (occSel === 'ytd' || occSel === q) ? '' : 'none';
+  });
+  setText('hw-occ-narrative', d.occNarr);
+}
+(function() {
+  var qSel = document.getElementById('hw-quarter');
+  var ySel = document.getElementById('hw-year');
+  if (qSel) qSel.addEventListener('change', renderHolloway);
+  if (ySel) ySel.addEventListener('change', renderHolloway);
+  renderHolloway();
+})();
 
 const tooltip = document.getElementById('tooltip');
 function showTooltip(evt, html) {
@@ -3462,7 +3774,7 @@ function activatePage(page) {
       }
       pitLoadBoundary();
       _pitReady = true;
-      populatePitMonths('Sep 2025');
+      populatePitMonths('Apr 2026');
       pitRenderMap();
       pitFilter();
       setTimeout(function() { if (_pitMap) _pitMap.invalidateSize(); }, 200);
@@ -3507,6 +3819,9 @@ function activatePage(page) {
       hclInitReasonFilter();
       hclRenderAll();
     }
+  }
+  if (page === 'funding' && typeof renderFundingPanel === 'function') {
+    renderFundingPanel();
   }
 }
 
@@ -3567,14 +3882,35 @@ function renderLineChart(targetId, labels, values, opts={}) {
   }
   let area = `M ${toX(0)} ${toY(values[0])} `;
   let path = `M ${toX(0)} ${toY(values[0])} `;
-  values.forEach((v,i) => { if(i>0) { area += `L ${toX(i)} ${toY(v)} `; path += `L ${toX(i)} ${toY(v)} `; } });
+  // Index from which the series is provisional (drawn dashed, hollow point).
+  const prov = (opts.provisionalFrom !== undefined && opts.provisionalFrom !== null)
+    ? opts.provisionalFrom : -1;
+  const solidEnd = prov >= 0 ? prov - 1 : values.length - 1;
+  let dash = '';
+  values.forEach((v,i) => {
+    if (i > 0) {
+      area += `L ${toX(i)} ${toY(v)} `;
+      if (prov < 0 || i <= solidEnd) path += `L ${toX(i)} ${toY(v)} `;
+    }
+  });
+  if (prov >= 0) {
+    dash = `M ${toX(solidEnd)} ${toY(values[solidEnd])} `;
+    for (let i = prov; i < values.length; i++) dash += `L ${toX(i)} ${toY(values[i])} `;
+  }
   area += `L ${toX(values.length-1)} ${toY(min)} L ${toX(0)} ${toY(min)} Z`;
   s += `<path d="${area}" fill="rgba(0,48,135,.08)"></path>`;
   s += `<path d="${path}" fill="none" stroke="${COLORS.blue}" stroke-width="3" stroke-linecap="round"></path>`;
+  if (dash) s += `<path d="${dash}" fill="none" stroke="${COLORS.blue3}" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 5"></path>`;
   labels.forEach((lbl,i) => {
     const x = toX(i), y = toY(values[i]);
-    const tip = pyEscape(`<strong>${lbl}</strong>${values[i]} average individuals observed`);
-    s += `<circle class="point" data-tip="${tip}" cx="${x}" cy="${y}" r="5.5" fill="${COLORS.blue}" stroke="#fff" stroke-width="2"></circle>`;
+    const isProv = prov >= 0 && i >= prov;
+    const tipTxt = isProv && opts.provisionalNote
+      ? `<strong>${lbl}</strong>${values[i]} average individuals observed${opts.provisionalNote}`
+      : `<strong>${lbl}</strong>${values[i]} average individuals observed`;
+    const tip = pyEscape(tipTxt);
+    s += isProv
+      ? `<circle class="point" data-tip="${tip}" cx="${x}" cy="${y}" r="5.5" fill="#fff" stroke="${COLORS.blue}" stroke-width="2.5"></circle>`
+      : `<circle class="point" data-tip="${tip}" cx="${x}" cy="${y}" r="5.5" fill="${COLORS.blue}" stroke="#fff" stroke-width="2"></circle>`;
     s += `<text x="${x}" y="${H-8}" text-anchor="middle" class="axis">${lbl}</text>`;
   });
   const summaryParts = labels.map((lbl, i) => `${lbl}: ${values[i]}`).join('; ');
@@ -4179,35 +4515,85 @@ function pitLoadBoundary() {
 }
 
 
+function renderPitCounts() {
+  var sel = document.getElementById('pit-count-year');
+  var yr = sel ? sel.value : '2025';
+  var title = document.getElementById('pit-count-title');
+  var note  = document.getElementById('pit-count-note');
+  var foot  = document.getElementById('pit-count-foot');
+  var obsTip = '<span class="glossary-term" data-tip="&lt;strong&gt;Observed unsheltered individuals&lt;/strong&gt;People seen by outreach teams during field counts; this may not capture every person experiencing homelessness in the City." tabindex="0">Observed unsheltered individuals</span>';
+
+  if (yr === '2026') {
+    // Quarterly counts. Only quarters that have been reported are charted.
+    var have = PIT_QTRS.filter(function(q) { return PIT_Q_2026[q] !== null && PIT_Q_2026[q] !== undefined; });
+    var vals = have.map(function(q) { return PIT_Q_2026[q]; });
+    var labels = have.map(function(q) { return q; });
+    if (title) title.textContent = 'Quarterly counts — 2026';
+    if (note) note.innerHTML = obsTip + ', by quarter. Starting in 2026 the City conducts one field count per quarter instead of monthly counts.';
+    renderBarChart('pit-monthly', labels, vals, {
+      max: 80,
+      colors: labels.map(function() { return COLORS.blue3; }),
+      format: function(v) { return v + ' individuals observed'; },
+      ariaTitle: 'Observed unsheltered individuals by quarter, 2026'
+    });
+    var pending = PIT_QTRS.filter(function(q) { return PIT_Q_2026[q] === null || PIT_Q_2026[q] === undefined; });
+    var bits = have.map(function(q) {
+      var m = PIT_Q_META[q] || {};
+      var s = q + ' (' + (m.span || '') + '): ' + PIT_Q_2026[q] + ' individuals';
+      if (m.locations) s += ' across ' + m.locations + ' locations';
+      if (m.date) s += ', counted ' + m.date;
+      if (m.program) s += ' by ' + m.program;
+      if (m.raw) s += ' (' + m.raw + ' raw observations before de-duplication)';
+      return s;
+    });
+    if (foot) foot.innerHTML = bits.join('. ') + '.' +
+      (pending.length ? ' Not yet reported: ' + pending.join(', ') + '.' : '');
+  } else {
+    if (title) title.textContent = 'Monthly counts — 2025';
+    if (note) note.innerHTML = obsTip + ', Jan–Sep 2025';
+    renderBarChart('pit-monthly', PIT_MONTHS9, PIT_MONTHS9.map(function(m) { return PIT_MO_2025[m] || 0; }), {
+      max: 80,
+      colors: PIT_MONTHS9.map(function() { return COLORS.blue3; }),
+      format: function(v) { return v + ' individuals observed'; },
+      ariaTitle: 'Observed unsheltered individuals by month, January to September 2025'
+    });
+    if (foot) foot.textContent = 'Monthly counts end in September 2025, when the Ascencia outreach and engagement contract concluded.';
+  }
+}
+
 function renderVisible() {
-  renderBarChart('pit-monthly', PIT_MONTHS9, PIT_MONTHS9.map(m => PIT_MO_2025[m] || 0), {
-    max:80,
-    colors:PIT_MONTHS9.map(m => COLORS.blue3),
-    format:v => `${v} individuals observed`,
-    ariaTitle: 'Observed unsheltered individuals by month, January to September 2025'
+  renderPitCounts();
+  renderLineChart('pit-trend', PIT_YR_LBLS, PIT_YR_AVGS, {
+    max:70,
+    provisionalFrom: PIT_YR_LBLS.indexOf('2026'),
+    provisionalNote: ' — provisional: average of the quarterly counts reported so far (Q1 and Q2), not a full year',
+    ariaTitle: 'Average count of observed unsheltered individuals per count event by year, 2017 to 2026, with 2026 provisional'
   });
-  renderLineChart('pit-trend', PIT_YR_LBLS, PIT_YR_AVGS, {max:70, ariaTitle: 'Annual average monthly count of observed unsheltered individuals, 2017 to 2025'});
 
   // HCL charts rendered by hclRenderAll() when HCL tab activates
   if (_hclReady) hclRenderAll();
 
-  renderBarChart('housing-perm', DATA.years, DATA.permTotal, {
+  const _permYrs = ['2021','2022','2023','2024','2025','2026'];
+  const _permVals = [50,49,57,72,44,25];
+  renderBarChart('housing-perm', _permYrs, _permVals, {
     max:80,
-    colors:DATA.permTotal.map(v => v === Math.max(...DATA.permTotal) ? COLORS.blue : COLORS.blue3),
+    colors:_permVals.map((v,i) => i === _permVals.length-1 ? COLORS.blue4 : (v === Math.max(...DATA.permTotal) ? COLORS.blue : COLORS.blue3)),
     format:v => `${v} permanent housing placements`,
-    ariaTitle: 'Permanent housing placements by year, 2021 to 2025'
+    ariaTitle: 'Permanent housing placements by year, 2021 to 2026 (2026 is contract year to date, partial)'
   });
-  renderBarChart('housing-interim', DATA.years, DATA.intTotal, {
+  const _intYrs = ['2021','2022','2023','2024','2025','2026'];
+  const _intVals = [64,85,117,134,151,91];
+  renderBarChart('housing-interim', _intYrs, _intVals, {
     max:180,
-    colors:DATA.intTotal.map(v => v === Math.max(...DATA.intTotal) ? COLORS.blue : COLORS.blue3),
+    colors:_intVals.map((v,i) => i === _intVals.length-1 ? COLORS.blue4 : (v === Math.max(...DATA.intTotal) ? COLORS.blue : COLORS.blue3)),
     format:v => `${v} interim housing admissions`,
-    ariaTitle: 'Interim housing admissions by year, 2021 to 2025'
+    ariaTitle: 'Interim housing admissions by year, 2021 to 2026 (2026 is contract year to date, partial)'
   });
-  renderBarChart('prevention-rental', DATA.years, DATA.rentalTotal, {
+  renderBarChart('prevention-rental', DATA.years.concat(['2026']), DATA.rentalTotal, {
     max:500,
-    colors:DATA.rentalTotal.map(v => v === Math.max(...DATA.rentalTotal) ? COLORS.blue : COLORS.blue3),
+    colors:DATA.rentalTotal.map((v,i) => i === DATA.rentalTotal.length-1 ? COLORS.blue4 : (v === Math.max(...DATA.rentalTotal) ? COLORS.blue : COLORS.blue3)),
     format:v => `${v} households assisted`,
-    ariaTitle: 'Rental assistance households served by year, 2021 to 2025'
+    ariaTitle: 'Rental assistance households served by year, 2021 to 2026 (2026 is year to date through March, partial)'
   });
 }
 
@@ -4216,6 +4602,10 @@ document.getElementById('pit-year').addEventListener('change', () => {
   pitFilter();
 });
 document.getElementById('pit-month').addEventListener('change', pitFilter);
+(function() {
+  var cy = document.getElementById('pit-count-year');
+  if (cy) cy.addEventListener('change', renderPitCounts);
+})();
 
 window.addEventListener('resize', () => {
   clearTimeout(window.__dashResize);
@@ -4224,7 +4614,8 @@ window.addEventListener('resize', () => {
 
 
 
-populatePitMonths('Sep 2025');
+populatePitMonths('Apr 2026');
+pitFilter();
 renderVisible();
 setTimeout(function() { animatePageNumbers('intro'); }, 120);
 
@@ -4287,9 +4678,15 @@ function countUp(el, duration) {
 function animatePageNumbers(pageId) {
   var page = document.getElementById('page-' + pageId);
   if (!page) return;
-  // Stagger each card slightly
+  // Stagger each card slightly. Skip the funding KPI values — those are
+  // managed live by renderFundingPanel(), and animating them would clobber
+  // filter updates made while the count-up is still running.
   var els = page.querySelectorAll('.k-value');
   els.forEach(function(el, i) {
+    // Skip filter-managed KPIs (funding filters, Holloway quarter filter) —
+    // those are set live by their own render functions, and animating them
+    // would clobber a value the user just selected.
+    if (el.id && (el.id.indexOf('funding-kpi') === 0 || el.id.indexOf('hw-') === 0)) return;
     setTimeout(function() { countUp(el, 900); }, i * 80);
   });
 }
@@ -4365,6 +4762,205 @@ function initExpandableKPIs() {
   }
 })();
 
+</script>
+<script>
+// ── FUNDING FILTER MODULE ──
+const FUNDING_DATA = [
+  {program:'Care Team (Sycamores)', area:'Response', type:'Outreach & Behavioral Health Response', source:'City / Local', amount:2650000, note:'24/7 mobile behavioral health response and outreach'},
+  {program:'Healthcare in Action', area:'Response', type:'Outreach & Behavioral Health Response', source:'City / Local', amount:1350000, note:'Street medicine, outreach, and care coordination'},
+  {program:'Holloway — Grant Funding', area:'Response', type:'Interim Housing & Shelter', source:'Grant / External', amount:1425000, note:'Holloway Interim Housing Program — Homekey (State), Measure A/LSF (County), CDBG (Federal), COG regional funds'},
+  {program:'Holloway — City/Local (AHTF)', area:'Response', type:'Interim Housing & Shelter', source:'City / Local', amount:125000, note:'Holloway Interim Housing Program — Affordable Housing Trust Fund'},
+  {program:'Emergency Shelter Beds (Ascencia)', area:'Response', type:'Interim Housing & Shelter', source:'City / Local', amount:256000, note:'Emergency and interim shelter access'},
+  {program:'Community Bridge Housing', area:'Response', type:'Interim Housing & Shelter', source:'City / Local', amount:60000, note:'Flexible interim housing option'},
+  {program:'NCJW — Thriving in Place', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'City / Local', amount:327000, note:'Rental assistance for community members at risk of losing housing'},
+  {program:'APLA Health — Housing Support', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'City / Local', amount:302000, note:'Rental assistance for older adults and people living with HIV'},
+  {program:'Housing Works — Housing Retention Services', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'City / Local', amount:155000, note:'Housing retention services for community members placed in permanent housing using HUD-funded CoC certificates administered by LACDA'},
+  {program:'Emergency Rental Assistance', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'Grant / External', amount:350000, note:'Rental assistance funded through LACAHSA Measure A passthrough funds'},
+  {program:'Bet Tzedek — Legal Services', area:'Prevention', type:'Legal & Tenant Protection', source:'City / Local', amount:650000, note:'Legal services and eviction prevention'},
+  {program:'Coalition for Economic Survival', area:'Prevention', type:'Legal & Tenant Protection', source:'City / Local', amount:100000, note:'Tenant rights and eviction prevention support'},
+  {program:'LA LGBT Center — Youth Services', area:'Response', type:'Interim Housing & Shelter', source:'City / Local', amount:184000, note:'Housing support and services for youth experiencing or at risk of homelessness'}
+];
+const FUNDING_GROUPS = {
+  'Holloway Interim Housing Program': ['Holloway — Grant Funding', 'Holloway — City/Local (AHTF)']
+};
+const _fundingState = { area: 'all', source: 'all' };
+function fundingFmt(v) {
+  if (v >= 1000000) return '$' + (v/1000000).toFixed(v >= 10000000 ? 1 : 2).replace(/\.00$/,'') + 'M';
+  if (v >= 1000) return '$' + Math.round(v/1000) + 'K';
+  return '$' + Math.round(v).toLocaleString();
+}
+function fundingFullFmt(v) { return '$' + Math.round(v).toLocaleString(); }
+function _fundEsc(str) { return (typeof pyEscape === 'function') ? pyEscape(str) : String(str).replaceAll('&','&amp;').replaceAll('"','&quot;'); }
+function fundingFilteredData() {
+  const area = _fundingState.area;
+  const type = document.getElementById('funding-type-filter')?.value || 'all';
+  const source = _fundingState.source;
+  return FUNDING_DATA.filter(d =>
+    (area === 'all' || d.area === area) &&
+    (type === 'all' || d.type === type) &&
+    (source === 'all' || d.source === source)
+  );
+}
+function fundingGroup(rows, key) {
+  const out = {};
+  rows.forEach(d => { out[d[key]] = (out[d[key]] || 0) + d.amount; });
+  return Object.keys(out).map(label => ({label, amount: out[label]})).sort((a,b) => b.amount - a.amount);
+}
+function fundingRenderBarsWithPct(targetId, grouped, total) {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  const max = Math.max(1, ...grouped.map(d => d.amount));
+  if (!grouped.length) { el.innerHTML = '<div class="note">No programs match the selected filters.</div>'; return; }
+  el.innerHTML = grouped.map(d => {
+    const pct = Math.round(total > 0 ? (d.amount / total) * 100 : 0);
+    const barPct = Math.max(2, (d.amount / max) * 100);
+    const tip = _fundEsc(`<strong>${d.label}</strong><br>${fundingFullFmt(d.amount)} &middot; ${pct}% of total`);
+    return `<div class="funding-bar-row">
+      <div class="funding-bar-label">${d.label}</div>
+      <div class="funding-bar-track"><div class="funding-bar-fill" data-tip="${tip}" style="width:${barPct}%"></div></div>
+      <div class="funding-bar-value">${fundingFmt(d.amount)}<span class="funding-bar-pct">${pct}%</span></div>
+    </div>`;
+  }).join('');
+}
+function fundingRenderProgramDetail(targetId, rows) {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  if (!rows.length) {
+    el.innerHTML = `<div class="funding-empty">No programs match the selected filters.<br><button class="funding-empty-reset" onclick="fundingResetFilters()">Reset filters</button></div>`;
+    return;
+  }
+  const typeOrder = ['Outreach & Behavioral Health Response','Interim Housing & Shelter','Financial Assistance & Housing Stability','Legal & Tenant Protection'];
+  const areaForType = {};
+  FUNDING_DATA.forEach(d => { areaForType[d.type] = d.area; });
+  const childNames = new Set(Object.values(FUNDING_GROUPS).flat());
+  const processedRows = [];
+  const addedGroups = new Set();
+  rows.forEach(d => {
+    if (childNames.has(d.program)) {
+      const parent = Object.keys(FUNDING_GROUPS).find(p => FUNDING_GROUPS[p].includes(d.program));
+      if (parent && !addedGroups.has(parent)) {
+        const children = rows.filter(r => FUNDING_GROUPS[parent].includes(r.program));
+        if (children.length) {
+          const groupTotal = children.reduce((s, r) => s + r.amount, 0);
+          processedRows.push({ _isGroup: true, program: parent, amount: groupTotal, type: d.type, area: d.area, children });
+          addedGroups.add(parent);
+        }
+      }
+    } else { processedRows.push(d); }
+  });
+  const byType = {};
+  processedRows.forEach(d => { if (!byType[d.type]) byType[d.type] = []; byType[d.type].push(d); });
+  const orderedTypes = typeOrder.filter(t => byType[t]).concat(Object.keys(byType).filter(t => !typeOrder.includes(t)));
+  let groupIdx = 0;
+  el.innerHTML = orderedTypes.map(type => {
+    const programs = byType[type].slice().sort((a,b) => b.amount - a.amount);
+    const typeTotal = programs.reduce((s,d) => s + d.amount, 0);
+    const area = areaForType[type] || '';
+    const areaLabel = area === 'Response' ? 'Outreach & Housing' : (area === 'Prevention' ? 'Homeless Prevention' : area);
+    const rows_html = programs.map(d => {
+      if (d._isGroup) {
+        const gid = 'fpg-' + (groupIdx++);
+        const subrows = d.children.map(c => `<div class="funding-program-subrow">
+          <div>
+            <div class="funding-program-subrow-name">${c.source === 'City / Local' ? SRC_ICON.city : SRC_ICON.grant}${c.source}</div>
+            <div class="funding-program-subrow-note">${c.note}</div>
+          </div>
+          <div class="funding-program-amount" style="font-size:12.5px">${fundingFmt(c.amount)}</div>
+        </div>`).join('');
+        return `<div class="funding-program-group" id="${gid}">
+          <div class="funding-program-group-header" onclick="this.closest('.funding-program-group').classList.toggle('open')">
+            <div>
+              <div class="funding-program-name">${d.program}<span class="funding-program-group-chevron">▾</span></div>
+              <div class="funding-program-note">Multiple funding sources — click to expand</div>
+            </div>
+            <div class="funding-program-amount">${fundingFmt(d.amount)}</div>
+          </div>
+          <div class="funding-program-subrows">${subrows}</div>
+        </div>`;
+      }
+      return `<div class="funding-program-row">
+        <div>
+          <div class="funding-program-name">${d.program}</div>
+          <div class="funding-program-note">${d.note}</div>
+          <span class="funding-program-source">${d.source}</span>
+        </div>
+        <div class="funding-program-amount">${fundingFmt(d.amount)}</div>
+      </div>`;
+    }).join('');
+    return `<div class="funding-type-group">
+      <div class="funding-type-header">
+        <div class="funding-type-header-label">${type}</div>
+        ${areaLabel ? `<span class="funding-type-header-area">${areaLabel}</span>` : ''}
+        <div class="funding-type-header-total">${fundingFmt(typeTotal)}</div>
+      </div>
+      ${rows_html}
+    </div>`;
+  }).join('');
+}
+function fundingPopulateFilters() {
+  const typeSel = document.getElementById('funding-type-filter');
+  if (!typeSel || typeSel.dataset.ready === '1') return;
+  [...new Set(FUNDING_DATA.map(d => d.type))].sort().forEach(t => {
+    const opt = document.createElement('option'); opt.value = t; opt.textContent = t; typeSel.appendChild(opt);
+  });
+  typeSel.addEventListener('change', renderFundingPanel);
+  typeSel.dataset.ready = '1';
+}
+function initFundingPills() {
+  document.querySelectorAll('.funding-pill-btn').forEach(btn => {
+    if (btn.dataset.ready === '1') return;
+    btn.addEventListener('click', function() {
+      const stateKey = this.getAttribute('data-filter');
+      const value = this.getAttribute('data-value');
+      _fundingState[stateKey] = value;
+      const group = this.closest('.funding-pill-options');
+      if (group) group.querySelectorAll('.funding-pill-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      renderFundingPanel();
+    });
+    btn.dataset.ready = '1';
+  });
+}
+function renderFundingPanel() {
+  fundingPopulateFilters();
+  initFundingPills();
+  const rows = fundingFilteredData();
+  const total = rows.reduce((a,b) => a + b.amount, 0);
+  const prevention = rows.filter(d => d.area === 'Prevention').reduce((a,b) => a + b.amount, 0);
+  const response = rows.filter(d => d.area === 'Response').reduce((a,b) => a + b.amount, 0);
+  const setKpi = (el, val) => { if (el) { el.textContent = val; el.setAttribute('data-raw', val); } };
+  const totalEl = document.getElementById('funding-kpi-total');
+  setKpi(totalEl, fundingFmt(total || 0));
+  const countEl = document.getElementById('funding-kpi-count');
+  if (countEl) countEl.textContent = rows.length === FUNDING_DATA.length ? 'All programs' : rows.length + ' matching program' + (rows.length === 1 ? '' : 's');
+  const prevEl = document.getElementById('funding-kpi-prevention');
+  setKpi(prevEl, fundingFmt(prevention));
+  const prevPctEl = document.getElementById('funding-kpi-prevention-pct');
+  if (prevPctEl) { const pct = total > 0 ? Math.round((prevention/total)*100) : 0; prevPctEl.textContent = pct + '% of total \u00b7 financial assistance, housing stability & legal'; }
+  const respEl = document.getElementById('funding-kpi-response');
+  setKpi(respEl, fundingFmt(response));
+  const respPctEl = document.getElementById('funding-kpi-response-pct');
+  if (respPctEl) { const pct = total > 0 ? Math.round((response/total)*100) : 0; respPctEl.textContent = pct + '% of total \u00b7 outreach, behavioral health response, interim housing'; }
+  fundingRenderBarsWithPct('funding-source-bars', fundingGroup(rows, 'source'), total);
+  fundingRenderBarsWithPct('funding-type-bars', fundingGroup(rows, 'type'), total);
+  fundingRenderProgramDetail('funding-project-table', rows);
+  const typeSelVal = (document.getElementById('funding-type-filter') || {}).value || 'all';
+  const isFiltered = _fundingState.area !== 'all' || _fundingState.source !== 'all' || typeSelVal !== 'all';
+  ['funding-badge-type','funding-badge-source'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = isFiltered ? 'inline' : 'none'; });
+}
+function fundingResetFilters() {
+  _fundingState.area = 'all';
+  _fundingState.source = 'all';
+  const typeSel = document.getElementById('funding-type-filter');
+  if (typeSel) typeSel.value = 'all';
+  document.querySelectorAll('.funding-pill-options').forEach(group => {
+    group.querySelectorAll('.funding-pill-btn').forEach(b => b.classList.remove('active'));
+    const allBtn = group.querySelector('[data-value="all"]');
+    if (allBtn) allBtn.classList.add('active');
+  });
+  renderFundingPanel();
+}
+renderFundingPanel();
 </script>
 <div aria-hidden="true" class="tooltip" id="chart-tooltip"></div>
 </body>
