@@ -2800,7 +2800,7 @@ body.embed .foot {
 </div>
 <div class="step">
 <div class="step-num">3</div>
-<h4><span class="glossary-term" data-tip="&lt;strong&gt;interim housing&lt;/strong&gt;Short-term housing with support services while someone works toward a longer-term housing option." tabindex="0">Interim housing</span></h4>
+<h4><span class="glossary-term" data-tip="&lt;strong&gt;Interim housing&lt;/strong&gt;Short-term housing with support services while someone works toward a longer-term housing option." tabindex="0">Interim Housing</span></h4>
 <p>When someone is ready, City-funded outreach teams connect them to interim housing options, including Holloway for eligible community members.</p>
 </div>
 <div class="step">
@@ -2853,8 +2853,8 @@ body.embed .foot {
 <div>
 <label for="pit-count-year" style="font-size:12px;font-weight:700;color:var(--muted);margin-right:6px;">Year</label>
 <select id="pit-count-year" style="font-size:13px;font-family:inherit;border:1px solid var(--line);border-radius:10px;padding:5px 10px;color:#27405f;background:#fff;">
-<option selected="" value="2025">2025 · monthly</option>
-<option value="2026">2026 · quarterly</option>
+<option value="2025">2025 · monthly</option>
+<option selected="" value="2026">2026 · quarterly</option>
 </select>
 </div>
 </div>
@@ -3777,7 +3777,9 @@ function activatePage(page) {
       populatePitMonths('Apr 2026');
       pitRenderMap();
       pitFilter();
-      setTimeout(function() { if (_pitMap) _pitMap.invalidateSize(); }, 200);
+      setTimeout(function() {
+        if (_pitMap) { _pitMap.invalidateSize(); pitRenderMap(); }
+      }, 200);
     });
   }
   if (page === 'hcl' && !_hclReady) {
@@ -4489,12 +4491,15 @@ function pitRenderMap() {
   _pitDots = L.layerGroup();
   data.forEach(p => {
     const r = Math.max(5, Math.min(15, p[2] * 2.5));
-    L.circleMarker([p[0], p[1]], {
+    const m = L.circleMarker([p[0], p[1]], {
       radius: r, fillColor: '#003087', color: '#fff',
-      weight: 1.5, opacity: 1, fillOpacity: 0.75
-    }).bindTooltip('<strong>' + p[3] + '</strong><br>' + p[4] + ': ' + p[2] + ' individual' + (p[2] !== 1 ? 's' : ''),
-      {direction: 'top', offset: [0, -4]})
-    .addTo(_pitDots);
+      weight: 1.5, opacity: 1, fillOpacity: 0.75, interactive: true, bubblingMouseEvents: false
+    });
+    m.bindTooltip('<strong>' + p[3] + '</strong><br>' + p[4] + ': ' + p[2] + ' individual' + (p[2] !== 1 ? 's' : ''),
+      {direction: 'top', offset: [0, -4], sticky: false, opacity: 0.98});
+    m.on('mouseover', function() { this.openTooltip(this.getLatLng()); this.setStyle({weight: 2.5}); });
+    m.on('mouseout',  function() { this.closeTooltip(); this.setStyle({weight: 1.5}); });
+    m.addTo(_pitDots);
   });
   _pitDots.addTo(_pitMap);
 }
@@ -4517,7 +4522,10 @@ function pitLoadBoundary() {
 
 function renderPitCounts() {
   var sel = document.getElementById('pit-count-year');
-  var yr = sel ? sel.value : '2025';
+  // Default the counts view to 2026 on first render, regardless of any
+  // browser-restored form state, then honor the user's selection thereafter.
+  if (sel && !sel.dataset.userSet) { sel.value = '2026'; }
+  var yr = sel ? sel.value : '2026';
   var title = document.getElementById('pit-count-title');
   var note  = document.getElementById('pit-count-note');
   var foot  = document.getElementById('pit-count-foot');
@@ -4604,7 +4612,10 @@ document.getElementById('pit-year').addEventListener('change', () => {
 document.getElementById('pit-month').addEventListener('change', pitFilter);
 (function() {
   var cy = document.getElementById('pit-count-year');
-  if (cy) cy.addEventListener('change', renderPitCounts);
+  if (cy) {
+    cy.value = '2026';           // default view, resilient to browser value restoration
+    cy.addEventListener('change', function() { cy.dataset.userSet = '1'; renderPitCounts(); });
+  }
 })();
 
 window.addEventListener('resize', () => {
