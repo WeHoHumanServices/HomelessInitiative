@@ -3762,9 +3762,12 @@ function activatePage(page) {
 }
 
 function svgWrap(inner, viewBox='0 0 700 260', ariaLabel='') {
-  const titleEl = ariaLabel ? `<title>${ariaLabel.replace(/</g,'&lt;').replace(/&/g,'&amp;')}</title>` : '';
+  // Note: intentionally NOT emitting an SVG <title> element. The aria-label below
+  // carries the accessible name for screen readers; a <title> would additionally
+  // trigger a native browser hover tooltip that duplicates the custom data-tip
+  // tooltip and clutters the charts.
   const ariaAttr = ariaLabel ? ` role="img" aria-label="${ariaLabel.replace(/"/g,'&quot;')}"` : '';
-  return `<svg class="chart-svg" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet"${ariaAttr}>${titleEl}${inner}</svg>`;
+  return `<svg class="chart-svg" viewBox="${viewBox}" preserveAspectRatio="xMidYMid meet"${ariaAttr}>${inner}</svg>`;
 }
 
 function renderBarChart(targetId, labels, values, opts={}) {
@@ -3885,7 +3888,7 @@ function renderDonut(targetId, labels, values, colors, opts={}) {
   s += `<circle cx="${cx}" cy="${cy}" r="${inner-1}" fill="#fff"></circle>`;
   const summaryParts = labels.map((lbl, i) => `${lbl}: ${values[i]} (${Math.round(values[i]/total*100)}%)`).join('; ');
   const ariaLabel = (opts.ariaTitle ? opts.ariaTitle + '. ' : 'Donut chart. ') + summaryParts + '.';
-  const svgHtml = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${ariaLabel.replace(/"/g,'&quot;')}" style="max-width:240px;flex-shrink:0;"><title>${ariaLabel.replace(/</g,'&lt;').replace(/&/g,'&amp;')}</title>${s}</svg>`;
+  const svgHtml = `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${ariaLabel.replace(/"/g,'&quot;')}" style="max-width:240px;flex-shrink:0;">${s}</svg>`;
   const legendHtml = labels.map((lbl,i) => {
     const pct = Math.round(values[i]/total*100);
     const extra = opts.notes && opts.notes[i] ? `<div style="font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4;">${opts.notes[i]}</div>` : '';
