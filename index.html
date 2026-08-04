@@ -239,69 +239,7 @@ a { color:inherit; }
 }
 .period-note strong { color:var(--blue); font-weight:800; }
 .period-note .pn-icon { flex:0 0 auto; opacity:.65; }
-/* Funding bars */
-.fund-bars { display:flex; flex-direction:column; gap:9px; margin-top:4px; }
-.fund-bar-row { display:grid; grid-template-columns:1fr; gap:3px; }
-.fund-bar-head { display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
-.fund-bar-name { font-size:12.5px; font-weight:700; color:var(--heading); }
-.fund-bar-amt { font-size:12.5px; font-weight:800; color:var(--blue); white-space:nowrap; }
-.fund-bar-track { height:9px; border-radius:999px; background:#edf3fa; overflow:hidden; }
-.fund-bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,var(--blue),var(--blue3)); }
 
-/* ── FUNDING FILTERS ── */
-.funding-filter-card { display:flex; flex-direction:column; gap:12px; }
-.funding-filter-row { display:flex; flex-wrap:wrap; align-items:flex-end; gap:16px; }
-.funding-filter-group { display:flex; flex-direction:column; gap:5px; }
-.funding-filter-group label, .funding-pill-group label { font-size:10.5px; font-weight:800; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; display:block; margin-bottom:4px; }
-.funding-filter-group select { border:1px solid var(--line); border-radius:9px; padding:6px 10px; color:#27405f; background:#fff; font-family:inherit; font-size:13px; height:34px; }
-.funding-filter-group select:focus { outline:2px solid var(--blue3); outline-offset:1px; }
-.funding-pill-group { display:flex; flex-direction:column; gap:0; }
-.funding-pill-options { display:flex; flex-wrap:wrap; gap:5px; }
-.funding-pill-btn { padding:5px 12px; border:1.5px solid var(--line); border-radius:999px; font-size:12px; font-weight:700; cursor:pointer; background:#fff; color:#3a4f6a; font-family:inherit; white-space:nowrap; transition:background .12s, color .12s, border-color .12s; line-height:1.4; }
-.funding-pill-btn:hover { background:#f0f5ff; border-color:#a8c0e0; color:var(--blue); }
-.funding-pill-btn.active { background:var(--blue); color:#fff; border-color:var(--blue); }
-.funding-filter-divider { width:1px; height:38px; background:var(--line); align-self:flex-end; margin-bottom:2px; }
-.funding-reset-btn { padding:5px 13px; border:1.5px solid var(--line); border-radius:999px; font-size:12px; font-weight:700; cursor:pointer; background:#fff; color:var(--muted); font-family:inherit; align-self:flex-end; margin-bottom:2px; white-space:nowrap; transition:background .12s, color .12s, border-color .12s; }
-.funding-reset-btn:hover { background:#f7faff; color:var(--blue); border-color:#a8c0e0; }
-/* ── FUNDING DYNAMIC BARS ── */
-.funding-bars { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
-.funding-bar-row { display:grid; grid-template-columns:minmax(130px,200px) 1fr auto; gap:10px; align-items:center; }
-.funding-bar-label { font-size:12.5px; color:#324760; font-weight:800; line-height:1.25; }
-.funding-bar-track { height:24px; border-radius:999px; background:#edf3fa; overflow:hidden; border:1px solid #dce8f5; }
-.funding-bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,var(--blue),var(--blue3)); min-width:2px; transition:width .3s ease; }
-.funding-bar-value { color:var(--muted); font-size:12px; font-weight:800; white-space:nowrap; min-width:52px; text-align:right; }
-.funding-bar-pct { font-size:10.5px; color:var(--blue3); font-weight:700; margin-left:3px; }
-/* ── FUNDING PROGRAM TABLE ── */
-.funding-programs-section { background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 1px 6px rgba(0,30,90,.06); padding:16px; margin-top:12px; }
-.funding-programs-section h3 { margin:0 0 4px; font-size:15px; font-weight:800; color:var(--heading); }
-.funding-programs-section .note { color:var(--muted); font-size:13px; line-height:1.5; margin:0 0 14px; }
-.funding-type-group { margin-bottom:18px; }
-.funding-type-group:last-child { margin-bottom:0; }
-.funding-type-header { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:2px solid var(--blue5); margin-bottom:8px; }
-.funding-type-header-label { font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--blue); flex:1; }
-.funding-type-header-area { font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--blue5); color:var(--blue2); white-space:nowrap; }
-.funding-type-header-total { font-size:12px; font-weight:800; color:var(--blue); white-space:nowrap; }
-.funding-program-row { display:grid; grid-template-columns:1fr 80px; gap:10px; align-items:center; padding:9px 0; border-bottom:1px solid #edf3fa; }
-.funding-program-row:last-child { border-bottom:none; }
-.funding-program-name { font-size:13px; font-weight:800; color:#18314f; line-height:1.2; }
-.funding-program-note { font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.35; }
-.funding-program-source { display:inline-flex; align-items:center; border-radius:999px; background:#f0f5ff; border:1px solid var(--blue5); color:var(--blue2); padding:3px 9px; font-size:11px; font-weight:800; white-space:nowrap; margin-top:4px; }
-.funding-program-amount { font-size:13px; font-weight:800; color:var(--blue); text-align:right; white-space:nowrap; }
-.funding-empty { padding:20px; text-align:center; color:var(--muted); font-size:13px; }
-.funding-empty-reset { display:inline-block; margin-top:8px; padding:6px 14px; border:1px solid var(--line); border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; background:#fff; color:var(--blue); }
-.funding-empty-reset:hover { background:#f0f5ff; }
-.funding-program-group-header { display:grid; grid-template-columns:1fr 80px; gap:10px; align-items:center; padding:9px 0; border-bottom:1px solid #edf3fa; cursor:pointer; user-select:none; }
-.funding-program-group-header:hover .funding-program-name { color:var(--blue); }
-.funding-program-group-chevron { font-size:11px; color:var(--blue3); margin-left:5px; display:inline-block; transition:transform .22s ease; }
-.funding-program-group.open .funding-program-group-chevron { transform:rotate(180deg); }
-.funding-program-subrows { max-height:0; overflow:hidden; transition:max-height .3s ease, opacity .25s ease; opacity:0; }
-.funding-program-group.open .funding-program-subrows { max-height:400px; opacity:1; }
-.funding-program-subrow { display:grid; grid-template-columns:1fr 80px; gap:10px; align-items:center; padding:7px 0 7px 14px; border-bottom:1px solid #f4f8fd; background:#fafcff; }
-.funding-program-subrow:last-child { border-bottom:1px solid #edf3fa; }
-.funding-program-subrow-name { font-size:12.5px; font-weight:700; color:#334a67; }
-.funding-program-subrow-name .oico { width:13px; height:13px; display:inline-block; vertical-align:-2px; margin-right:3px; color:var(--blue2); }
-.funding-program-subrow-note { font-size:11.5px; color:var(--muted); margin-top:2px; line-height:1.35; }
-@media (max-width:820px) { .funding-filter-divider { display:none; } .funding-filter-row { gap:12px; } }
 
 .kpi {
   background:var(--card);
@@ -2999,7 +2937,7 @@ body.embed .foot {
 <div class="grid kpi-grid k4">
 <div class="kpi"><div class="k-label">Total requests</div><div class="k-value" id="hcl-kpi-total">2,134</div><div class="k-sub" id="hcl-kpi-period">Jul 2025–Jul 2026 · all periods</div></div>
 <div class="kpi alt"><div class="k-label">Daily average</div><div class="k-value" id="hcl-kpi-avg">5.6</div><div class="k-sub">9.2/day in Jul 2026</div></div>
-<div class="kpi alt2"><div class="k-label"><span class="glossary-term" data-tip="&lt;strong&gt;Services accepted&lt;/strong&gt;The share of people reached directly who agreed to some form of help, referral, or service connection." tabindex="0">Services accepted</span></div><div class="k-value" id="hcl-kpi-accepted">65%</div><div class="k-sub">Of people reached directly</div></div>
+<div class="kpi alt2"><div class="k-label"><span class="glossary-term" data-tip="&lt;strong&gt;Services accepted&lt;/strong&gt;The share of people reached directly who agreed to some form of help, referral, or service connection." tabindex="0">Services accepted</span></div><div class="k-value" id="hcl-kpi-accepted">67%</div><div class="k-sub">Of people reached directly</div></div>
 <div class="kpi"><div class="k-label"><span class="glossary-term" data-tip="&lt;strong&gt;Median response time&lt;/strong&gt;The midpoint response time: half of responses were faster and half were slower." tabindex="0">Median response time</span></div><div class="k-value">12 min</div><div class="k-sub">Dispatch to arrival · 75% within 15 minutes</div></div>
 </div>
 <div class="card" style="margin-top:12px;">
@@ -3820,9 +3758,6 @@ function activatePage(page) {
       hclInitReasonFilter();
       hclRenderAll();
     }
-  }
-  if (page === 'funding' && typeof renderFundingPanel === 'function') {
-    renderFundingPanel();
   }
 }
 
@@ -4765,15 +4700,15 @@ function countUp(el, duration) {
 function animatePageNumbers(pageId) {
   var page = document.getElementById('page-' + pageId);
   if (!page) return;
-  // Stagger each card slightly. Skip the funding KPI values — those are
-  // managed live by renderFundingPanel(), and animating them would clobber
-  // filter updates made while the count-up is still running.
+  // Stagger each card slightly. Skip filter-managed KPI values (Holloway
+  // quarter filter) — those are set live by their own render function, and
+  // animating them would clobber a value the user just filtered to.
   var els = page.querySelectorAll('.k-value');
   els.forEach(function(el, i) {
-    // Skip filter-managed KPIs (funding filters, Holloway quarter filter) —
+    // Skip filter-managed KPIs (Holloway quarter filter) —
     // those are set live by their own render functions, and animating them
     // would clobber a value the user just selected.
-    if (el.id && (el.id.indexOf('funding-kpi') === 0 || el.id.indexOf('hw-') === 0)) return;
+    if (el.id && el.id.indexOf('hw-') === 0) return;
     setTimeout(function() { countUp(el, 900); }, i * 80);
   });
 }
@@ -4850,205 +4785,7 @@ function initExpandableKPIs() {
 })();
 
 </script>
-<script>
-// ── FUNDING FILTER MODULE ──
-const FUNDING_DATA = [
-  {program:'Care Team (Sycamores)', area:'Response', type:'Outreach & Behavioral Health Response', source:'City / Local', amount:2650000, note:'24/7 mobile behavioral health response and outreach'},
-  {program:'Healthcare in Action', area:'Response', type:'Outreach & Behavioral Health Response', source:'City / Local', amount:1350000, note:'Street medicine, outreach, and care coordination'},
-  {program:'Holloway — Grant Funding', area:'Response', type:'Interim Housing & Shelter', source:'Grant / External', amount:1425000, note:'Holloway Interim Housing Program — Homekey (State), Measure A/LSF (County), CDBG (Federal), COG regional funds'},
-  {program:'Holloway — City/Local (AHTF)', area:'Response', type:'Interim Housing & Shelter', source:'City / Local', amount:125000, note:'Holloway Interim Housing Program — Affordable Housing Trust Fund'},
-  {program:'Emergency Shelter Beds (Ascencia)', area:'Response', type:'Interim Housing & Shelter', source:'City / Local', amount:256000, note:'Emergency and interim shelter access'},
-  {program:'NCJW — Thriving in Place', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'City / Local', amount:327000, note:'Rental assistance for community members at risk of losing housing'},
-  {program:'APLA Health — Housing Support', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'City / Local', amount:302000, note:'Rental assistance for older adults and people living with HIV'},
-  {program:'Housing Works — Housing Retention Services', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'City / Local', amount:155000, note:'Housing retention services for community members placed in permanent housing using HUD-funded CoC certificates administered by LACDA'},
-  {program:'Emergency Rental Assistance', area:'Prevention', type:'Financial Assistance & Housing Stability', source:'Grant / External', amount:350000, note:'Rental assistance funded through LACAHSA Measure A passthrough funds'},
-  {program:'Bet Tzedek — Legal Services', area:'Prevention', type:'Legal & Tenant Protection', source:'City / Local', amount:650000, note:'Legal services and eviction prevention'},
-  {program:'Coalition for Economic Survival', area:'Prevention', type:'Legal & Tenant Protection', source:'City / Local', amount:100000, note:'Tenant rights and eviction prevention support'},
-  {program:'LA LGBT Center — Youth Services', area:'Response', type:'Interim Housing & Shelter', source:'City / Local', amount:184000, note:'Housing support and services for youth experiencing or at risk of homelessness'}
-];
-const FUNDING_GROUPS = {
-  'Holloway Interim Housing Program': ['Holloway — Grant Funding', 'Holloway — City/Local (AHTF)']
-};
-const _fundingState = { area: 'all', source: 'all' };
-function fundingFmt(v) {
-  if (v >= 1000000) return '$' + (v/1000000).toFixed(v >= 10000000 ? 1 : 2).replace(/\.00$/,'') + 'M';
-  if (v >= 1000) return '$' + Math.round(v/1000) + 'K';
-  return '$' + Math.round(v).toLocaleString();
-}
-function fundingFullFmt(v) { return '$' + Math.round(v).toLocaleString(); }
-function _fundEsc(str) { return (typeof pyEscape === 'function') ? pyEscape(str) : String(str).replaceAll('&','&amp;').replaceAll('"','&quot;'); }
-function fundingFilteredData() {
-  const area = _fundingState.area;
-  const type = document.getElementById('funding-type-filter')?.value || 'all';
-  const source = _fundingState.source;
-  return FUNDING_DATA.filter(d =>
-    (area === 'all' || d.area === area) &&
-    (type === 'all' || d.type === type) &&
-    (source === 'all' || d.source === source)
-  );
-}
-function fundingGroup(rows, key) {
-  const out = {};
-  rows.forEach(d => { out[d[key]] = (out[d[key]] || 0) + d.amount; });
-  return Object.keys(out).map(label => ({label, amount: out[label]})).sort((a,b) => b.amount - a.amount);
-}
-function fundingRenderBarsWithPct(targetId, grouped, total) {
-  const el = document.getElementById(targetId);
-  if (!el) return;
-  const max = Math.max(1, ...grouped.map(d => d.amount));
-  if (!grouped.length) { el.innerHTML = '<div class="note">No programs match the selected filters.</div>'; return; }
-  el.innerHTML = grouped.map(d => {
-    const pct = Math.round(total > 0 ? (d.amount / total) * 100 : 0);
-    const barPct = Math.max(2, (d.amount / max) * 100);
-    const tip = _fundEsc(`<strong>${d.label}</strong><br>${fundingFullFmt(d.amount)} &middot; ${pct}% of total`);
-    return `<div class="funding-bar-row">
-      <div class="funding-bar-label">${d.label}</div>
-      <div class="funding-bar-track"><div class="funding-bar-fill" data-tip="${tip}" style="width:${barPct}%"></div></div>
-      <div class="funding-bar-value">${fundingFmt(d.amount)}<span class="funding-bar-pct">${pct}%</span></div>
-    </div>`;
-  }).join('');
-}
-function fundingRenderProgramDetail(targetId, rows) {
-  const el = document.getElementById(targetId);
-  if (!el) return;
-  if (!rows.length) {
-    el.innerHTML = `<div class="funding-empty">No programs match the selected filters.<br><button class="funding-empty-reset" onclick="fundingResetFilters()">Reset filters</button></div>`;
-    return;
-  }
-  const typeOrder = ['Outreach & Behavioral Health Response','Interim Housing & Shelter','Financial Assistance & Housing Stability','Legal & Tenant Protection'];
-  const areaForType = {};
-  FUNDING_DATA.forEach(d => { areaForType[d.type] = d.area; });
-  const childNames = new Set(Object.values(FUNDING_GROUPS).flat());
-  const processedRows = [];
-  const addedGroups = new Set();
-  rows.forEach(d => {
-    if (childNames.has(d.program)) {
-      const parent = Object.keys(FUNDING_GROUPS).find(p => FUNDING_GROUPS[p].includes(d.program));
-      if (parent && !addedGroups.has(parent)) {
-        const children = rows.filter(r => FUNDING_GROUPS[parent].includes(r.program));
-        if (children.length) {
-          const groupTotal = children.reduce((s, r) => s + r.amount, 0);
-          processedRows.push({ _isGroup: true, program: parent, amount: groupTotal, type: d.type, area: d.area, children });
-          addedGroups.add(parent);
-        }
-      }
-    } else { processedRows.push(d); }
-  });
-  const byType = {};
-  processedRows.forEach(d => { if (!byType[d.type]) byType[d.type] = []; byType[d.type].push(d); });
-  const orderedTypes = typeOrder.filter(t => byType[t]).concat(Object.keys(byType).filter(t => !typeOrder.includes(t)));
-  let groupIdx = 0;
-  el.innerHTML = orderedTypes.map(type => {
-    const programs = byType[type].slice().sort((a,b) => b.amount - a.amount);
-    const typeTotal = programs.reduce((s,d) => s + d.amount, 0);
-    const area = areaForType[type] || '';
-    const areaLabel = area === 'Response' ? 'Outreach & Housing' : (area === 'Prevention' ? 'Homeless Prevention' : area);
-    const rows_html = programs.map(d => {
-      if (d._isGroup) {
-        const gid = 'fpg-' + (groupIdx++);
-        const subrows = d.children.map(c => `<div class="funding-program-subrow">
-          <div>
-            <div class="funding-program-subrow-name">${c.source === 'City / Local' ? SRC_ICON.city : SRC_ICON.grant}${c.source}</div>
-            <div class="funding-program-subrow-note">${c.note}</div>
-          </div>
-          <div class="funding-program-amount" style="font-size:12.5px">${fundingFmt(c.amount)}</div>
-        </div>`).join('');
-        return `<div class="funding-program-group" id="${gid}">
-          <div class="funding-program-group-header" onclick="this.closest('.funding-program-group').classList.toggle('open')">
-            <div>
-              <div class="funding-program-name">${d.program}<span class="funding-program-group-chevron">▾</span></div>
-              <div class="funding-program-note">Multiple funding sources — click to expand</div>
-            </div>
-            <div class="funding-program-amount">${fundingFmt(d.amount)}</div>
-          </div>
-          <div class="funding-program-subrows">${subrows}</div>
-        </div>`;
-      }
-      return `<div class="funding-program-row">
-        <div>
-          <div class="funding-program-name">${d.program}</div>
-          <div class="funding-program-note">${d.note}</div>
-          <span class="funding-program-source">${d.source}</span>
-        </div>
-        <div class="funding-program-amount">${fundingFmt(d.amount)}</div>
-      </div>`;
-    }).join('');
-    return `<div class="funding-type-group">
-      <div class="funding-type-header">
-        <div class="funding-type-header-label">${type}</div>
-        ${areaLabel ? `<span class="funding-type-header-area">${areaLabel}</span>` : ''}
-        <div class="funding-type-header-total">${fundingFmt(typeTotal)}</div>
-      </div>
-      ${rows_html}
-    </div>`;
-  }).join('');
-}
-function fundingPopulateFilters() {
-  const typeSel = document.getElementById('funding-type-filter');
-  if (!typeSel || typeSel.dataset.ready === '1') return;
-  [...new Set(FUNDING_DATA.map(d => d.type))].sort().forEach(t => {
-    const opt = document.createElement('option'); opt.value = t; opt.textContent = t; typeSel.appendChild(opt);
-  });
-  typeSel.addEventListener('change', renderFundingPanel);
-  typeSel.dataset.ready = '1';
-}
-function initFundingPills() {
-  document.querySelectorAll('.funding-pill-btn').forEach(btn => {
-    if (btn.dataset.ready === '1') return;
-    btn.addEventListener('click', function() {
-      const stateKey = this.getAttribute('data-filter');
-      const value = this.getAttribute('data-value');
-      _fundingState[stateKey] = value;
-      const group = this.closest('.funding-pill-options');
-      if (group) group.querySelectorAll('.funding-pill-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      renderFundingPanel();
-    });
-    btn.dataset.ready = '1';
-  });
-}
-function renderFundingPanel() {
-  fundingPopulateFilters();
-  initFundingPills();
-  const rows = fundingFilteredData();
-  const total = rows.reduce((a,b) => a + b.amount, 0);
-  const prevention = rows.filter(d => d.area === 'Prevention').reduce((a,b) => a + b.amount, 0);
-  const response = rows.filter(d => d.area === 'Response').reduce((a,b) => a + b.amount, 0);
-  const setKpi = (el, val) => { if (el) { el.textContent = val; el.setAttribute('data-raw', val); } };
-  const totalEl = document.getElementById('funding-kpi-total');
-  setKpi(totalEl, fundingFmt(total || 0));
-  const countEl = document.getElementById('funding-kpi-count');
-  if (countEl) countEl.textContent = rows.length === FUNDING_DATA.length ? 'All programs' : rows.length + ' matching program' + (rows.length === 1 ? '' : 's');
-  const prevEl = document.getElementById('funding-kpi-prevention');
-  setKpi(prevEl, fundingFmt(prevention));
-  const prevPctEl = document.getElementById('funding-kpi-prevention-pct');
-  if (prevPctEl) { const pct = total > 0 ? Math.round((prevention/total)*100) : 0; prevPctEl.textContent = pct + '% of total \u00b7 financial assistance, housing stability & legal'; }
-  const respEl = document.getElementById('funding-kpi-response');
-  setKpi(respEl, fundingFmt(response));
-  const respPctEl = document.getElementById('funding-kpi-response-pct');
-  if (respPctEl) { const pct = total > 0 ? Math.round((response/total)*100) : 0; respPctEl.textContent = pct + '% of total \u00b7 outreach, behavioral health response, interim housing'; }
-  fundingRenderBarsWithPct('funding-source-bars', fundingGroup(rows, 'source'), total);
-  fundingRenderBarsWithPct('funding-type-bars', fundingGroup(rows, 'type'), total);
-  fundingRenderProgramDetail('funding-project-table', rows);
-  const typeSelVal = (document.getElementById('funding-type-filter') || {}).value || 'all';
-  const isFiltered = _fundingState.area !== 'all' || _fundingState.source !== 'all' || typeSelVal !== 'all';
-  ['funding-badge-type','funding-badge-source'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = isFiltered ? 'inline' : 'none'; });
-}
-function fundingResetFilters() {
-  _fundingState.area = 'all';
-  _fundingState.source = 'all';
-  const typeSel = document.getElementById('funding-type-filter');
-  if (typeSel) typeSel.value = 'all';
-  document.querySelectorAll('.funding-pill-options').forEach(group => {
-    group.querySelectorAll('.funding-pill-btn').forEach(b => b.classList.remove('active'));
-    const allBtn = group.querySelector('[data-value="all"]');
-    if (allBtn) allBtn.classList.add('active');
-  });
-  renderFundingPanel();
-}
-// Funding panel removed from UI; load-time render disabled. Definitions retained for easy re-add.
-// renderFundingPanel();
-</script>
+
 <div aria-hidden="true" class="tooltip" id="chart-tooltip"></div>
 </body>
 </html>
