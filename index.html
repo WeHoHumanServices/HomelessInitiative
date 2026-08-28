@@ -3775,8 +3775,10 @@ function activatePage(page) {
     waitForLeaflet(function() {
       if (!_pitMap) {
         _pitMap = L.map('pit-map').setView([34.0887, -118.3671], 14);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 19
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=' + encodeURIComponent(CARTO_BASEMAP_KEY), {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: 'abcd',
+          maxZoom: 20
         }).addTo(_pitMap);
       }
       pitLoadBoundary();
@@ -3794,8 +3796,10 @@ function activatePage(page) {
       if (!_hclMap) {
         _hclMap = L.map('hcl-heatmap', {zoomControl: true, scrollWheelZoom: false})
           .setView([34.0887, -118.3671], 14);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 19
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=' + encodeURIComponent(CARTO_BASEMAP_KEY), {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: 'abcd',
+          maxZoom: 20
         }).addTo(_hclMap);
         // WeHo boundary overlay
         (function() {
@@ -4542,6 +4546,9 @@ function waitForLeaflet(callback) {
     }
   }, 100);
 }
+
+// CARTO basemap key — required for CARTO raster tile requests as of August 2026.
+const CARTO_BASEMAP_KEY = 'cb1_2huf_1_7e17e940efe96d547e2dc785';
 
 let _pitMap = null, _pitDots = null, _pitBoundary = null, _pitReady = false;
 let _hclMap = null, _hclHeat = null, _hclReady = false, _hclBoundaryLayer = null, _hclSelectedMonths = new Set(), _hclSelectedReasons = new Set();
