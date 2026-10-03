@@ -28,6 +28,10 @@ html { scroll-behavior:smooth; }
 body {
   margin:0;
   font-family: Arial, Helvetica, sans-serif;
+  /* City brand standard: Arial Bold for all body text. Headings, KPI values,
+     and labels already set their own explicit font-weight (700/800) and are
+     unaffected; this default only reaches text that doesn't declare its own. */
+  font-weight: 700;
   background:#f2f6fb;
   color:var(--ink);
 }
